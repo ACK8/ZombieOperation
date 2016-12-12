@@ -750,7 +750,6 @@ GameObject:
   - 136: {fileID: 136000012378335580}
   - 54: {fileID: 54000011221177318}
   - 95: {fileID: 95000011369075494}
-  - 136: {fileID: 136000013111490958}
   - 114: {fileID: 114000011269471474}
   - 114: {fileID: 114000011149095048}
   m_Layer: 0
@@ -1850,7 +1849,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000012684742238}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.983, y: -0.962, z: 20.902}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
@@ -2840,19 +2839,6 @@ CapsuleCollider:
   m_Height: 0.26
   m_Direction: 1
   m_Center: {x: 0, y: 0.04, z: 0}
---- !u!136 &136000013111490958
-CapsuleCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1000012684742238}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 0
-  m_Radius: 0.26
-  m_Height: 1.7
-  m_Direction: 1
-  m_Center: {x: 0, y: 0.88, z: 0.15}
 --- !u!136 &136000013392851910
 CapsuleCollider:
   m_ObjectHideFlags: 1
@@ -2918,8 +2904,8 @@ SkinnedMeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 25020c8057aca4546940362c918ca289, type: 2}
   - {fileID: 0}
+  - {fileID: 2100000, guid: 39b46e8b703f0df4a9cd5a7e7f64d52b, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_ProbeAnchor: {fileID: 0}

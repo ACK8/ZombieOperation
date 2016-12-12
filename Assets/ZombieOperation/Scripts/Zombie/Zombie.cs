@@ -43,6 +43,11 @@ public class Zombie : MonoBehaviour
                 Wait();
             }
 
+            if(operatingType == OperatingType.Following)
+            {
+                navMesh.SetDestination(seledtedTarget);
+            }
+
             Animation();
 
             DestructionUpdate();
@@ -68,17 +73,14 @@ public class Zombie : MonoBehaviour
                 navMesh.Stop();
                 navMesh.speed = 0f;
                 anim.SetTrigger("Attack");
-                //print("Attack");
             }
             else
             {
                 Move(destructionTarget.transform.position);
-                //print("move");
             }
         }
         else
         {
-            //print("else");
             if (!destructionFlag)
             {
                 isDestruction = false;
@@ -123,7 +125,6 @@ public class Zombie : MonoBehaviour
         navMesh.speed = navSpeed;
         anim.SetFloat("Blend", 1.0f);
 
-        navMesh.SetDestination(playerPos.position);
         seledtedTarget = playerPos.position;
     }
 

@@ -90,7 +90,7 @@ NavMeshSettings:
     minRegionArea: 2
     cellSize: 0.16666667
     manualCellSize: 0
-  m_NavMeshData: {fileID: 0}
+  m_NavMeshData: {fileID: 23800000, guid: 3535332fa7f8c124d960cfe52976610d, type: 2}
 --- !u!1001 &168193391
 Prefab:
   m_ObjectHideFlags: 0
@@ -100,15 +100,15 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4000012501525246, guid: a6cd88f0f62aea943b0f799a070bbd9c, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -0.089
+      value: -0.3
       objectReference: {fileID: 0}
     - target: {fileID: 4000012501525246, guid: a6cd88f0f62aea943b0f799a070bbd9c, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.42
       objectReference: {fileID: 0}
     - target: {fileID: 4000012501525246, guid: a6cd88f0f62aea943b0f799a070bbd9c, type: 2}
       propertyPath: m_LocalPosition.z
-      value: 1.433
+      value: 1.91
       objectReference: {fileID: 0}
     - target: {fileID: 4000012501525246, guid: a6cd88f0f62aea943b0f799a070bbd9c, type: 2}
       propertyPath: m_LocalRotation.x
@@ -129,6 +129,10 @@ Prefab:
     - target: {fileID: 4000012501525246, guid: a6cd88f0f62aea943b0f799a070bbd9c, type: 2}
       propertyPath: m_RootOrder
       value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1000010431724078, guid: a6cd88f0f62aea943b0f799a070bbd9c, type: 2}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a6cd88f0f62aea943b0f799a070bbd9c, type: 2}
@@ -259,7 +263,13 @@ Prefab:
       propertyPath: m_RootOrder
       value: 3
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 137000011133182108, guid: 3b3f6c046d7d0474abf68abe3b674253,
+        type: 2}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 4300002, guid: d52fac37c1878fb4b9fb0297462b3b6f, type: 3}
+    m_RemovedComponents:
+    - {fileID: 136000013111490958, guid: 3b3f6c046d7d0474abf68abe3b674253, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 3b3f6c046d7d0474abf68abe3b674253, type: 2}
   m_IsPrefabParent: 0
 --- !u!1 &1219850129
@@ -341,7 +351,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!23 &1821311583
 MeshRenderer:

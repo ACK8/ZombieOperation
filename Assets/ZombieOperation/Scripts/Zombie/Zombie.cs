@@ -24,6 +24,7 @@ public class Zombie : MonoBehaviour
     private bool isChange = false;
     private bool isDestruction = false;
     private bool destructionFlag = false;
+    private bool isHitObject = false;
 
     void Start()
     {
@@ -38,12 +39,12 @@ public class Zombie : MonoBehaviour
         if (_isZombie)
         {
             //目的地に着くと待機
-            if (Vector3.Distance(transform.position, seledtedTarget) < 0.6f && _isMove)
+            if (Vector3.Distance(transform.position, seledtedTarget) <= 0.6f && _isMove)
             {
                 Wait();
             }
 
-            if(operatingType == OperatingType.Following)
+            if (operatingType == OperatingType.Following)
             {
                 navMesh.SetDestination(seledtedTarget);
             }
@@ -65,10 +66,11 @@ public class Zombie : MonoBehaviour
     //障害物破壊
     void DestructionUpdate()
     {
-        if (destructionTarget)
+        if (destructionTarget != null)
         {
-            if (Vector3.Distance(transform.position, destructionTarget.transform.position) <= 2.0f && _isMove)
+            if (isHitObject && _isMove)
             {
+                isHitObject = false;
                 _isMove = false;
                 navMesh.Stop();
                 navMesh.speed = 0f;
@@ -83,8 +85,8 @@ public class Zombie : MonoBehaviour
         {
             if (!destructionFlag)
             {
-                isDestruction = false;
                 Wait();
+                isDestruction = false;
                 destructionFlag = true;
             }
         }
@@ -99,7 +101,6 @@ public class Zombie : MonoBehaviour
         navMesh.Stop();
         navMesh.SetDestination(transform.position);
         anim.SetFloat("Blend", 0.0f);
-
     }
 
     //ゾンビ誘導処理
@@ -194,15 +195,18 @@ public class Zombie : MonoBehaviour
     }
 
     //ボーンについているスクリプトから呼ばれる
-    public void HitCollider(Collision hit)
+    public void CollisionEnter(Collision hit)
     {
-        print(hit.collider.name);
+        if (hit.collider.tag == "Object")
+        {
+            isHitObject = true;
+        }
     }
 
     //ボーンについているスクリプトから呼ばれる
-    public void HitTrigger(Collider hit)
+    public void TriggerEnter(Collider hit)
     {
-        print(hit.name);
+
     }
 
     //移動しているか(誘導用)

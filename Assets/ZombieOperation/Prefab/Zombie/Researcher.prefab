@@ -1849,7 +1849,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000012684742238}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -0.59}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
@@ -2469,9 +2469,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   changeMaterials1:
   - {fileID: 2100000, guid: 41225d81dda3ef640a8a010b264c5195, type: 2}
-  - {fileID: 2100000, guid: 25020c8057aca4546940362c918ca289, type: 2}
+  - {fileID: 2100000, guid: 39b46e8b703f0df4a9cd5a7e7f64d52b, type: 2}
   changeMaterials2:
-  - {fileID: 2100000, guid: 25020c8057aca4546940362c918ca289, type: 2}
+  - {fileID: 2100000, guid: 39b46e8b703f0df4a9cd5a7e7f64d52b, type: 2}
   meshRenderer: {fileID: 137000011133182108}
 --- !u!114 &114000011243977000
 MonoBehaviour:

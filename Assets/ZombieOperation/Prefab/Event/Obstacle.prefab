@@ -25,7 +25,6 @@ GameObject:
   - 64: {fileID: 64000012354780048}
   - 114: {fileID: 114000010820921986}
   - 114: {fileID: 114000012940256966}
-  - 208: {fileID: 208000013357690658}
   m_Layer: 0
   m_Name: Obstacle
   m_TagString: Object
@@ -40,7 +39,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000010431724078}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 1.32}
+  m_LocalPosition: {x: -1.295, y: -0.855, z: 15.47}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
@@ -140,18 +139,3 @@ MonoBehaviour:
   changeMaterials2:
   - {fileID: 2100000, guid: 24b8fef62818a054e9a7095ea4c2706d, type: 2}
   meshRenderer: {fileID: 23000012322627200}
---- !u!208 &208000013357690658
-NavMeshObstacle:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1000010431724078}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Shape: 0
-  m_Extents: {x: 1.94, y: 2.63, z: 1.94}
-  m_MoveThreshold: 0.1
-  m_Carve: 1
-  m_CarveOnlyStationary: 1
-  m_Center: {x: 0.156, y: 0.592, z: 0.625}
-  m_TimeToStationary: 0.5

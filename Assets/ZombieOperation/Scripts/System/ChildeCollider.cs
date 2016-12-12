@@ -10,7 +10,14 @@ public class ChildeCollider : MonoBehaviour
 
     void OnCollisionEnter(Collision hit)
     {
-        zombie.HitCollider(hit);
+        print("OnCollisionEnter");
+        zombie.CollisionEnter(hit);
+    }
+
+    void OnTriggerEnter(Collider hit)
+    {
+        print("OnTriggerEnter");
+        zombie.TriggerEnter(hit);
     }
 
     public GameObject GetGameObject()

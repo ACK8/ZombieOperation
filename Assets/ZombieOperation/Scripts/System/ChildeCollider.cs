@@ -7,7 +7,7 @@ public class ChildeCollider : MonoBehaviour
     private Zombie zombie;
     [SerializeField]
     private GameObject zombieObj;
-
+    
     void OnCollisionEnter(Collision hit)
     {
         print("OnCollisionEnter");

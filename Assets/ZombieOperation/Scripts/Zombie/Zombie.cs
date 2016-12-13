@@ -72,6 +72,7 @@ public class Zombie : MonoBehaviour
             {
                 isHitObject = false;
                 _isMove = false;
+                transform.LookAt(destructionTarget.transform);
                 navMesh.Stop();
                 navMesh.speed = 0f;
                 anim.SetTrigger("Attack");
@@ -134,7 +135,7 @@ public class Zombie : MonoBehaviour
     {
         operatingType = OperatingType.Attack;
         destructionTarget = null;
-        destructionTarget = target;
+        destructionTarget = target.GetComponent<DestructionObject>().destructionPosition;
         isDestruction = true;
         _isMove = true;
         destructionFlag = false;
@@ -197,10 +198,7 @@ public class Zombie : MonoBehaviour
     //ボーンについているスクリプトから呼ばれる
     public void CollisionEnter(Collision hit)
     {
-        if (hit.collider.tag == "Object")
-        {
-            isHitObject = true;
-        }
+
     }
 
     //ボーンについているスクリプトから呼ばれる

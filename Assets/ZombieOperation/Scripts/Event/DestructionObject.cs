@@ -4,6 +4,8 @@ using System.Collections;
 public class DestructionObject : MonoBehaviour
 {
     [SerializeField]
+    private GameObject destructionPos;
+    [SerializeField]
     private int enduranceValue;
     [SerializeField]
     private int decrease;
@@ -21,5 +23,10 @@ public class DestructionObject : MonoBehaviour
         {
             Destroy(this.gameObject);
         }
+    }
+
+    public GameObject destructionPosition
+    {
+        get { return destructionPos; }
     }
 }

@@ -3,14 +3,14 @@ using System.Collections;
 
 public class Zombie : MonoBehaviour
 {
+    public bool isZombie = false;
+
     [SerializeField]
     private CapsuleCollider capsuleCol;
     [SerializeField]
     private float zombieChangeTime = 2.5f;    //注射時、ゾンビに変化する時間
     [SerializeField]
     private float attackAnimRate; //攻撃が有効になるアニメーション時間
-    [SerializeField]
-    private bool _isZombie = false;
 
     private NavMeshAgent navMesh;
     private Animator anim;
@@ -24,7 +24,6 @@ public class Zombie : MonoBehaviour
     private bool isChange = false;
     private bool isDestruction = false;
     private bool destructionFlag = false;
-    private bool isHitObject = false;
 
     void Start()
     {
@@ -36,7 +35,7 @@ public class Zombie : MonoBehaviour
 
     void Update()
     {
-        if (_isZombie)
+        if (isZombie)
         {
             //目的地に着くと待機
             if (Vector3.Distance(transform.position, seledtedTarget) <= 0.6f && _isMove)
@@ -68,9 +67,8 @@ public class Zombie : MonoBehaviour
     {
         if (destructionTarget != null)
         {
-            if (isHitObject && _isMove)
+            if (Vector3.Distance(transform.position, destructionTarget.transform.position) <= 0.2f && _isMove)
             {
-                isHitObject = false;
                 _isMove = false;
                 transform.LookAt(destructionTarget.transform);
                 navMesh.Stop();
@@ -172,7 +170,7 @@ public class Zombie : MonoBehaviour
     {
         if (zombieChangeTime <= injectionVolume)
         {
-            _isZombie = true;
+            isZombie = true;
             anim.SetBool("GetUp", true);
         }
     }
@@ -189,7 +187,7 @@ public class Zombie : MonoBehaviour
     void OnTriggerStay(Collider hit)
     {
         //注射
-        if (hit.tag == "Injection" && !_isZombie)
+        if (hit.tag == "Injection" && !isZombie)
         {
             injectionVolume += Time.deltaTime;
         }
@@ -212,12 +210,5 @@ public class Zombie : MonoBehaviour
     {
         get { return _isMove; }
         set { _isMove = value; }
-    }
-
-    //死体かゾンビかの状態
-    public bool isZombie
-    {
-        get { return _isZombie; }
-        set { _isZombie = value; }
     }
 }

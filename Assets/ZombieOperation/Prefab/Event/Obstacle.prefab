@@ -149,7 +149,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2230bdc4c8bdcf343947e6f4caadab5e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  destructionPos: {fileID: 0}
+  destructionPos: {fileID: 1000011768105606}
   enduranceValue: 5
   decrease: 1
 --- !u!114 &114000012940256966

@@ -29,13 +29,13 @@ public class Enemy : MonoBehaviour
     private Transform playerTransform;
     private EEnemyState enemyState = EEnemyState.Patrol;
 
-    void Start ()
+    void Start()
     {
         navMeshAgent = GetComponent<NavMeshAgent>();
         navMeshAgent.SetDestination(patrolObject[patrolNumber].transform.position);
     }
-	
-	void Update ()
+
+    void Update()
     {
         Debug.Log(enemyState);
 
@@ -172,7 +172,7 @@ public class Enemy : MonoBehaviour
     void OnTriggerStay(Collider collider)
     {
         //視界処理
-        if((enemyState == EEnemyState.Patrol) || (enemyState == EEnemyState.Wait))
+        if ((enemyState == EEnemyState.Patrol) || (enemyState == EEnemyState.Wait))
         {
             for (int i = 0; i < targetTags.Length; i++)
             {

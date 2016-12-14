@@ -75,6 +75,7 @@ public class Zombie : MonoBehaviour
             if (Vector3.Distance(transform.position, destructionPos.transform.position) <= 1.0f)
             {
                 _isMove = false;
+                transform.LookAt(new Vector3(destructionPos.transform.position.x, transform.position.y, destructionPos.transform.position.z));
                 navMesh.Stop();
                 navMesh.speed = 0f;
                 anim.SetTrigger("Attack");

@@ -17,6 +17,7 @@ public class Zombie : MonoBehaviour
     private Vector3 targetPos = Vector3.zero;
     private Transform seledtedTarget = null;
     private GameObject destructionTarget = null;
+    private GameObject destructionPos = null;
     private OperatingType operatingType;
     private float injectionVolume = 0f;   //ゾンビ薬の注入量
     private float navSpeed = 0f;
@@ -41,7 +42,7 @@ public class Zombie : MonoBehaviour
             {
                 //目的地に着くと待機
                 if (Vector3.Distance(transform.position,
-                    new Vector3(seledtedTarget.position.x, transform.position.y, seledtedTarget.position.z)) <= 0.6f && _isMove)
+                    new Vector3(seledtedTarget.position.x, transform.position.y, seledtedTarget.position.z)) <= 0.5f && _isMove)
                 {
                     Wait();
                 }
@@ -52,9 +53,9 @@ public class Zombie : MonoBehaviour
                 }
 
                 Animation();
-
-                DestructionUpdate();
             }
+
+            DestructionUpdate();
         }
         else
         {
@@ -64,27 +65,31 @@ public class Zombie : MonoBehaviour
             //倒れた状態
             anim.Play("GetUp", -1, 0.0f);
         }
+        print(operatingType);
     }
 
     //障害物破壊
     void DestructionUpdate()
     {
-        if (destructionTarget != null)
+        if (destructionPos != null)
         {
-            if (Vector3.Distance(transform.position, destructionTarget.transform.position) <= 0.1f)
+            if (Vector3.Distance(transform.position, destructionPos.transform.position) <= 1.0f)
             {
+                print("attack");
                 _isMove = false;
-                transform.LookAt(destructionTarget.transform);
                 navMesh.Stop();
                 navMesh.speed = 0f;
+                anim.SetTrigger("Attack");
             }
             else
             {
-                Move(destructionTarget.transform);
+                print("move");
+                Move(destructionPos.transform);
             }
         }
         else
         {
+            print("wait");
             if (!destructionFlag)
             {
                 Wait();
@@ -137,8 +142,9 @@ public class Zombie : MonoBehaviour
     public void Destruction(GameObject target)
     {
         operatingType = OperatingType.Attack;
-        destructionTarget = null;
-        destructionTarget = target.GetComponent<DestructionObject>().destructionPosition;
+        destructionPos = null;
+        destructionPos = target.GetComponent<DestructionObject>().destructionPosition;
+        destructionTarget = target;
         isDestruction = true;
         _isMove = true;
         destructionFlag = false;
@@ -176,7 +182,7 @@ public class Zombie : MonoBehaviour
         if (zombieChangeTime <= injectionVolume)
         {
             isZombie = true;
-            anim.SetBool("GetUp", true);
+            anim.SetBool("GetUp", false);
         }
     }
 

@@ -65,7 +65,6 @@ public class Zombie : MonoBehaviour
             //倒れた状態
             anim.Play("GetUp", -1, 0.0f);
         }
-        print(operatingType);
     }
 
     //障害物破壊
@@ -75,7 +74,6 @@ public class Zombie : MonoBehaviour
         {
             if (Vector3.Distance(transform.position, destructionPos.transform.position) <= 1.0f)
             {
-                print("attack");
                 _isMove = false;
                 navMesh.Stop();
                 navMesh.speed = 0f;
@@ -83,13 +81,11 @@ public class Zombie : MonoBehaviour
             }
             else
             {
-                print("move");
                 Move(destructionPos.transform);
             }
         }
         else
         {
-            print("wait");
             if (!destructionFlag)
             {
                 Wait();

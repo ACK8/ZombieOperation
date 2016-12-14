@@ -122,7 +122,7 @@ public class Operating : MonoBehaviour
         if ((selectedZombie != null) && movePointObject.activeSelf)
         {
             operatingType = OperatingType.Move;
-            selectedZombie.GetComponent<Zombie>().Move(movePointObject.transform.position);
+            selectedZombie.GetComponent<Zombie>().Move(movePointObject.transform);
             Debug.Log(operatingType + "実行");
         }
     }
@@ -134,7 +134,7 @@ public class Operating : MonoBehaviour
         if ((selectedZombie != null))
         {
             operatingType = OperatingType.Following;
-            selectedZombie.GetComponent<Zombie>().Following(ref playerTransform);
+            selectedZombie.GetComponent<Zombie>().Following(playerTransform);
             Debug.Log(operatingType + "実行");
         }
     }

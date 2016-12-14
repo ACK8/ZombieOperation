@@ -15,7 +15,7 @@ public class Zombie : MonoBehaviour
     private NavMeshAgent navMesh;
     private Animator anim;
     private Vector3 targetPos = Vector3.zero;
-    private Vector3 seledtedTarget = Vector3.zero;
+    private Transform seledtedTarget = null;
     private GameObject destructionTarget = null;
     private OperatingType operatingType;
     private float injectionVolume = 0f;   //ゾンビ薬の注入量
@@ -37,20 +37,24 @@ public class Zombie : MonoBehaviour
     {
         if (isZombie)
         {
-            //目的地に着くと待機
-            if (Vector3.Distance(transform.position, seledtedTarget) <= 0.6f && _isMove)
+            if (seledtedTarget != null)
             {
-                Wait();
+                //目的地に着くと待機
+                if (Vector3.Distance(transform.position,
+                    new Vector3(seledtedTarget.position.x, transform.position.y, seledtedTarget.position.z)) <= 0.6f && _isMove)
+                {
+                    Wait();
+                }
+
+                if (operatingType == OperatingType.Following)
+                {
+                    navMesh.SetDestination(seledtedTarget.position);
+                }
+
+                Animation();
+
+                DestructionUpdate();
             }
-
-            if (operatingType == OperatingType.Following)
-            {
-                navMesh.SetDestination(seledtedTarget);
-            }
-
-            Animation();
-
-            DestructionUpdate();
         }
         else
         {
@@ -67,7 +71,7 @@ public class Zombie : MonoBehaviour
     {
         if (destructionTarget != null)
         {
-            print(_isMove); 
+            print(_isMove);
             if (Vector3.Distance(transform.position, destructionTarget.transform.position) <= 0.1f && _isMove)
             {
                 print("attack");
@@ -80,7 +84,7 @@ public class Zombie : MonoBehaviour
             else
             {
                 print("move");
-                Move(destructionTarget.transform.position);
+                Move(destructionTarget.transform);
             }
         }
         else
@@ -106,13 +110,13 @@ public class Zombie : MonoBehaviour
     }
 
     //ゾンビ誘導処理
-    public void Move(Vector3 target)
+    public void Move(Transform target)
     {
         operatingType = OperatingType.Move;
         _isMove = true;
         navMesh.Resume();
         navMesh.speed = navSpeed;
-        navMesh.SetDestination(target);
+        navMesh.SetDestination(target.position);
 
         anim.SetFloat("Blend", 1.0f);
 
@@ -120,7 +124,7 @@ public class Zombie : MonoBehaviour
     }
 
     //プレイヤーに追従
-    public void Following(ref Transform playerPos)
+    public void Following(Transform playerPos)
     {
         operatingType = OperatingType.Following;
         _isMove = true;
@@ -128,7 +132,7 @@ public class Zombie : MonoBehaviour
         navMesh.speed = navSpeed;
         anim.SetFloat("Blend", 1.0f);
 
-        seledtedTarget = playerPos.position;
+        seledtedTarget = playerPos;
     }
 
     //攻撃

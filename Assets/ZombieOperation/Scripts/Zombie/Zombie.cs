@@ -71,7 +71,7 @@ public class Zombie : MonoBehaviour
     {
         if (destructionTarget != null)
         {
-            if (Vector3.Distance(transform.position, destructionTarget.transform.position) <= 0.1f && _isMove)
+            if (Vector3.Distance(transform.position, destructionTarget.transform.position) <= 0.1f)
             {
                 _isMove = false;
                 transform.LookAt(destructionTarget.transform);
@@ -80,8 +80,6 @@ public class Zombie : MonoBehaviour
             }
             else
             {
-                Move(destructionTarget.transform);
-
                 Move(destructionTarget.transform);
             }
         }

@@ -61,6 +61,7 @@ public class ZombieOperating : MonoBehaviour
                 break;
 
             case ZombieOperatingType.Syringe:
+                Debug.Log("Syringe");
                 syringeObject.SetActive(true);
                 syringeComponent.enabled = true;
 

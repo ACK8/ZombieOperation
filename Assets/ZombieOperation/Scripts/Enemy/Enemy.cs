@@ -37,89 +37,79 @@ public class Enemy : MonoBehaviour
 
     void Update()
     {
-        Debug.Log(enemyState);
 
         switch (enemyState)
         {
             case EEnemyState.None:
+                {
+
+                }
                 break;
 
             case EEnemyState.Wait:
-                //巡回位置切り替え
-                if (currntWaitTime > waitTimes[patrolNumber])
                 {
-                    patrolNumber += 1;
-                    if (patrolNumber >= patrolObject.Length) patrolNumber = 0;
+                    //巡回位置切り替え
+                    if (currntWaitTime > waitTimes[patrolNumber])
+                    {
+                        patrolNumber += 1;
+                        if (patrolNumber >= patrolObject.Length) patrolNumber = 0;
 
-                    navMeshAgent.SetDestination(patrolObject[patrolNumber].transform.position);
-                    currntWaitTime = 0.0f;
-                    enemyState = EEnemyState.Patrol;
+                        navMeshAgent.SetDestination(patrolObject[patrolNumber].transform.position);
+                        currntWaitTime = 0.0f;
+                        enemyState = EEnemyState.Patrol;
+                    }
+                    else
+                    {
+                        currntWaitTime += Time.deltaTime;
+                    }
                 }
-                else
-                {
-                    currntWaitTime += Time.deltaTime;
-                }
-
                 break;
 
             case EEnemyState.Patrol:
+                {
 
+                }
                 break;
 
             case EEnemyState.Chase:
-                navMeshAgent.SetDestination(playerTransform.position);
-                navMeshAgent.Resume();
-
-                //攻撃状態に移行
-                if (Vector3.Distance(playerTransform.position, firePoint.position) < bulletDistanceMax * 0.5f)
                 {
-                    //enemyState = EEnemyState.Attack;
+                    navMeshAgent.SetDestination(playerTransform.position);
+                    navMeshAgent.Resume();
 
+                    //攻撃状態に移行
                     RaycastHit hit;
                     Vector3 targetDir = (playerTransform.position - eyePosition.position).normalized;
                     if (Physics.Raycast(eyePosition.position, targetDir, out hit))
                     {
-                        Debug.Log("hit" + hit.transform.GetInstanceID());
-                        Debug.Log("playerTransform" + playerTransform.GetInstanceID());
-
                         if (hit.transform.GetInstanceID() == playerTransform.GetInstanceID())
                         {
+                            navMeshAgent.Stop();
                             enemyState = EEnemyState.Attack;
                         }
                     }
                 }
-
                 break;
 
             case EEnemyState.Attack:
                 {
-                    navMeshAgent.SetDestination(playerTransform.position);
+                    transform.LookAt(playerTransform);
 
-                    NavMeshHit navMeshHit2;
-                    if (!navMeshAgent.Raycast(playerTransform.position, out navMeshHit2))
+                    RaycastHit hit;
+                    Vector3 targetDir = (playerTransform.position - eyePosition.position).normalized;
+
+                    Debug.DrawLine(eyePosition.position, (eyePosition.position + targetDir));
+
+                    if (Physics.Raycast(eyePosition.position, targetDir, out hit))
                     {
-                        enemyState = EEnemyState.Chase;
-                        break;
+                        if (hit.transform.tag != playerTransform.tag)
+                        {
+                            enemyState = EEnemyState.Chase;
+                        }
                     }
-
-                    navMeshAgent.Stop();
-
-
 
                     if (Vector3.Distance(playerTransform.position, firePoint.position) > bulletDistanceMax)
                     {
-                        RaycastHit hit;
-                        Vector3 targetDir = (playerTransform.position - eyePosition.position).normalized;
 
-                        Debug.DrawLine(eyePosition.position, (eyePosition.position + targetDir));
-
-                        if (Physics.Raycast(eyePosition.position, targetDir, out hit))
-                        {
-                            if (hit.transform.tag != playerTransform.tag)
-                            {
-                                //enemyState = EEnemyState.Chase;
-                            }
-                        }
                     }
                 }
 
@@ -174,6 +164,8 @@ public class Enemy : MonoBehaviour
         //視界処理
         if ((enemyState == EEnemyState.Patrol) || (enemyState == EEnemyState.Wait))
         {
+            Debug.Log(enemyState);
+
             for (int i = 0; i < targetTags.Length; i++)
             {
                 if (collider.gameObject.tag == targetTags[i])

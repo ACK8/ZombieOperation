@@ -1,5 +1,28 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
+
+public struct discoveryInfo
+{
+    public GameObject targetObject;
+    public float timeToDiscover;
+
+    public discoveryInfo(GameObject target, float time)
+    {
+        targetObject = target;
+        timeToDiscover = time;
+    }
+
+    public void SetTimeToDiscover(float time)
+    {
+        timeToDiscover = time;
+    }
+
+    public void AddTimeToDiscover(float time)
+    {
+        timeToDiscover += time;
+    }
+}
 
 public enum EEnemyState
 {
@@ -28,6 +51,8 @@ public class Enemy : MonoBehaviour
     private NavMeshAgent navMeshAgent;
     private Transform playerTransform;
     private EEnemyState enemyState = EEnemyState.Patrol;
+    private List<discoveryInfo> discoveryList = new List<discoveryInfo>();
+    Dictionary<int, float> temp = new Dictionary<int, float>();
 
     void Start()
     {
@@ -37,6 +62,7 @@ public class Enemy : MonoBehaviour
 
     void Update()
     {
+        //Debug.Log(enemyState);
 
         switch (enemyState)
         {
@@ -92,7 +118,10 @@ public class Enemy : MonoBehaviour
 
             case EEnemyState.Attack:
                 {
-                    transform.LookAt(playerTransform);
+                    //ターゲットに向かせる
+                    Vector3 targetPos = playerTransform.position;
+                    targetPos.y = transform.position.y;
+                    transform.LookAt(targetPos);
 
                     RaycastHit hit;
                     Vector3 targetDir = (playerTransform.position - eyePosition.position).normalized;
@@ -101,18 +130,12 @@ public class Enemy : MonoBehaviour
 
                     if (Physics.Raycast(eyePosition.position, targetDir, out hit))
                     {
-                        if (hit.transform.tag != playerTransform.tag)
+                        if (hit.transform.GetInstanceID() != playerTransform.GetInstanceID())
                         {
                             enemyState = EEnemyState.Chase;
                         }
                     }
-
-                    if (Vector3.Distance(playerTransform.position, firePoint.position) > bulletDistanceMax)
-                    {
-
-                    }
                 }
-
 
                 /*
                 Vector3 direction = playerTransform.position - eyePosition.position;
@@ -164,32 +187,54 @@ public class Enemy : MonoBehaviour
         //視界処理
         if ((enemyState == EEnemyState.Patrol) || (enemyState == EEnemyState.Wait))
         {
-            Debug.Log(enemyState);
-
             for (int i = 0; i < targetTags.Length; i++)
             {
                 if (collider.gameObject.tag == targetTags[i])
                 {
+                    //レイで視界判断
                     RaycastHit hit;
                     Vector3 direction = collider.gameObject.transform.position - eyePosition.position;
                     if (Physics.Raycast(eyePosition.position, direction.normalized, out hit))
                     {
-                        //Debug.DrawRay(eyePosition.position, direction.normalized, Color.red);
-
                         if (hit.transform.tag == targetTags[i])
                         {
-                            navMeshAgent.Stop();
+                            bool isTarget = false;
+                            bool isAdd = true;
+                            int id = collider.gameObject.GetInstanceID();
 
-                            if (timeToDiscover > maxTimeToDiscover)
+                            //前の当たり判定でターゲットが視界に入っているのを確認
+                            foreach (int key in temp.Keys)
                             {
-                                enemyState = EEnemyState.Chase;
-                                playerTransform = hit.transform;
-                                timeToDiscover = 0.0f;
-                                navMeshAgent.Resume();
+                                if (key == id)
+                                {
+                                    isTarget = true;
+                                    isAdd = false;
+                                    navMeshAgent.Stop();
+                                }
                             }
-                            else
+
+                            //ターゲットが視界に入り続けているか確認
+                            if (isTarget)
                             {
-                                timeToDiscover += Time.deltaTime;
+                                if (temp[id] > maxTimeToDiscover)
+                                {
+                                    enemyState = EEnemyState.Chase;
+                                    playerTransform = hit.transform;
+                                    navMeshAgent.Resume();
+                                    temp.Clear();
+
+                                    Debug.Log(temp.Count);
+                                }
+                                else
+                                {
+                                    temp[id] += Time.deltaTime;
+                                }
+                            }
+
+                            //新たに対象を発見
+                            if (isAdd)
+                            {
+                                temp.Add(id, 0.0f);
                             }
                         }
                     }
@@ -200,16 +245,10 @@ public class Enemy : MonoBehaviour
 
     void OnTriggerExit(Collider collider)
     {
-        if (!(enemyState == EEnemyState.Chase))
+        if (enemyState == EEnemyState.Patrol)
         {
-            for (int i = 0; i < targetTags.Length; i++)
-            {
-                if (collider.gameObject.tag == targetTags[i])
-                {
-                    timeToDiscover = 0.0f;
-                    navMeshAgent.Resume();
-                }
-            }
+            int id = collider.gameObject.GetInstanceID();
+            temp.Remove(id);
         }
     }
 }

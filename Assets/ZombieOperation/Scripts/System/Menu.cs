@@ -10,15 +10,13 @@ public class Menu : SingletonMonoBehaviour<Menu>
     private float offset = 2.0f;
     [SerializeField]
     private string titleSceneName = null;
-
-    private Vector3 initalScale = Vector3.zero;
+    
     private GameObject vrCamEye;
     private bool _isDisplayed = false;
 
     void Start()
     {
         vrCamEye = GameObject.Find("Camera (eye)");
-        initalScale = nemuPanel[0].transform.localScale;
         MenuSetActive(false);
     }
 

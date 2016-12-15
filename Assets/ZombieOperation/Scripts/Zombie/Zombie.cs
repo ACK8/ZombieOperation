@@ -42,7 +42,7 @@ public class Zombie : MonoBehaviour
             {
                 //目的地に着くと待機
                 if (Vector3.Distance(transform.position,
-                    new Vector3(seledtedTarget.position.x, transform.position.y, seledtedTarget.position.z)) <= 0.5f && _isMove)
+                    new Vector3(seledtedTarget.position.x, transform.position.y, seledtedTarget.position.z)) <= 0.6f && _isMove)
                 {
                     Wait();
                 }
@@ -72,7 +72,7 @@ public class Zombie : MonoBehaviour
     {
         if (destructionPos != null)
         {
-            if (Vector3.Distance(transform.position, destructionPos.transform.position) <= 1.0f)
+            if (Vector3.Distance(transform.position, destructionPos.transform.position) <= 0.7f)
             {
                 _isMove = false;
                 transform.LookAt(new Vector3(destructionPos.transform.position.x, transform.position.y, destructionPos.transform.position.z));

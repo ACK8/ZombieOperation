@@ -11,7 +11,6 @@ public class Door : MonoBehaviour
     private float moveingDistance = 1;  //開く距離
     private bool isOpen = false;    //現在ドアが開いているか
     private bool isCloseing = false;    //ドアが閉じているときtrue
-    private bool isNotClose = false;    //ドアが閉まらないときにtrue
 
     void Start()
     {

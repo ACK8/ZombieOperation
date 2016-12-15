@@ -11,9 +11,9 @@ public class Zombie : MonoBehaviour
     private float zombieChangeTime = 2.5f;    //注射時、ゾンビに変化する時間
     [SerializeField]
     private float attackAnimRate; //攻撃が有効になるアニメーション時間
-    [SerializeField]
-    private InjectionVolume injectionUI;
 
+
+    //private InjectionVolumeUI injectionUI;
     private NavMeshAgent navMesh;
     private Animator anim;
     private Vector3 targetPos = Vector3.zero;
@@ -34,7 +34,9 @@ public class Zombie : MonoBehaviour
         anim = GetComponent<Animator>();
         navSpeed = navMesh.speed;
         capsuleCol.enabled = false;
-		injectionUI.SetValueRange (0f, zombieChangeTime);
+
+        //injectionUI = GameObject.Find("InjectionVolumeUI").GetComponent<InjectionVolumeUI>();
+        //injectionUI.SetValueRange(0f, zombieChangeTime);
     }
 
     void Update()
@@ -196,26 +198,26 @@ public class Zombie : MonoBehaviour
 
         if (hit.tag == "Injection" && !isZombie)
         {
-            injectionUI.SwitchDisplay(true);
+            //injectionUI.SwitchDisplay(true);
         }
     }
 
     void OnTriggerStay(Collider hit)
-	{
-		//注射
-		if (hit.tag == "Injection" && !isZombie)
-		{
-			injectionVolume += Time.deltaTime;
-			injectionUI.SetVolume (injectionVolume);
-		}
-	}
+    {
+        //注射
+        if (hit.tag == "Injection" && !isZombie)
+        {
+            injectionVolume += Time.deltaTime;
+            //injectionUI.SetVolume(injectionVolume);
+        }
+    }
 
     void OnTriggerExit(Collider hit)
-	{
-		if (hit.tag == "Injection" && !isZombie)
-		{
-			injectionUI.SwitchDisplay(false);
-		}
+    {
+        if (hit.tag == "Injection" && !isZombie)
+        {
+            //injectionUI.SwitchDisplay(false);
+        }
     }
 
     //ボーンについているスクリプトから呼ばれる

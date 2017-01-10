@@ -148,7 +148,7 @@ public class Operating : MonoBehaviour
             if (selectedObject.tag != "Object") return;
 
             operatingType = OperatingType.Attack;
-            selectedZombie.GetComponent<Zombie>().Destruction(selectedObject);
+            selectedZombie.GetComponent<Zombie>().Attack(selectedObject);
             selectedObject = null;
             Debug.Log(operatingType + "実行");
         }

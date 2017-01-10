@@ -11,21 +11,20 @@ public class Zombie : MonoBehaviour
     private float zombieChangeTime = 2.5f;    //注射時、ゾンビに変化する時間
     [SerializeField]
     private float attackAnimRate; //攻撃が有効になるアニメーション時間
-
-
+    
     //private InjectionVolumeUI injectionUI;
     private NavMeshAgent navMesh;
     private Animator anim;
-    private Vector3 targetPos = Vector3.zero;
     private Transform seledtedTarget = null;
     private GameObject destructionTarget = null;
     private GameObject destructionPos = null;
     private OperatingType operatingType;
+    private int _hp = 100;
     private float injectionVolume = 0f;   //ゾンビ薬の注入量
     private float navSpeed = 0f;
     private bool _isMove = false;
+    private bool _isAlive = true;
     private bool isChange = false;
-    private bool isDestruction = false;
     private bool destructionFlag = false;
 
     void Start()
@@ -58,6 +57,11 @@ public class Zombie : MonoBehaviour
                 }
 
                 Animation();
+            }
+
+            if(!_isAlive)
+            {
+                anim.SetTrigger("Collapse");
             }
 
             DestructionUpdate();
@@ -95,7 +99,6 @@ public class Zombie : MonoBehaviour
             if (!destructionFlag)
             {
                 Wait();
-                isDestruction = false;
                 destructionFlag = true;
             }
         }
@@ -141,13 +144,12 @@ public class Zombie : MonoBehaviour
     }
 
     //攻撃
-    public void Destruction(GameObject target)
+    public void Attack(GameObject target)
     {
         operatingType = OperatingType.Attack;
         destructionPos = null;
         destructionPos = target.GetComponent<DestructionObject>().destructionPosition;
         destructionTarget = target;
-        isDestruction = true;
         _isMove = true;
         destructionFlag = false;
     }
@@ -185,6 +187,17 @@ public class Zombie : MonoBehaviour
         {
             isZombie = true;
             anim.SetBool("GetUp", false);
+        }
+    }
+
+    public void DecrementHP(int val)
+    {
+        _hp -= val;
+
+        if (_hp <= 0)
+        {
+            _isAlive = false;
+            _hp = 0;
         }
     }
 
@@ -237,5 +250,10 @@ public class Zombie : MonoBehaviour
     {
         get { return _isMove; }
         set { _isMove = value; }
+    }
+
+    public int hp
+    {
+        get { return _hp; }
     }
 }

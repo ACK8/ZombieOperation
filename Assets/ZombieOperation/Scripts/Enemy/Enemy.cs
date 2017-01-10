@@ -62,8 +62,6 @@ public class Enemy : MonoBehaviour
 
     void Update()
     {
-        //Debug.Log(enemyState);
-
         switch (enemyState)
         {
             case EEnemyState.None:

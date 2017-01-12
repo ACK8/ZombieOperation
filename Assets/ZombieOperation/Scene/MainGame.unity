@@ -1340,9 +1340,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 1109945798}
   - 33: {fileID: 932599928}
-  - 114: {fileID: 932599927}
   - 23: {fileID: 932599926}
-  - 114: {fileID: 932599925}
   - 64: {fileID: 932599924}
   m_Layer: 0
   m_Name: map1
@@ -1364,18 +1362,6 @@ MeshCollider:
   serializedVersion: 2
   m_Convex: 0
   m_Mesh: {fileID: 662869509}
---- !u!114 &932599925
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 114000013978793174, guid: 755be17f03a7d13409855d29a1e90680,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 932599923}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!23 &932599926
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -1406,18 +1392,6 @@ MeshRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
---- !u!114 &932599927
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 114000012260283148, guid: 755be17f03a7d13409855d29a1e90680,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 932599923}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!33 &932599928
 MeshFilter:
   m_ObjectHideFlags: 0

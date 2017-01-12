@@ -68,7 +68,14 @@ namespace VRTK
         /// <returns>The current normalized value of the control.</returns>
         public float GetNormalizedValue()
         {
-            return Mathf.Abs(Mathf.Round((value - cvr.controlMin) / (cvr.controlMax - cvr.controlMin) * 100));
+            return Mathf.Abs(Mathf.Round((value - cvr.controlMin) / (cvr.controlMax - cvr.controlMin)));
+        }
+
+        public bool IsPowerOn()
+        {
+            bool b = (GetNormalizedValue() != 0);
+
+            return b;
         }
 
         /// <summary>

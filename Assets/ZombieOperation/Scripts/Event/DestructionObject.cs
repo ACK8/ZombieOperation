@@ -6,16 +6,16 @@ public class DestructionObject : MonoBehaviour
     [SerializeField]
     private GameObject destructionPos;
     [SerializeField]
-    private int enduranceValue;
+    private int enduranceValue;     //耐久値
     [SerializeField]
-    private int decrease;
+    private int damageValue;        //ダメージ値
 
     public void DecreaseEnduranceValue()
     {
         //耐久地減少
         if (0 < enduranceValue)
         {
-            enduranceValue -= decrease;
+            enduranceValue -= damageValue;
         }
 
         //破壊

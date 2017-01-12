@@ -8,24 +8,24 @@ public class Zombie : MonoBehaviour
     [SerializeField]
     private CapsuleCollider capsuleCol;
     [SerializeField]
-    private float zombieChangeTime = 2.5f;    //注射時、ゾンビに変化する時間
+    protected float zombieChangeTime = 2.5f;    //注射時、ゾンビに変化する時間
     [SerializeField]
-    private float attackAnimRate; //攻撃が有効になるアニメーション時間
-    
+    protected float attackAnimRate; //攻撃が有効になるアニメーション時間
+
     //private InjectionVolumeUI injectionUI;
-    private NavMeshAgent navMesh;
-    private Animator anim;
-    private Transform seledtedTarget = null;
-    private GameObject destructionTarget = null;
-    private GameObject destructionPos = null;
-    private OperatingType operatingType;
-    private int _hp = 100;
-    private float injectionVolume = 0f;   //ゾンビ薬の注入量
-    private float navSpeed = 0f;
-    private bool _isMove = false;
-    private bool _isAlive = true;
-    private bool isChange = false;
-    private bool destructionFlag = false;
+    protected NavMeshAgent navMesh;
+    protected Animator anim;
+    protected Transform seledtedTarget = null;
+    protected GameObject destructionTarget = null;
+    protected GameObject destructionPos = null;
+    protected OperatingType operatingType;
+    protected int _hp = 100;
+    protected float injectionVolume = 0f;   //ゾンビ薬の注入量
+    protected float navSpeed = 0f;
+    protected bool _isMove = false;
+    protected bool _isAlive = true;
+    protected bool isChange = false;
+    protected bool destructionFlag = false;
 
     void Start()
     {
@@ -59,7 +59,7 @@ public class Zombie : MonoBehaviour
                 Animation();
             }
 
-            if(!_isAlive)
+            if (!_isAlive)
             {
                 anim.SetTrigger("Collapse");
             }

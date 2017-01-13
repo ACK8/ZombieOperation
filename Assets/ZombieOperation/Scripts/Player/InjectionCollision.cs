@@ -3,24 +3,20 @@ using System.Collections;
 
 public class InjectionCollision : MonoBehaviour
 {
-    void OnTriggerStay(Collider other)
+    [SerializeField]
+    private Syringe syringe;
+
+    void OnTriggerEnter(Collider hit)
     {
-        Debug.Log("Hit");
-
-        //ゾンビなら注射
-        if (other.transform.tag == "Zombie")
+        if(hit.tag == "StrengthMedicine")
         {
-
+            syringe.AddStrengthMedicine();
+            Destroy(hit.gameObject);
         }
     }
 
-    void Start ()
+    public MedicineType GetMedicineType()
     {
-	
-	}
-	
-	void Update ()
-    {
-	
-	}
+        return syringe.medicineType;
+    }
 }

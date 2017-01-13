@@ -4,6 +4,7 @@ using System.Collections;
 public class Zombie : MonoBehaviour
 {
     public bool isZombie = false;
+    public bool isStrengthZombie = false;
 
     [SerializeField]
     private CapsuleCollider capsuleCol;
@@ -12,7 +13,7 @@ public class Zombie : MonoBehaviour
     [SerializeField]
     protected float attackAnimRate; //攻撃が有効になるアニメーション時間
 
-    //private InjectionVolumeUI injectionUI;
+    private InjectionVolumeUI injectionUI;
     protected NavMeshAgent navMesh;
     protected Animator anim;
     protected Transform seledtedTarget = null;
@@ -21,6 +22,7 @@ public class Zombie : MonoBehaviour
     protected OperatingType operatingType;
     protected int _hp = 100;
     protected float injectionVolume = 0f;   //ゾンビ薬の注入量
+    protected float strengthVolume = 0f;   //強化薬の注入量
     protected float navSpeed = 0f;
     protected bool _isMove = false;
     protected bool _isAlive = true;
@@ -34,12 +36,15 @@ public class Zombie : MonoBehaviour
         navSpeed = navMesh.speed;
         capsuleCol.enabled = false;
 
-        //injectionUI = GameObject.Find("InjectionVolumeUI").GetComponent<InjectionVolumeUI>();
-        //injectionUI.SetValueRange(0f, zombieChangeTime);
+        injectionUI = GameObject.Find("InjectionVolumeUI").GetComponent<InjectionVolumeUI>();
+        injectionUI.SetValueRange(0f, zombieChangeTime);
     }
 
     void Update()
     {
+        //注射処理
+        Injection();
+
         if (isZombie)
         {
             if (seledtedTarget != null)
@@ -68,9 +73,6 @@ public class Zombie : MonoBehaviour
         }
         else
         {
-            //注射処理
-            Injection();
-
             //倒れた状態
             anim.Play("GetUp", -1, 0.0f);
         }
@@ -183,10 +185,23 @@ public class Zombie : MonoBehaviour
     //注射処理
     void Injection()
     {
-        if (zombieChangeTime <= injectionVolume)
+        //ゾンビの時強化
+        if (isZombie)
         {
-            isZombie = true;
-            anim.SetBool("GetUp", false);
+            if (zombieChangeTime <= strengthVolume)
+            {
+                isStrengthZombie = true;
+
+            }
+        }
+        //死体の時ゾンビ化
+        else
+        {
+            if (zombieChangeTime <= injectionVolume)
+            {
+                isZombie = true;
+                anim.SetBool("GetUp", false);
+            }
         }
     }
 
@@ -209,28 +224,37 @@ public class Zombie : MonoBehaviour
             hit.gameObject.GetComponent<DestructionObject>().DecreaseEnduranceValue();
         }
 
-        if (hit.tag == "Injection" && !isZombie)
+        if (hit.tag == "Injection")
         {
-            //injectionUI.SwitchDisplay(true);
+            injectionUI.SwitchDisplay(true);
         }
     }
 
     void OnTriggerStay(Collider hit)
     {
-        //注射
-        if (hit.tag == "Injection" && !isZombie)
+        if (hit.tag == "Injection")
         {
-            injectionVolume += Time.deltaTime;
-            //injectionUI.SetVolume(injectionVolume);
+            MedicineType t = hit.GetComponent<InjectionCollision>().GetMedicineType();
+
+            //注射
+            if (!isZombie && t == MedicineType.Zombie && !isZombie)
+            {
+                injectionVolume += Time.deltaTime;
+                injectionUI.SetVolume(injectionVolume);
+            }
+
+            //ゾンビ強化
+            if (isZombie && t == MedicineType.Strength && isZombie)
+            {
+                strengthVolume += Time.deltaTime;
+                injectionUI.SetVolume(strengthVolume);
+            }
         }
     }
 
     void OnTriggerExit(Collider hit)
     {
-        if (hit.tag == "Injection" && !isZombie)
-        {
-            //injectionUI.SwitchDisplay(false);
-        }
+        injectionUI.SwitchDisplay(false);
     }
 
     //ボーンについているスクリプトから呼ばれる

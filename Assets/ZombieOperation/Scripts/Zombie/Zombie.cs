@@ -5,11 +5,14 @@ public class Zombie : MonoBehaviour
 {
     public bool isZombie = false;
     public bool isStrengthZombie = false;
+    public float zombieChangeTime = 2.5f;    //注射時、ゾンビに変化する時間
+    [HideInInspector]
+    public float injectionVolume = 0f;   //ゾンビ薬の注入量
+    [HideInInspector]
+    public float strengthVolume = 0f;   //強化薬の注入量
 
     [SerializeField]
     private CapsuleCollider capsuleCol;
-    [SerializeField]
-    protected float zombieChangeTime = 2.5f;    //注射時、ゾンビに変化する時間
     [SerializeField]
     protected float attackAnimRate; //攻撃が有効になるアニメーション時間
     [SerializeField]
@@ -18,6 +21,8 @@ public class Zombie : MonoBehaviour
     private int id = 0;
 
     private InjectionVolumeUI injectionUI;
+    private Transform authenticationMachinePos = null;
+    private Vector3 Biometrics1MachinePos;
     protected NavMeshAgent navMesh;
     protected Animator anim;
     protected Transform seledtedTarget = null;
@@ -25,15 +30,12 @@ public class Zombie : MonoBehaviour
     protected GameObject destructionPos = null;
     protected OperatingType operatingType;
     protected int _hp = 100;
-    protected float injectionVolume = 0f;   //ゾンビ薬の注入量
-    protected float strengthVolume = 0f;   //強化薬の注入量
     protected float navSpeed = 0f;
     protected bool _isMove = false;
     protected bool _isAlive = true;
     protected bool isChange = false;
     protected bool destructionFlag = false;
-    [SerializeField]
-    private bool isAuthentication = false;
+    private bool isAuthenticationComp = false;  //認証完了
 
     void Start()
     {
@@ -41,6 +43,7 @@ public class Zombie : MonoBehaviour
         anim = GetComponent<Animator>();
         navSpeed = navMesh.speed;
         capsuleCol.enabled = false;
+
 
         injectionUI = GameObject.Find("InjectionVolumeUI").GetComponent<InjectionVolumeUI>();
         injectionUI.SetValueRange(0f, zombieChangeTime);
@@ -70,6 +73,7 @@ public class Zombie : MonoBehaviour
 
             Animation();
             DestructionUpdate();
+            AuthenticationUpdate();
         }
         else
         {
@@ -102,6 +106,36 @@ public class Zombie : MonoBehaviour
             {
                 Wait();
                 destructionFlag = true;
+            }
+        }
+    }
+
+    //生体認証
+    void AuthenticationUpdate()
+    {
+        if (authenticationMachinePos != null && !isAuthenticationComp)
+        {
+            if (Vector3.Distance(transform.position, authenticationMachinePos.transform.position) <= 0.4f)
+            {
+                _isMove = false;
+                navMesh.Stop();
+                navMesh.speed = 0f;
+                navMesh.updateRotation = true;
+                transform.LookAt(new Vector3(Biometrics1MachinePos.x, transform.position.y, Biometrics1MachinePos.z));
+                anim.SetTrigger("Authentication");
+                isAuthenticationComp = true;
+            }
+            else
+            {
+                Move(authenticationMachinePos);
+            }
+        }
+        else
+        {
+            if (!isAuthenticationComp)
+            {
+                Wait();
+                isAuthenticationComp = true;
             }
         }
     }
@@ -156,6 +190,16 @@ public class Zombie : MonoBehaviour
         destructionFlag = false;
     }
 
+    //生体認証
+    public void Authentication(Transform pos, Vector3 lookatPos)
+    {
+        authenticationMachinePos = pos;
+        Biometrics1MachinePos = lookatPos;
+        _isMove = true;
+        isAuthenticationComp = false;
+        print("authenticationMachinePos  " + authenticationMachinePos.position);
+    }
+
     //アニメーション
     void Animation()
     {
@@ -187,12 +231,12 @@ public class Zombie : MonoBehaviour
         {
             if (authenticationAnimRate <= stateInfo.normalizedTime && stateInfo.normalizedTime < (authenticationAnimRate + 0.2f))
             {
-                isAuthentication = true;
+                capsuleCol.enabled = true;
             }
         }
         else
         {
-            isAuthentication = false;
+            capsuleCol.enabled = false;
         }
 
         //倒れる
@@ -235,22 +279,6 @@ public class Zombie : MonoBehaviour
             _hp = 0;
         }
     }
-
-    //*************************************************
-
-    //生体認証を開始する
-    public void StartBiometrics()
-    {
-        anim.SetTrigger("Authentication");
-    }
-
-    //生体認証が完了するとtrue
-    public bool isAuthenticationComplete
-    {
-        get { return isAuthentication; }
-    }
-
-    //*************************************************
 
     void OnTriggerEnter(Collider hit)
     {

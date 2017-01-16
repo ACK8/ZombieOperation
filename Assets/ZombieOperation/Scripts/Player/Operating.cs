@@ -100,6 +100,19 @@ public class Operating : MonoBehaviour
             {
                 movePointObject.SetActive(false);
             }
+
+            if (hit.collider.tag == "BiometricsMachine")
+            {
+                if (selectedObject != null)
+                {
+                    selectedObject.GetComponent<ChangeMaterialMesh>().Change2();
+                }
+
+                selectedObject = hit.collider.gameObject;
+                selectedObject.GetComponent<ChangeMaterialMesh>().Change1();
+
+                selectedZombie.GetComponent<Zombie>().Authentication(selectedObject.GetComponent<Biometrics>().MovePoint, selectedObject.transform.position);
+            }
         }
     }
 

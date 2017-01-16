@@ -2140,7 +2140,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000013574508816}
-  m_LocalRotation: {x: -0.52644104, y: -0.6101946, z: 0.58972627, w: -0.052397177}
+  m_LocalRotation: {x: -0.526441, y: -0.61019456, z: 0.5897262, w: -0.05239717}
   m_LocalPosition: {x: 0.007209208, y: 0.18578385, z: -0.01886137}
   m_LocalScale: {x: 1.0000001, y: 0.9999998, z: 0.9999999}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2461,6 +2461,9 @@ MonoBehaviour:
   capsuleCol: {fileID: 136000012378335580}
   zombieChangeTime: 2
   attackAnimRate: 0.8
+  authenticationAnimRate: 0.9
+  id: 0
+  isAuthentication: 0
 --- !u!114 &114000011365800966
 MonoBehaviour:
   m_ObjectHideFlags: 1

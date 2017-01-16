@@ -13,6 +13,8 @@ public class Zombie : MonoBehaviour
     [SerializeField]
     protected float attackAnimRate; //攻撃が有効になるアニメーション時間
     [SerializeField]
+    protected float authenticationAnimRate; //認証が有効になるアニメーション時間
+    [SerializeField]
     private int id = 0;
 
     private InjectionVolumeUI injectionUI;
@@ -30,6 +32,7 @@ public class Zombie : MonoBehaviour
     protected bool _isAlive = true;
     protected bool isChange = false;
     protected bool destructionFlag = false;
+    [SerializeField]
     private bool isAuthentication = false;
 
     void Start()
@@ -63,15 +66,9 @@ public class Zombie : MonoBehaviour
                 {
                     navMesh.SetDestination(seledtedTarget.position);
                 }
-
-                Animation();
             }
 
-            if (!_isAlive)
-            {
-                anim.SetTrigger("Collapse");
-            }
-
+            Animation();
             DestructionUpdate();
         }
         else
@@ -172,6 +169,7 @@ public class Zombie : MonoBehaviour
         anim.Update(0);
         AnimatorStateInfo stateInfo = anim.GetCurrentAnimatorStateInfo(0);
 
+        //攻撃アニメーション
         if (stateInfo.IsName("Base Layer.Attack"))
         {
             if (attackAnimRate <= stateInfo.normalizedTime && stateInfo.normalizedTime < (attackAnimRate + 0.1f))
@@ -182,6 +180,25 @@ public class Zombie : MonoBehaviour
             {
                 capsuleCol.enabled = false;
             }
+        }
+
+        //認証アニメーション
+        if (stateInfo.IsName("Base Layer.Authentication"))
+        {
+            if (authenticationAnimRate <= stateInfo.normalizedTime && stateInfo.normalizedTime < (authenticationAnimRate + 0.2f))
+            {
+                isAuthentication = true;
+            }
+        }
+        else
+        {
+            isAuthentication = false;
+        }
+
+        //倒れる
+        if (!_isAlive)
+        {
+            anim.SetTrigger("Collapse");
         }
     }
 
@@ -224,7 +241,7 @@ public class Zombie : MonoBehaviour
     //生体認証を開始する
     public void StartBiometrics()
     {
-        //あにめーしょんさいせい
+        anim.SetTrigger("Authentication");
     }
 
     //生体認証が完了するとtrue

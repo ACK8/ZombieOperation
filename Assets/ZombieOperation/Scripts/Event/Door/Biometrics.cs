@@ -8,6 +8,7 @@ public class Biometrics : MonoBehaviour
     public int MachineID;
     private bool isTouched=false;
     private bool isMove=false;
+    public Transform MovePoint;
 	void Start ()
     {
 	
@@ -15,14 +16,6 @@ public class Biometrics : MonoBehaviour
 
 	void Update ()
     {
-        if(zombie)
-        {
-            if(zombie.isAuthenticationComplete&&!isMove)
-            {
-                isMove = true;
-                doorScript.MoveDoor();
-            }
-        }
 	}
     void OnTriggerEnter(Collider hit)
     {
@@ -31,10 +24,7 @@ public class Biometrics : MonoBehaviour
             if (MachineID == hit.GetComponent<Zombie>().zombieID && !isTouched)
             {
                 isTouched = true;
-                hit.GetComponent<Zombie>().StartBiometrics();
-                zombie = hit.GetComponent<Zombie>();
-                print("Opresadas");
-
+                doorScript.MoveDoor();
             }
         }
     }

@@ -10,11 +10,20 @@
         {
             GetComponent<VRTK_Control>().defaultEvents.OnValueChanged.AddListener(HandleChange);
             HandleChange(GetComponent<VRTK_Control>().GetValue(), GetComponent<VRTK_Control>().GetNormalizedValue());
+
+            GetComponent<VRTK_Control>().defaultEvents.OnValueChanged.AddListener(HandleChange);
+            HandleChange(GetComponent<VRTK_Control>().GetValue(), GetComponent<VRTK_Control>().GetNormalizedValue());
         }
+        
 
         private void HandleChange(float value, float normalizedValue)
         {
             go.text = value.ToString() + "(" + normalizedValue.ToString() + "%)";
+
+
+            bool b = (normalizedValue != 0);
+
+            print(b);
         }
     }
 }

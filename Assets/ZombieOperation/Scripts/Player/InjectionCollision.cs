@@ -6,12 +6,43 @@ public class InjectionCollision : MonoBehaviour
     [SerializeField]
     private Syringe syringe;
 
+    private Zombie zombie;
+
     void OnTriggerEnter(Collider hit)
     {
-        if(hit.tag == "StrengthMedicine")
+        switch (hit.tag)
         {
-            syringe.AddStrengthMedicine();
-            Destroy(hit.gameObject);
+            case "Zombie":
+                zombie = hit.GetComponent<ChildeCollider>().getZombie;
+                switch (syringe.medicineType)
+                {
+                    case MedicineType.Zombie:
+                        if (zombie.zombieChangeTime <= zombie.injectionVolume)
+                        {
+                            syringe.DecreaseMedicine(MedicineType.Zombie);
+                            print("DecreaseMedicine Zombie");
+                        }
+                        break;
+
+                    case MedicineType.Strength:
+                        if (zombie.zombieChangeTime <= zombie.strengthVolume)
+                        {
+                            syringe.DecreaseMedicine(MedicineType.Strength);
+                            print("DecreaseMedicine Strength");
+                        }
+                        break;
+                }
+
+                break;
+            case "ZombieMedicine":
+                syringe.AddMedicine(MedicineType.Zombie);
+                Destroy(hit.gameObject);
+                break;
+
+            case "StrengthMedicine":
+                syringe.AddMedicine(MedicineType.Strength);
+                Destroy(hit.gameObject);
+                break;
         }
     }
 

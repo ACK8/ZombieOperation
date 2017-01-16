@@ -21,6 +21,7 @@ public class Syringe : MonoBehaviour
 
     private MedicineType medicine = MedicineType.Zombie;
     private Material mat;   //色で薬の種類識別
+    private int zombieMedicineNum = 1;
     private int strengthMedicineNum = 0;
 
     void Awake()
@@ -34,18 +35,42 @@ public class Syringe : MonoBehaviour
 
     }
 
-    //強化薬追加
-    public void AddStrengthMedicine()
+    //薬追加
+    public void AddMedicine(MedicineType type)
     {
-        strengthMedicineNum++;
+        switch (type)
+        {
+            case MedicineType.Zombie:
+                zombieMedicineNum++;
+
+                break;
+            case MedicineType.Strength:
+
+                strengthMedicineNum++;
+
+                break;
+        }
     }
 
-    //強化薬減らす
-    public void StrengthMedicine()
+    //薬減らす
+    public void DecreaseMedicine(MedicineType type)
     {
-        if (0 < strengthMedicineNum)
+        switch (type)
         {
-            strengthMedicineNum--;
+            case MedicineType.Zombie:
+                if (0 < zombieMedicineNum)
+                {
+                    zombieMedicineNum--;
+                }
+
+                break;
+            case MedicineType.Strength:
+
+                if (0 < strengthMedicineNum)
+                {
+                    strengthMedicineNum--;
+                }
+                break;
         }
     }
 
@@ -70,7 +95,10 @@ public class Syringe : MonoBehaviour
         switch (medicine)
         {
             case MedicineType.Zombie:
-                injectionJudgment.enabled = true;
+                if (0 < zombieMedicineNum)
+                {
+                    injectionJudgment.enabled = true;
+                }
 
                 break;
             case MedicineType.Strength:
@@ -81,7 +109,6 @@ public class Syringe : MonoBehaviour
 
                 break;
         }
-        injectionJudgment.enabled = true;
     }
 
     //注射をしていない状態にする
@@ -93,6 +120,11 @@ public class Syringe : MonoBehaviour
     public MedicineType medicineType
     {
         get { return medicine; }
+    }
+
+    public int zombieMedicineNumber
+    {
+        get { return zombieMedicineNum; }
     }
 
     public int strengthMedicineNumber

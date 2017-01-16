@@ -17,7 +17,13 @@ TagManager:
   - Object
   - DestructionObject
   - Syringe
+  - ZombieMedicine
   - StrengthMedicine
+  - Medicine_A
+  - Medicine_B
+  - Medicine_C
+  - ZombieBody
+  - BiometricsMachine
   layers:
   - Default
   - TransparentFX

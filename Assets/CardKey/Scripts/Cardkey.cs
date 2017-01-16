@@ -4,11 +4,11 @@ using System.Collections;
 public class Cardkey : MonoBehaviour
 {
     [SerializeField]
-    private Door doorScript;
+    private Door doorScript;    //ドアについているスクリプト
     [SerializeField]
-    private int cardKeyID;
+    private int cardKeyID;  //カードキーのID
 
-    private float a;
+    private float time;
     private bool isTouched = false;
 
     void Start()
@@ -18,14 +18,16 @@ public class Cardkey : MonoBehaviour
 
     void Update()
     {
+        //カードをタッチしたらカウント開始
         if (isTouched)
         {
-            a += Time.deltaTime;
+            time += Time.deltaTime;
         }
 
-        if (1.5f < a)
+        //時間が来たら再びタッチできるように
+        if (1.5f < time)
         {
-            a = 0f;
+            time = 0f;
             isTouched = false;
         }
     }
@@ -38,6 +40,7 @@ public class Cardkey : MonoBehaviour
             if (cardKeyID == hit.GetComponent<Key>().cardID && !isTouched)
             {
                 isTouched = true;
+                //ドアを動かす
                 doorScript.MoveDoor();
             }
         }

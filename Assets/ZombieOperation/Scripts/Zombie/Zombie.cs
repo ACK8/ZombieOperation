@@ -12,6 +12,8 @@ public class Zombie : MonoBehaviour
     protected float zombieChangeTime = 2.5f;    //注射時、ゾンビに変化する時間
     [SerializeField]
     protected float attackAnimRate; //攻撃が有効になるアニメーション時間
+    [SerializeField]
+    private int id = 0;
 
     private InjectionVolumeUI injectionUI;
     protected NavMeshAgent navMesh;
@@ -28,6 +30,7 @@ public class Zombie : MonoBehaviour
     protected bool _isAlive = true;
     protected bool isChange = false;
     protected bool destructionFlag = false;
+    private bool isAuthentication = false;
 
     void Start()
     {
@@ -216,6 +219,22 @@ public class Zombie : MonoBehaviour
         }
     }
 
+    //*************************************************
+
+    //生体認証を開始する
+    public void StartBiometrics()
+    {
+        //あにめーしょんさいせい
+    }
+
+    //生体認証が完了するとtrue
+    public bool isAuthenticationComplete
+    {
+        get { return isAuthentication; }
+    }
+
+    //*************************************************
+
     void OnTriggerEnter(Collider hit)
     {
         //障害物破壊
@@ -279,5 +298,10 @@ public class Zombie : MonoBehaviour
     public int hp
     {
         get { return _hp; }
+    }
+
+    public int zombieID
+    {
+        get { return id; }
     }
 }

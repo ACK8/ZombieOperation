@@ -133,4 +133,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   doorScript: {fileID: 0}
   MachineID: 0
-  MovePoint: {fileID: 0}
+  MovePoint: {fileID: 4000011395202146}

@@ -364,7 +364,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4000012133524492, guid: 3b3f6c046d7d0474abf68abe3b674253, type: 2}
       propertyPath: m_RootOrder
-      value: 16
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 4000013299270110, guid: 3b3f6c046d7d0474abf68abe3b674253, type: 2}
       propertyPath: m_LocalRotation.x
@@ -384,12 +384,12 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1000012684742238, guid: 3b3f6c046d7d0474abf68abe3b674253, type: 2}
       propertyPath: m_Name
-      value: Researcher (1)
+      value: Researcher
       objectReference: {fileID: 0}
     - target: {fileID: 114000011269471474, guid: 3b3f6c046d7d0474abf68abe3b674253,
         type: 2}
       propertyPath: isZombie
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4000012133524492, guid: 3b3f6c046d7d0474abf68abe3b674253, type: 2}
       propertyPath: m_LocalEulerAnglesHint.y
@@ -1047,85 +1047,6 @@ Transform:
   - {fileID: 701769733}
   m_Father: {fileID: 0}
   m_RootOrder: 9
---- !u!1 &1156071766
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 1156071770}
-  - 33: {fileID: 1156071769}
-  - 65: {fileID: 1156071768}
-  - 23: {fileID: 1156071767}
-  m_Layer: 0
-  m_Name: Cube
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!23 &1156071767
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1156071766}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
-  m_SubsetIndices: 
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_PreserveUVs: 1
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_SelectedWireframeHidden: 0
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingOrder: 0
---- !u!65 &1156071768
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1156071766}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!33 &1156071769
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1156071766}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!4 &1156071770
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1156071766}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.8540039, y: -0.06738281, z: 19.759766}
-  m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 15
 --- !u!1 &1160064248
 GameObject:
   m_ObjectHideFlags: 0
@@ -1272,7 +1193,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1000011320401634, guid: 18ec919cc51883549af4f8fdcac5a0bd, type: 2}
       propertyPath: m_Name
-      value: Door (1)
+      value: Biometrics Door
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 18ec919cc51883549af4f8fdcac5a0bd, type: 2}
@@ -1335,7 +1256,7 @@ Prefab:
     - target: {fileID: 114000011269471474, guid: 3b3f6c046d7d0474abf68abe3b674253,
         type: 2}
       propertyPath: isZombie
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 136000013392851910, guid: 3b3f6c046d7d0474abf68abe3b674253,
         type: 2}
@@ -1396,7 +1317,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4000012501525246, guid: a6cd88f0f62aea943b0f799a070bbd9c, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -2.9744043
+      value: -3.302
       objectReference: {fileID: 0}
     - target: {fileID: 4000012501525246, guid: a6cd88f0f62aea943b0f799a070bbd9c, type: 2}
       propertyPath: m_LocalPosition.y
@@ -1474,7 +1395,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4000012133524492, guid: 3b3f6c046d7d0474abf68abe3b674253, type: 2}
       propertyPath: m_RootOrder
-      value: 17
+      value: 16
       objectReference: {fileID: 0}
     - target: {fileID: 4000013299270110, guid: 3b3f6c046d7d0474abf68abe3b674253, type: 2}
       propertyPath: m_LocalRotation.x
@@ -1494,12 +1415,12 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1000012684742238, guid: 3b3f6c046d7d0474abf68abe3b674253, type: 2}
       propertyPath: m_Name
-      value: Researcher (2)
+      value: Researcher
       objectReference: {fileID: 0}
     - target: {fileID: 114000011269471474, guid: 3b3f6c046d7d0474abf68abe3b674253,
         type: 2}
       propertyPath: isZombie
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3b3f6c046d7d0474abf68abe3b674253, type: 2}
@@ -1668,7 +1589,15 @@ Prefab:
       objectReference: {fileID: 396084261}
     - target: {fileID: 1000011257247276, guid: 52c3f3f26ea5f684eabc6f2ffd28779c, type: 2}
       propertyPath: m_Name
-      value: BiometricsMachine (1)
+      value: BiometricsMachine
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000011395202146, guid: 52c3f3f26ea5f684eabc6f2ffd28779c, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: -0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000011395202146, guid: 52c3f3f26ea5f684eabc6f2ffd28779c, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -1.1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 52c3f3f26ea5f684eabc6f2ffd28779c, type: 2}

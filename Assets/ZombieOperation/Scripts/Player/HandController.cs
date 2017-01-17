@@ -95,12 +95,4 @@ public class HandController : MonoBehaviour
             }
         }
     }
-
-    /*
-    public void SyringeEnabled(bool f)
-    {
-        syringeObject.SetActive(f);
-        syringeComponent.enabled = f;
-    }
-    */
 }

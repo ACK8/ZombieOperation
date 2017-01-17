@@ -20,7 +20,7 @@ public class Zombie : MonoBehaviour
     [SerializeField]
     private int id = 0;
 
-    private InjectionVolumeUI injectionUI;
+    //private InjectionVolumeUI injectionUI;
     private Transform authenticationMachinePos = null;
     private Vector3 Biometrics1MachinePos;
     protected NavMeshAgent navMesh;
@@ -45,8 +45,8 @@ public class Zombie : MonoBehaviour
         capsuleCol.enabled = false;
 
 
-        injectionUI = GameObject.Find("InjectionVolumeUI").GetComponent<InjectionVolumeUI>();
-        injectionUI.SetValueRange(0f, zombieChangeTime);
+        //injectionUI = GameObject.Find("InjectionVolumeUI").GetComponent<InjectionVolumeUI>();
+        //injectionUI.SetValueRange(0f, zombieChangeTime);
     }
 
     void Update()
@@ -290,7 +290,7 @@ public class Zombie : MonoBehaviour
 
         if (hit.tag == "Injection")
         {
-            injectionUI.SwitchDisplay(true);
+           // injectionUI.SwitchDisplay(true);
         }
     }
 
@@ -304,21 +304,21 @@ public class Zombie : MonoBehaviour
             if (!isZombie && t == MedicineType.Zombie && !isZombie)
             {
                 injectionVolume += Time.deltaTime;
-                injectionUI.SetVolume(injectionVolume);
+               // injectionUI.SetVolume(injectionVolume);
             }
 
             //ゾンビ強化
             if (isZombie && t == MedicineType.Strength && isZombie)
             {
                 strengthVolume += Time.deltaTime;
-                injectionUI.SetVolume(strengthVolume);
+               // injectionUI.SetVolume(strengthVolume);
             }
         }
     }
 
     void OnTriggerExit(Collider hit)
     {
-        injectionUI.SwitchDisplay(false);
+       // injectionUI.SwitchDisplay(false);
     }
 
     //ボーンについているスクリプトから呼ばれる

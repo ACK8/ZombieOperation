@@ -13,6 +13,8 @@ public class TakeSyringe : MonoBehaviour
 
     void Start()
     {
+        zombieOperating.SetActive(false);
+        ControlModel.SetActive(true);
         trackedComponent = gameObject.transform.parent.GetComponent<SteamVR_TrackedObject>();
     }
 

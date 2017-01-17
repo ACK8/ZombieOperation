@@ -12,13 +12,13 @@ public enum OperatingType
 
 public class Operating : MonoBehaviour
 {
-    public GameObject movePointObject;
     public GameObject rayPointObject;
     public Circle circlePoint; //円を表示するシェーダー
     public GameObject selectionTarget; //レイの先の当たり判定用
     public Transform playerTransform;
 
     private OperatingType operatingType;
+    private GameObject movePointObject;
     private GameObject selectedZombie = null;
     private GameObject selectedObject = null;
     private LineRenderer line;
@@ -28,6 +28,7 @@ public class Operating : MonoBehaviour
     void Start()
     {
         line = GetComponent<LineRenderer>();
+        movePointObject = GameObject.Find("!MoveTarget");
     }
 
     void Update()
@@ -59,7 +60,7 @@ public class Operating : MonoBehaviour
                 GameObject zombie = hit.collider.GetComponent<ChildeCollider>().GetGameObject();
                 if (selectedZombie != zombie)
                 {
-                    if(selectedZombie != null)
+                    if (selectedZombie != null)
                     {
                         selectedZombie.GetComponent<ChangeMaterial>().Change2();
                     }
@@ -74,7 +75,7 @@ public class Operating : MonoBehaviour
             //選択対象のGameObject取得
             if (hit.collider.tag == "Object")
             {
-                if(selectedObject != null)
+                if (selectedObject != null)
                 {
                     selectedObject.GetComponent<ChangeMaterialMesh>().Change2();
                 }

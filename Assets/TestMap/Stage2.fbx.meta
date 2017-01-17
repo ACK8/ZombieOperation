@@ -1,28 +1,22 @@
 fileFormatVersion: 2
-guid: 647726619afcd7c44bc9fc73f3ada158
-timeCreated: 1484619097
+guid: 1bda819894dd4ce4fbc0b78475499c56
+timeCreated: 1484630676
 licenseType: Free
 ModelImporter:
   serializedVersion: 19
   fileIDToRecycleName:
     100000: //RootNode
-    100002: Armature
-    100004: Bone
-    100006: Bone_end
-    100008: Cube
+    100002: Stage2
+    100004: Stairs
     400000: //RootNode
-    400002: Armature
-    400004: Bone
-    400006: Bone_end
-    400008: Cube
-    2300000: //RootNode
-    3300000: //RootNode
-    4300000: Cube
-    7400000: Cube|CubeAction
-    7400002: Armature|ArmatureAction
-    9500000: //RootNode
-    11100000: //RootNode
-    13700000: Cube
+    400002: Stage2
+    400004: Stairs
+    2300000: Stage2
+    2300002: Stairs
+    3300000: Stage2
+    3300002: Stairs
+    4300000: Stairs
+    4300002: Stage2
   materials:
     importMaterials: 1
     materialName: 0
@@ -37,7 +31,7 @@ ModelImporter:
     animationImportWarnings: 
     animationRetargetingWarnings: 
     animationDoRetargetingWarnings: 0
-    animationCompression: 3
+    animationCompression: 1
     animationRotationError: 0.5
     animationPositionError: 0.5
     animationScaleError: 0.5
@@ -81,7 +75,7 @@ ModelImporter:
     rootMotionBoneName: 
     hasTranslationDoF: 0
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 2
+  animationType: 0
   humanoidOversampling: 1
   additionalBone: 0
   userData: 

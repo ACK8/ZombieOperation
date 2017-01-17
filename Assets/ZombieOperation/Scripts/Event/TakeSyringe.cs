@@ -4,9 +4,9 @@ using UnityEngine.Events;
 public class TakeSyringe : MonoBehaviour
 {
     [SerializeField]
-    private GameObject syringe;
+    private GameObject zombieOperating;
     [SerializeField]
-    private UnityEvent OnTouch;
+    private GameObject ControlModel;
 
     private SteamVR_TrackedObject trackedComponent;
     private SteamVR_Controller.Device device;
@@ -21,19 +21,19 @@ public class TakeSyringe : MonoBehaviour
         device = SteamVR_Controller.Input((int)trackedComponent.index);
     }
 
-    void OnTriggerStay(Collider hit)
+    private void OnTriggerEnter(Collider hit)
     {
-        /*
         if (hit.tag == "Syringe")
         {
             if (device.GetPressDown(SteamVR_Controller.ButtonMask.Trigger))
             {
-                OnTouch.Invoke();
+                zombieOperating.SetActive(true);
+                ControlModel.SetActive(false);
+
                 Destroy(hit.gameObject);
                 Destroy(GetComponent<CapsuleCollider>());
                 Destroy(this);
             }
         }
-        */
     }
 }

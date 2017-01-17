@@ -355,8 +355,6 @@ GameObject:
   m_Component:
   - 4: {fileID: 4000014259144608}
   - 120: {fileID: 120000010915160714}
-  - 114: {fileID: 114000013840424292}
-  - 114: {fileID: 114000011271756810}
   - 136: {fileID: 136000013836405240}
   m_Layer: 0
   m_Name: VRController
@@ -429,6 +427,8 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 4000011830936716}
+  - 114: {fileID: 114000012107728706}
+  - 136: {fileID: 136000010313806772}
   m_Layer: 0
   m_Name: VRController
   m_TagString: Untagged
@@ -673,7 +673,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000011786000080}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.343, y: -0.5, z: 19.107}
+  m_LocalPosition: {x: 0, y: 1.211, z: -1.41}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
@@ -1375,34 +1375,6 @@ MonoBehaviour:
   executeOnUnclick: 1
   baseHapticStrength: 600
   menuButtons: []
---- !u!114 &114000011271756810
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1000013460627942}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a1d6e0e5ce36691488e150a24015bc6b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  syringe: {fileID: 0}
-  OnTouch:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 114000013289263528}
-        m_MethodName: SyringeEnabled
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
-      PublicKeyToken=null
 --- !u!114 &114000011360785400
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1715,6 +1687,24 @@ MonoBehaviour:
   index: -1
   origin: {fileID: 0}
   isValid: 0
+--- !u!114 &114000012107728706
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000013804703048}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a1d6e0e5ce36691488e150a24015bc6b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  zombieOperating: {fileID: 1000012239959272}
+  ControlModel: {fileID: 1000012048094140}
+  OnTouch:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
 --- !u!114 &114000012382269816
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1986,17 +1976,6 @@ MonoBehaviour:
   circlePoint: {fileID: 0}
   selectionTarget: {fileID: 0}
   playerTransform: {fileID: 4000012645221200}
---- !u!114 &114000013840424292
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1000013460627942}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 323da421cb8f90f43a6129b2f98b6bcb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &114000013889348824
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2238,6 +2217,19 @@ Behaviour:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000011645493788}
   m_Enabled: 1
+--- !u!136 &136000010313806772
+CapsuleCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000013804703048}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 0.04
+  m_Height: 0.24
+  m_Direction: 1
+  m_Center: {x: 0, y: -0.14, z: 0.01}
 --- !u!136 &136000011788707172
 CapsuleCollider:
   m_ObjectHideFlags: 1

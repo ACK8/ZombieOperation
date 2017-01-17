@@ -3,18 +3,24 @@ using System.Collections;
 
 public class Bulkhead : MonoBehaviour
 {
-    public Transform pos;
+    public Transform MovePoint;
+	public Animator anime;
+
 	void Start ()
     {
-	
+		
 	}
 	
 	void Update ()
     {
-        print(transform.position);
+		
     }
-    public void OpenBulkhead(float speed)
-    {
-        transform.position=new Vector3(0, transform.position.y+speed, 0);
-    }
+
+	void OnTriggerEnter(Collider hit)
+	{
+		if(hit.tag=="ZombieBody")
+		{
+			anime.SetBool ("Wallflag", true);
+		}
+	}
 }

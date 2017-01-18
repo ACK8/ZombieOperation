@@ -3,7 +3,7 @@ using System.Collections;
 
 public class Biometrics : MonoBehaviour
 {
-    public Transform MovePoint;
+    public GameObject MovePoint;
     public Door doorScript;
     public int MachineID;
 

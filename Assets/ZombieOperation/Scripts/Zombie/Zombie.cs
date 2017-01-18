@@ -10,7 +10,7 @@ public class Zombie : MonoBehaviour
     public float injectionVolume = 0f;   //ゾンビ薬の注入量
     [HideInInspector]
     public float strengthVolume = 0f;   //強化薬の注入量
-
+    
     [SerializeField]
     private CapsuleCollider capsuleCol;
     [SerializeField]
@@ -22,12 +22,12 @@ public class Zombie : MonoBehaviour
 
     private InjectionVolumeUI injectionUI;
     private Transform authenticationMachinePos = null;
-    private Vector3 Biometrics1MachinePos;
+    private Vector3 BiometricsMachinePos;
     protected NavMeshAgent navMesh;
     protected Animator anim;
     protected Transform seledtedTarget = null;
     protected GameObject destructionTarget = null;
-    protected GameObject destructionPos = null;
+    protected GameObject moveTargetPos = null;
     protected OperatingType operatingType;
     protected int _hp = 100;
     protected float navSpeed = 0f;
@@ -85,19 +85,19 @@ public class Zombie : MonoBehaviour
     //障害物破壊
     void DestructionUpdate()
     {
-        if (destructionPos != null)
+        if (moveTargetPos != null)
         {
-            if (Vector3.Distance(transform.position, destructionPos.transform.position) <= 0.7f)
+            if (Vector3.Distance(transform.position, moveTargetPos.transform.position) <= 0.7f)
             {
                 _isMove = false;
-                transform.LookAt(new Vector3(destructionPos.transform.position.x, transform.position.y, destructionPos.transform.position.z));
+                transform.LookAt(new Vector3(moveTargetPos.transform.position.x, transform.position.y, moveTargetPos.transform.position.z));
                 navMesh.Stop();
                 navMesh.speed = 0f;
                 anim.SetTrigger("Attack");
             }
             else
             {
-                Move(destructionPos.transform);
+                Move(moveTargetPos.transform);
             }
         }
         else
@@ -121,7 +121,7 @@ public class Zombie : MonoBehaviour
                 navMesh.Stop();
                 navMesh.speed = 0f;
                 navMesh.updateRotation = true;
-                transform.LookAt(new Vector3(Biometrics1MachinePos.x, transform.position.y, Biometrics1MachinePos.z));
+                transform.LookAt(new Vector3(moveTargetPos.transform.position.x, transform.position.y, moveTargetPos.transform.position.z));
                 anim.SetTrigger("Authentication");
                 isAuthenticationComp = true;
             }
@@ -183,18 +183,19 @@ public class Zombie : MonoBehaviour
     public void Attack(GameObject target)
     {
         operatingType = OperatingType.Attack;
-        destructionPos = null;
-        destructionPos = target.GetComponent<DestructionObject>().destructionPosition;
+        moveTargetPos = null;
+        moveTargetPos = target.GetComponent<DestructionObject>().destructionPosition;
         destructionTarget = target;
         _isMove = true;
         destructionFlag = false;
     }
 
     //生体認証
-    public void Authentication(Transform pos, Vector3 lookatPos)
+    public void Authentication(GameObject pos, Vector3 lookatPos)
     {
-        authenticationMachinePos = pos;
-        Biometrics1MachinePos = lookatPos;
+        moveTargetPos = null;
+        moveTargetPos = pos;
+        BiometricsMachinePos = lookatPos;
         _isMove = true;
         isAuthenticationComp = false;
     }

@@ -14,6 +14,7 @@ public class HandController : MonoBehaviour
     public HandType handType;
     public GameObject vrControllerObject;
     public GameObject zombieOperatingObject;
+    public GameObject controllerModel;
 
     private SteamVR_TrackedObject trackedComponent;
     private ZombieOperating zombieOperatingComponent;
@@ -32,12 +33,14 @@ public class HandController : MonoBehaviour
         {
             case HandType.VRController:
                 vrControllerObject.SetActive(true);
+                controllerModel.SetActive(true);
 
                 break;
 
             case HandType.ZombieOperating:
                 zombieOperatingObject.SetActive(true);
                 zombieOperatingComponent.enabled = true;
+                controllerModel.SetActive(false);
 
                 break;
         }
@@ -52,9 +55,24 @@ public class HandController : MonoBehaviour
         switch (handType)
         {
             case HandType.VRController:
+
+                if(!vrControllerObject.activeSelf)
+                {
+                    controllerModel.SetActive(true);
+                    vrControllerObject.SetActive(true);
+                    zombieOperatingObject.SetActive(false);
+                }
                 break;
 
             case HandType.ZombieOperating:
+
+                if (!zombieOperatingObject.activeSelf)
+                {
+                    vrControllerObject.SetActive(false);
+                    controllerModel.SetActive(false);
+                    zombieOperatingObject.SetActive(true);
+                }
+
                 switch (zombieOperatingComponent.operatingType)
                 {
                     case ZombieOperatingType.Operating:

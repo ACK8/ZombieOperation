@@ -52,6 +52,8 @@ public class Operating : MonoBehaviour
 
     public void Decision()
     {
+        if (!hit.collider) return;
+
         //ゾンビのGameObjectを取得
         if (hit.collider.tag == "Zombie")
         {
@@ -71,7 +73,7 @@ public class Operating : MonoBehaviour
         }
 
         if (selectedZombie != null)
-        {
+        { 
             //選択対象のGameObject取得
             if (hit.collider.tag == "Object")
             {

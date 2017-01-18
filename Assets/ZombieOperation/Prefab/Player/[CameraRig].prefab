@@ -130,7 +130,6 @@ GameObject:
   m_Component:
   - 4: {fileID: 4000010839979962}
   - 114: {fileID: 114000010930594690}
-  - 136: {fileID: 136000013759105538}
   m_Layer: 0
   m_Name: Syringe
   m_TagString: Syringe
@@ -246,7 +245,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &1000012239959272
 GameObject:
   m_ObjectHideFlags: 1
@@ -355,10 +354,9 @@ GameObject:
   m_Component:
   - 4: {fileID: 4000014259144608}
   - 120: {fileID: 120000010915160714}
-  - 136: {fileID: 136000013836405240}
   m_Layer: 0
   m_Name: VRController
-  m_TagString: Untagged
+  m_TagString: VRController
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -427,11 +425,11 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 4000011830936716}
-  - 114: {fileID: 114000012107728706}
-  - 136: {fileID: 136000010313806772}
+  - 136: {fileID: 136000013557610008}
+  - 114: {fileID: 114000014160886422}
   m_Layer: 0
   m_Name: VRController
-  m_TagString: Untagged
+  m_TagString: VRController
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -673,7 +671,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000011786000080}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.211, z: -1.41}
+  m_LocalPosition: {x: -2.343, y: -0.5, z: 21.96}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
@@ -1185,6 +1183,8 @@ MonoBehaviour:
   operatingType: 0
   operatingObject: {fileID: 1000013999207912}
   syringeObject: {fileID: 1000011549067000}
+  operatingComponent: {fileID: 114000013820688812}
+  syringeComponent: {fileID: 114000010930594690}
 --- !u!114 &114000010930594690
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1687,24 +1687,6 @@ MonoBehaviour:
   index: -1
   origin: {fileID: 0}
   isValid: 0
---- !u!114 &114000012107728706
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1000013804703048}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a1d6e0e5ce36691488e150a24015bc6b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  zombieOperating: {fileID: 1000012239959272}
-  ControlModel: {fileID: 1000012048094140}
-  OnTouch:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
-      PublicKeyToken=null
 --- !u!114 &114000012382269816
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1890,6 +1872,7 @@ MonoBehaviour:
   handType: 1
   vrControllerObject: {fileID: 1000013804703048}
   zombieOperatingObject: {fileID: 1000012239959272}
+  controllerModel: {fileID: 1000012048094140}
 --- !u!114 &114000013379372496
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1971,7 +1954,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cef0d71f2bb20504db895ed88c78fc08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movePointObject: {fileID: 0}
   rayPointObject: {fileID: 1000012853104682}
   circlePoint: {fileID: 0}
   selectionTarget: {fileID: 0}
@@ -2109,6 +2091,18 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
+--- !u!114 &114000014160886422
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000013804703048}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a1d6e0e5ce36691488e150a24015bc6b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  handCtrl: {fileID: 114000013289263528}
 --- !u!114 &114000014288763396
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2217,19 +2211,6 @@ Behaviour:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000011645493788}
   m_Enabled: 1
---- !u!136 &136000010313806772
-CapsuleCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1000013804703048}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  m_Radius: 0.04
-  m_Height: 0.24
-  m_Direction: 1
-  m_Center: {x: 0, y: -0.14, z: 0.01}
 --- !u!136 &136000011788707172
 CapsuleCollider:
   m_ObjectHideFlags: 1
@@ -2256,32 +2237,19 @@ CapsuleCollider:
   m_Height: 0.2
   m_Direction: 2
   m_Center: {x: 0, y: 0, z: 0}
---- !u!136 &136000013759105538
+--- !u!136 &136000013557610008
 CapsuleCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1000011549067000}
+  m_GameObject: {fileID: 1000013804703048}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
-  m_Radius: 0.001
-  m_Height: 0.2
+  m_Radius: 0.02
+  m_Height: 0.175
   m_Direction: 2
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!136 &136000013836405240
-CapsuleCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1000013460627942}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  m_Radius: 0.03
-  m_Height: 0.2
-  m_Direction: 2
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Center: {x: 0, y: -0.02, z: -0.06}
 --- !u!222 &222000011016181590
 CanvasRenderer:
   m_ObjectHideFlags: 1

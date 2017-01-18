@@ -197,7 +197,6 @@ public class Zombie : MonoBehaviour
         Biometrics1MachinePos = lookatPos;
         _isMove = true;
         isAuthenticationComp = false;
-        print("authenticationMachinePos  " + authenticationMachinePos.position);
     }
 
     //アニメーション
@@ -216,7 +215,7 @@ public class Zombie : MonoBehaviour
         //攻撃アニメーション
         if (stateInfo.IsName("Base Layer.Attack"))
         {
-            if (attackAnimRate <= stateInfo.normalizedTime && stateInfo.normalizedTime < (attackAnimRate + 0.1f))
+            if (attackAnimRate <= stateInfo.normalizedTime && stateInfo.normalizedTime < (attackAnimRate + 0.15f))
             {
                 capsuleCol.enabled = true;
             }
@@ -301,14 +300,14 @@ public class Zombie : MonoBehaviour
             MedicineType t = hit.GetComponent<InjectionCollision>().GetMedicineType();
 
             //注射
-            if (!isZombie && t == MedicineType.Zombie && !isZombie)
+            if (!isZombie && t == MedicineType.Zombie)
             {
                 injectionVolume += Time.deltaTime;
                 injectionUI.SetVolume(injectionVolume);
             }
 
             //ゾンビ強化
-            if (isZombie && t == MedicineType.Strength && isZombie)
+            if (isZombie && t == MedicineType.Strength)
             {
                 strengthVolume += Time.deltaTime;
                 injectionUI.SetVolume(strengthVolume);

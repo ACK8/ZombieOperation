@@ -34,6 +34,12 @@ public class InjectionCollision : MonoBehaviour
                 }
 
                 break;
+
+            case "EventZombie":
+                hit.GetComponent<EventZombie>().isZombie = true;
+
+                break;
+                
             case "ZombieMedicine":
                 syringe.AddMedicine(MedicineType.Zombie);
                 Destroy(hit.gameObject);

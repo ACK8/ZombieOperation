@@ -26,6 +26,7 @@ public class TakeSyringe : MonoBehaviour
             if (device.GetPressDown(SteamVR_Controller.ButtonMask.Trigger))
             {
                 handCtrl.handType = HandType.ZombieOperating;
+                Destroy(this);
                 Destroy(hit.gameObject);
             }
         }

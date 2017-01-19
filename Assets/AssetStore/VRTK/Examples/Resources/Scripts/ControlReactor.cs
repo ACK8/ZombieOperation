@@ -22,8 +22,6 @@
 
 
             bool b = (normalizedValue != 0);
-
-            print(b);
         }
     }
 }

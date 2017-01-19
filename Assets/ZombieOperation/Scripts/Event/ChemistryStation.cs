@@ -21,12 +21,13 @@ public class ChemistryStation : MonoBehaviour
 
     void Start()
     {
-
+        button.GetComponent<VRTK.VRTK_Button>().events.OnPush.AddListener(Create);
     }
     
     //ボタンで呼ぶ
     public void Create()
     {
+        print("Create!!!!!!!!!!!!!!!!!!!!!!");
         if (isPut_A && isPut_B)
         {
             CreateMedicine(zombieMedicine);

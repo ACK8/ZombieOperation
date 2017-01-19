@@ -34,7 +34,7 @@ public class ChemistryStation : MonoBehaviour
     {
         doorScr.MoveDoor();
     }
-
+    
     //ボタンで呼ぶ
     public void Create()
     {
@@ -42,11 +42,15 @@ public class ChemistryStation : MonoBehaviour
         {
             if (isPut_A && isPut_B)
             {
+                isPut_A = false;
+                isPut_B = false;
                 CreateMedicine(zombieMedicine);
             }
 
             if (isPut_A && isPut_C)
             {
+                isPut_A = false;
+                isPut_C = false;
                 CreateMedicine(strengthMedicine);
             }
         }
@@ -61,7 +65,7 @@ public class ChemistryStation : MonoBehaviour
                 Destroy(g);
             }
         }
-
+        
         Instantiate(strengthMedicine, outletPos.position, outletPos.rotation);
     }
 

@@ -16,7 +16,6 @@ public class PushButton : MonoBehaviour
 
     void Update()
     {
-        print(isTouched);
         if (isTouched)
         {
             count += Time.deltaTime;

@@ -11,13 +11,21 @@ public class ControllerCollider : MonoBehaviour
     void Start()
     {
         trackedComponent = gameObject.transform.parent.GetComponent<SteamVR_TrackedObject>();
+        col = GetComponent<CapsuleCollider>();
+        col.enabled = false;
     }
 
     void Update()
     {
         device = SteamVR_Controller.Input((int)trackedComponent.index);
 
-
-        col.enabled = device.GetPressDown(SteamVR_Controller.ButtonMask.Grip);
+        if (col == null)
+        {
+            trackedComponent = gameObject.transform.parent.GetComponent<SteamVR_TrackedObject>();
+        }
+        else
+        {
+            col.enabled = device.GetPressDown(SteamVR_Controller.ButtonMask.Grip);
+        }
     }
 }

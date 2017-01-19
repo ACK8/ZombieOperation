@@ -358,7 +358,7 @@ GameObject:
   - 114: {fileID: 114000012424724204}
   m_Layer: 0
   m_Name: VRController
-  m_TagString: VRController
+  m_TagString: VRController_R
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -431,7 +431,7 @@ GameObject:
   - 114: {fileID: 114000014160886422}
   m_Layer: 0
   m_Name: VRController
-  m_TagString: VRController
+  m_TagString: VRController_L
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

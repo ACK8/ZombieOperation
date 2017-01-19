@@ -6,10 +6,11 @@ public class Door : MonoBehaviour
     private float movingSpeed = 0f;
     [SerializeField]
     private bool isRotate90D = false;   //ドアが90度回転しているか
+    [SerializeField]
+    private float moveingDistance = 1;  //開く距離
 
     private Vector3 initalPos;
-    private float moveingDistance = 1;  //開く距離
-    private bool isOpen = false;    //現在ドアが開いているか
+    private bool _isOpen = false;    //現在ドアが開いているか
     private bool isCloseing = false;    //ドアが閉じているときtrue
 
     void Start()
@@ -20,12 +21,12 @@ public class Door : MonoBehaviour
     //CardKeyから呼ばれる
     public void MoveDoor()
     {
-        isOpen = !isOpen;
+        _isOpen = !_isOpen;
     }
 
     void Update()
     {
-        if (isOpen)
+        if (_isOpen)
         {
             OpenDoor();
         }
@@ -90,7 +91,7 @@ public class Door : MonoBehaviour
                 isCloseing = true;
             }
         }
-        
+
         transform.position = targetPos;
     }
 
@@ -100,8 +101,13 @@ public class Door : MonoBehaviour
         {
             if (isCloseing)
             {
-                isOpen = true;
+                _isOpen = true;
             }
         }
+    }
+
+    public bool isOpen
+    {
+        get { return _isOpen; }
     }
 }

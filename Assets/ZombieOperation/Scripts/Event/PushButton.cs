@@ -16,13 +16,12 @@ public class PushButton : MonoBehaviour
 
     void Update()
     {
-        //カードをタッチしたらカウント開始
+        print(isTouched);
         if (isTouched)
         {
             count += Time.deltaTime;
         }
 
-        //時間が来たら再びタッチできるように
         if (1.5f < count)
         {
             count = 0f;
@@ -33,8 +32,10 @@ public class PushButton : MonoBehaviour
     private void OnTriggerEnter(Collider hit)
     {
 
-        if (hit.tag == "Key")
+        if (hit.tag == "VRController_R" && !isTouched)
         {
+            isTouched = true;
+            pushEvent.Invoke();
         }
     }
 }

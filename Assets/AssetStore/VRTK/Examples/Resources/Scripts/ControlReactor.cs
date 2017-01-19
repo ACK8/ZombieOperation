@@ -18,9 +18,6 @@
 
         private void HandleChange(float value, float normalizedValue)
         {
-            go.text = value.ToString() + "(" + normalizedValue.ToString() + "%)";
-
-
             bool b = (normalizedValue != 0);
         }
     }

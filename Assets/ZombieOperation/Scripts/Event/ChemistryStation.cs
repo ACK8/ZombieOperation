@@ -3,6 +3,14 @@ using System.Collections.Generic;
 
 public class ChemistryStation : MonoBehaviour
 {
+    enum State
+    {
+        Wait,
+        Open,
+        Close,
+        Create,
+    }
+
     [SerializeField]
     private Transform outletPos;
     [SerializeField]
@@ -10,39 +18,42 @@ public class ChemistryStation : MonoBehaviour
     [SerializeField]
     private GameObject zombieMedicine;
     [SerializeField]
-    private GameObject button;
+    private Door doorScr;
 
+    private State state = State.Wait;
     private GameObject[] list = new GameObject[3];
     private bool isPut_A = false;
     private bool isPut_B = false;
     private bool isPut_C = false;
+    private bool isDoorOpen = false;
 
     private bool isCreated = false;
-
-    void Start()
-    {
-        button.GetComponent<VRTK.VRTK_Button>().events.OnPush.AddListener(Create);
-    }
     
+    //ボタンで呼ぶ
+    public void DoorMove()
+    {
+        doorScr.MoveDoor();
+    }
+
     //ボタンで呼ぶ
     public void Create()
     {
-        print("Create!!!!!!!!!!!!!!!!!!!!!!");
-        if (isPut_A && isPut_B)
+        if (!doorScr.isOpen)
         {
-            CreateMedicine(zombieMedicine);
-        }
+            if (isPut_A && isPut_B)
+            {
+                CreateMedicine(zombieMedicine);
+            }
 
-        if (isPut_A && isPut_C)
-        {
-            CreateMedicine(strengthMedicine);
+            if (isPut_A && isPut_C)
+            {
+                CreateMedicine(strengthMedicine);
+            }
         }
     }
 
     void CreateMedicine(GameObject m)
     {
-        Instantiate(strengthMedicine, outletPos.position, outletPos.rotation);
-
         foreach (GameObject g in list)
         {
             if (g != null)
@@ -50,6 +61,8 @@ public class ChemistryStation : MonoBehaviour
                 Destroy(g);
             }
         }
+
+        Instantiate(strengthMedicine, outletPos.position, outletPos.rotation);
     }
 
     void OnCollisionEnter(Collision hit)

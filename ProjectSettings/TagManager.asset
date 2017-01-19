@@ -25,7 +25,8 @@ TagManager:
   - ZombieBody
   - BiometricsMachine
   - ZombieOperation
-  - VRController
+  - VRController_L
+  - VRController_R
   layers:
   - Default
   - TransparentFX

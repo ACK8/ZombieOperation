@@ -9,7 +9,6 @@ public class Biometrics : MonoBehaviour
 
     private Zombie zombie;
     private bool isTouched = false;
-    private bool isMove = false;
 
     void Start()
     {

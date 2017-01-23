@@ -56,7 +56,7 @@ public class HandController : MonoBehaviour
         {
             case HandType.VRController:
 
-                if(!vrControllerObject.activeSelf)
+                if (!vrControllerObject.activeSelf)
                 {
                     controllerModel.SetActive(true);
                     vrControllerObject.SetActive(true);
@@ -73,8 +73,12 @@ public class HandController : MonoBehaviour
                     zombieOperatingObject.SetActive(true);
                 }
 
+                //トリガーの入力可否
+                if (!TutorialManager.Instance.canTriggerInput) return;
+
                 switch (zombieOperatingComponent.operatingType)
                 {
+
                     case ZombieOperatingType.Operating:
                         //命令を決定
                         if (device.GetPressDown(SteamVR_Controller.ButtonMask.Trigger))
@@ -101,6 +105,9 @@ public class HandController : MonoBehaviour
         //注射器と操作器の入れ替え
         if (device.GetPressDown(SteamVR_Controller.ButtonMask.ApplicationMenu))
         {
+            //メニューボタンの入力可否
+            if (!TutorialManager.Instance.canMenuButtonInput) return;
+
             switch (zombieOperatingComponent.operatingType)
             {
                 case ZombieOperatingType.Operating:

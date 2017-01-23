@@ -1,32 +1,24 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public enum TutorialDrawType
-{
-    Move,
-    Grab,
-};
-
 public class TutorialManager : SingletonMonoBehaviour<TutorialManager>
 {
-
-    public GameObject[] Tutorial;
+    [HideInInspector]
+    public bool canTouchPadInput = true;
+    [HideInInspector]
+    public bool canTriggerInput = true;
+    [HideInInspector]
+    public bool canMenuButtonInput = true;
+    [HideInInspector]
+    public bool canGripInput = true;
 
     void Start()
     {
+
     }
 
     void Update()
     {
-    }
 
-    void SetDescription(TutorialDrawType name)
-    {
-        for (int i = 0; i < Tutorial.Length; i++)
-        {
-            Tutorial[i].SetActive(false);
-        }
-        Tutorial[(int)name].SetActive(true);
     }
-
 }

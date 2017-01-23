@@ -10,7 +10,7 @@ public class Zombie : MonoBehaviour
     public float injectionVolume = 0f;   //ゾンビ薬の注入量
     [HideInInspector]
     public float strengthVolume = 0f;   //強化薬の注入量
-    
+
     [SerializeField]
     private CapsuleCollider capsuleCol;
     [SerializeField]
@@ -20,14 +20,9 @@ public class Zombie : MonoBehaviour
     [SerializeField]
     private int id = 0;
 
-    private InjectionVolumeUI injectionUI;
-    private Transform authenticationMachinePos = null;
-    private Vector3 BiometricsMachinePos;
     protected NavMeshAgent navMesh;
     protected Animator anim;
     protected Transform seledtedTarget = null;
-    protected GameObject destructionTarget = null;
-    protected GameObject moveTargetPos = null;
     protected OperatingType operatingType;
     protected int _hp = 100;
     protected float navSpeed = 0f;
@@ -35,7 +30,14 @@ public class Zombie : MonoBehaviour
     protected bool _isAlive = true;
     protected bool isChange = false;
     protected bool destructionFlag = false;
+    private InjectionVolumeUI injectionUI;
+    private Transform authenticationMachinePos = null;
+    private Transform BulkheadPos = null;
+    private Vector3 lookatPosition;
+    private GameObject destructionTarget = null;
+    private GameObject moveTargetPos = null;
     private bool isAuthenticationComp = false;  //認証完了
+    private bool isLift = false;
 
     void Start()
     {
@@ -43,7 +45,6 @@ public class Zombie : MonoBehaviour
         anim = GetComponent<Animator>();
         navSpeed = navMesh.speed;
         capsuleCol.enabled = false;
-
 
         injectionUI = GameObject.Find("InjectionVolumeUI").GetComponent<InjectionVolumeUI>();
         injectionUI.SetValueRange(0f, zombieChangeTime);
@@ -74,6 +75,7 @@ public class Zombie : MonoBehaviour
             Animation();
             DestructionUpdate();
             AuthenticationUpdate();
+            LiftBulkheadUpdate();
         }
         else
         {
@@ -87,10 +89,10 @@ public class Zombie : MonoBehaviour
     {
         if (moveTargetPos != null)
         {
-            if (Vector3.Distance(transform.position, moveTargetPos.transform.position) <= 0.7f)
+            if (Vector3.Distance(transform.position, moveTargetPos.transform.position) <= 0.5f)
             {
                 _isMove = false;
-                transform.LookAt(new Vector3(moveTargetPos.transform.position.x, transform.position.y, moveTargetPos.transform.position.z));
+                transform.LookAt(new Vector3(destructionTarget.transform.position.x, transform.position.y, destructionTarget.transform.position.z));
                 navMesh.Stop();
                 navMesh.speed = 0f;
                 anim.SetTrigger("Attack");
@@ -121,7 +123,7 @@ public class Zombie : MonoBehaviour
                 navMesh.Stop();
                 navMesh.speed = 0f;
                 navMesh.updateRotation = true;
-                transform.LookAt(new Vector3(moveTargetPos.transform.position.x, transform.position.y, moveTargetPos.transform.position.z));
+                transform.LookAt(new Vector3(lookatPosition.x, transform.position.y, lookatPosition.z));
                 anim.SetTrigger("Authentication");
                 isAuthenticationComp = true;
             }
@@ -136,6 +138,40 @@ public class Zombie : MonoBehaviour
             {
                 Wait();
                 isAuthenticationComp = true;
+            }
+        }
+    }
+
+    //隔壁持ち上げ
+    void LiftBulkheadUpdate()
+    {
+        if (BulkheadPos != null)
+        {
+            if (Vector3.Distance(transform.position, BulkheadPos.transform.position) <= 0.4f)
+            {
+                if (!isLift)
+                {
+                    _isMove = false;
+                    isLift = true;
+                    navMesh.Stop();
+                    navMesh.speed = 0f;
+                    navMesh.updateRotation = true;
+                    transform.LookAt(new Vector3(lookatPosition.x, transform.position.y, lookatPosition.z));
+                    capsuleCol.enabled = true;
+                    anim.SetTrigger("Lift");
+                }
+            }
+            else
+            {
+                Move(BulkheadPos);
+            }
+        }
+        else
+        {
+            if (!isAuthenticationComp)
+            {
+                //倒れた状態
+                //anim.Play("GetUp", -1, 0.0f);
             }
         }
     }
@@ -182,8 +218,9 @@ public class Zombie : MonoBehaviour
     //攻撃
     public void Attack(GameObject target)
     {
+        Init();
+
         operatingType = OperatingType.Attack;
-        moveTargetPos = null;
         moveTargetPos = target.GetComponent<DestructionObject>().destructionPosition;
         destructionTarget = target;
         _isMove = true;
@@ -193,11 +230,32 @@ public class Zombie : MonoBehaviour
     //生体認証
     public void Authentication(GameObject pos, Vector3 lookatPos)
     {
-        moveTargetPos = null;
-        moveTargetPos = pos;
-        BiometricsMachinePos = lookatPos;
+        Init();
+
+        authenticationMachinePos = pos.transform;
+        lookatPosition = lookatPos;
         _isMove = true;
         isAuthenticationComp = false;
+    }
+
+    //隔壁持ち上げ
+    public void LiftBulkhead(GameObject pos, Vector3 lookatPos)
+    {
+        Init();
+
+        BulkheadPos = pos.transform;
+        lookatPosition = lookatPos;
+        _isMove = true;
+        isLift = false;
+    }
+
+    void Init()
+    {
+        BulkheadPos = null;
+        moveTargetPos = null;
+        destructionTarget = null;
+        authenticationMachinePos = null;
+        lookatPosition = Vector3.zero;
     }
 
     //アニメーション

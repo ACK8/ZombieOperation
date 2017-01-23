@@ -62,6 +62,8 @@ public class Operating : MonoBehaviour
                 GameObject zombie = hit.collider.GetComponent<ChildeCollider>().GetGameObject();
                 if (selectedZombie != zombie)
                 {
+                    selectedObject = null;
+
                     if (selectedZombie != null)
                     {
                         selectedZombie.GetComponent<ChangeMaterial>().Change2();
@@ -77,6 +79,8 @@ public class Operating : MonoBehaviour
             //選択対象のGameObject取得
             if (hit.collider.tag == "Object")
             {
+                selectedObject = null;
+
                 if (selectedObject != null)
                 {
                     selectedObject.GetComponent<ChangeMaterialMesh>().Change2();
@@ -84,17 +88,17 @@ public class Operating : MonoBehaviour
 
                 selectedObject = hit.collider.gameObject;
                 selectedObject.GetComponent<ChangeMaterialMesh>().Change1();
-
-                Debug.Log(selectedObject.name);
             }
 
+            //移動
             if (hit.collider.tag == "Map")
             {
+                selectedObject = null;
+
                 if (selectedObject != null)
                 {
                     selectedObject.GetComponent<ChangeMaterialMesh>().Change2();
                 }
-                selectedObject = null;
 
                 movePointObject.SetActive(true);
                 movePointObject.transform.position = hit.point;
@@ -104,8 +108,11 @@ public class Operating : MonoBehaviour
                 movePointObject.SetActive(false);
             }
 
+            //生体認証
             if (hit.collider.tag == "BiometricsMachine")
             {
+                selectedObject = null;
+
                 if (selectedObject != null)
                 {
                     selectedObject.GetComponent<ChangeMaterialMesh>().Change2();
@@ -115,6 +122,22 @@ public class Operating : MonoBehaviour
                 selectedObject.GetComponent<ChangeMaterialMesh>().Change1();
 
                 selectedZombie.GetComponent<Zombie>().Authentication(selectedObject.GetComponent<Biometrics>().MovePoint, selectedObject.transform.position);
+            }
+
+            //隔壁持ち上げ
+            if (hit.collider.tag == "Bulkhead")
+            {
+                selectedObject = null;
+
+                if (selectedObject != null)
+                {
+                    selectedObject.GetComponent<ChangeMaterial>().Change2();
+                }
+
+                selectedObject = hit.collider.gameObject;
+                selectedObject.GetComponent<ChangeMaterial>().Change1();
+
+                selectedZombie.GetComponent<Zombie>().LiftBulkhead(selectedObject.GetComponent<Bulkhead>().MovePoint, selectedObject.transform.position);
             }
         }
     }
@@ -158,6 +181,7 @@ public class Operating : MonoBehaviour
     //攻撃
     public void OperatingAttack()
     {
+        print("OperatingAttack");
         //ゾンビの命令を実行
         if ((selectedZombie != null) && (selectedObject != null))
         {

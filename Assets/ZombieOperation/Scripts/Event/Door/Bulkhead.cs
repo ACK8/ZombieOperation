@@ -3,7 +3,7 @@ using System.Collections;
 
 public class Bulkhead : MonoBehaviour
 {
-    public Transform MovePoint;
+    public GameObject MovePoint;
 	public Animator anime;
 
 	void Start ()

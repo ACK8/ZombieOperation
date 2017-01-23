@@ -1,27 +1,23 @@
 fileFormatVersion: 2
 guid: 647726619afcd7c44bc9fc73f3ada158
-timeCreated: 1484619097
+timeCreated: 1485153274
 licenseType: Free
 ModelImporter:
   serializedVersion: 19
   fileIDToRecycleName:
-    100000: //RootNode
-    100002: Armature
-    100004: Bone
-    100006: Bone_end
-    100008: Cube
-    400000: //RootNode
-    400002: Armature
-    400004: Bone
-    400006: Bone_end
-    400008: Cube
-    2300000: //RootNode
-    3300000: //RootNode
+    100000: Armature
+    100002: Bone
+    100004: Bone_end
+    100006: Cube
+    100008: //RootNode
+    400000: Armature
+    400002: Bone
+    400004: Bone_end
+    400006: Cube
+    400008: //RootNode
     4300000: Cube
-    7400000: Cube|CubeAction
-    7400002: Armature|ArmatureAction
+    7400000: Armature|ArmatureAction
     9500000: //RootNode
-    11100000: //RootNode
     13700000: Cube
   materials:
     importMaterials: 1
@@ -37,12 +33,13 @@ ModelImporter:
     animationImportWarnings: 
     animationRetargetingWarnings: 
     animationDoRetargetingWarnings: 0
-    animationCompression: 3
+    animationCompression: 1
     animationRotationError: 0.5
     animationPositionError: 0.5
     animationScaleError: 0.5
     animationWrapMode: 0
-    extraExposedTransformPaths: []
+    extraExposedTransformPaths:
+    - Armature/Bone
     clipAnimations: []
     isReadable: 1
   meshes:

@@ -42,11 +42,12 @@ public class Syringe : MonoBehaviour
         {
             case MedicineType.Zombie:
                 zombieMedicineNum++;
+                print("AddMedicine: " + zombieMedicineNum);
 
                 break;
             case MedicineType.Strength:
-
                 strengthMedicineNum++;
+                print("AddMedicine: " + strengthMedicineNum);
 
                 break;
         }
@@ -61,6 +62,7 @@ public class Syringe : MonoBehaviour
                 if (0 < zombieMedicineNum)
                 {
                     zombieMedicineNum--;
+                    print("DecreaseMedicine: " + zombieMedicineNum);
                 }
 
                 break;
@@ -69,6 +71,7 @@ public class Syringe : MonoBehaviour
                 if (0 < strengthMedicineNum)
                 {
                     strengthMedicineNum--;
+                    print("DecreaseMedicine: " + strengthMedicineNum);
                 }
                 break;
         }

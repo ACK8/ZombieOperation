@@ -20,7 +20,6 @@ public class InjectionCollision : MonoBehaviour
                         if (zombie.zombieChangeTime <= zombie.injectionVolume)
                         {
                             syringe.DecreaseMedicine(MedicineType.Zombie);
-                            print("DecreaseMedicine Zombie");
                         }
                         break;
 
@@ -28,7 +27,6 @@ public class InjectionCollision : MonoBehaviour
                         if (zombie.zombieChangeTime <= zombie.strengthVolume)
                         {
                             syringe.DecreaseMedicine(MedicineType.Strength);
-                            print("DecreaseMedicine Strength");
                         }
                         break;
                 }
@@ -40,12 +38,12 @@ public class InjectionCollision : MonoBehaviour
 
                 break;
                 
-            case "ZombieMedicine":
+            case "Medicine_A":
                 syringe.AddMedicine(MedicineType.Zombie);
                 Destroy(hit.gameObject);
                 break;
 
-            case "StrengthMedicine":
+            case "Medicine_B":
                 syringe.AddMedicine(MedicineType.Strength);
                 Destroy(hit.gameObject);
                 break;

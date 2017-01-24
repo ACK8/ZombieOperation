@@ -5,9 +5,11 @@ public class Door : MonoBehaviour
     [SerializeField]
     private float movingSpeed = 0f;
     [SerializeField]
+    private float moveingDistance = 1;  //開く距離
+    [SerializeField]
     private bool isRotate90D = false;   //ドアが90度回転しているか
     [SerializeField]
-    private float moveingDistance = 1;  //開く距離
+    private bool isOpenLeft = false;
 
     private Vector3 initalPos;
     private bool _isOpen = false;    //現在ドアが開いているか
@@ -40,17 +42,35 @@ public class Door : MonoBehaviour
     {
         Vector3 targetPos = transform.position;
 
-        if (isRotate90D)
+        if(isOpenLeft)
         {
-            //90度回転しているときX座標を移動
-            targetPos += new Vector3(-movingSpeed * Time.deltaTime, 0f, 0f);
-            targetPos.x = Mathf.Clamp(targetPos.x, initalPos.x + -moveingDistance, initalPos.x);
+            if (isRotate90D)
+            {
+                //90度回転しているときX座標を移動
+                targetPos += new Vector3(movingSpeed * Time.deltaTime, 0f, 0f);
+                targetPos.x = Mathf.Clamp(targetPos.x, initalPos.x, initalPos.x + moveingDistance);
+            }
+            else
+            {
+                //0°のときはZ座標を移動
+                targetPos += new Vector3(0f, 0f, movingSpeed * Time.deltaTime);
+                targetPos.z = Mathf.Clamp(targetPos.z, initalPos.z, initalPos.z + moveingDistance);
+            }
         }
         else
         {
-            //0°のときはZ座標を移動
-            targetPos += new Vector3(0f, 0f, -movingSpeed * Time.deltaTime);
-            targetPos.z = Mathf.Clamp(targetPos.z, initalPos.z + -moveingDistance, initalPos.z);
+            if (isRotate90D)
+            {
+                //90度回転しているときX座標を移動
+                targetPos += new Vector3(-movingSpeed * Time.deltaTime, 0f, 0f);
+                targetPos.x = Mathf.Clamp(targetPos.x, initalPos.x + -moveingDistance, initalPos.x);
+            }
+            else
+            {
+                //0°のときはZ座標を移動
+                targetPos += new Vector3(0f, 0f, -movingSpeed * Time.deltaTime);
+                targetPos.z = Mathf.Clamp(targetPos.z, initalPos.z + -moveingDistance, initalPos.z);
+            }
         }
 
         transform.position = targetPos;
@@ -60,38 +80,74 @@ public class Door : MonoBehaviour
     {
         Vector3 targetPos = transform.position;
 
-        if (isRotate90D)
+        if (isOpenLeft)
         {
-            //90度回転しているときX座標を移動
-            targetPos += new Vector3(movingSpeed * Time.deltaTime, 0f);
-            targetPos.x = Mathf.Clamp(targetPos.x, initalPos.x + -moveingDistance, initalPos.x);
-
-
-            if (transform.position.x == targetPos.x)
+            if (isRotate90D)
             {
-                isCloseing = false;
+                //90度回転しているときX座標を移動
+                targetPos += new Vector3(-movingSpeed * Time.deltaTime, 0f, 0f);
+                targetPos.x = Mathf.Clamp(targetPos.x, initalPos.x, initalPos.x + moveingDistance);
+
+
+                if (transform.position.x == targetPos.x)
+                {
+                    isCloseing = false;
+                }
+                else
+                {
+                    isCloseing = true;
+                }
             }
             else
             {
-                isCloseing = true;
+                //0°のときはZ座標を移動
+                targetPos += new Vector3(0f, 0f, -movingSpeed * Time.deltaTime);
+                targetPos.z = Mathf.Clamp(targetPos.z, initalPos.z, initalPos.z + moveingDistance);
+
+                if (transform.position.z == targetPos.z)
+                {
+                    isCloseing = false;
+                }
+                else
+                {
+                    isCloseing = true;
+                }
             }
         }
         else
         {
-            //0°のときはZ座標を移動
-            targetPos += new Vector3(0f, 0f, movingSpeed * Time.deltaTime);
-            targetPos.z = Mathf.Clamp(targetPos.z, initalPos.z + -moveingDistance, initalPos.z);
-
-            if (transform.position.z == targetPos.z)
+            if (isRotate90D)
             {
-                isCloseing = false;
+                //90度回転しているときX座標を移動
+                targetPos += new Vector3(movingSpeed * Time.deltaTime, 0f, 0f);
+                targetPos.x = Mathf.Clamp(targetPos.x, initalPos.x + -moveingDistance, initalPos.x);
+
+
+                if (transform.position.x == targetPos.x)
+                {
+                    isCloseing = false;
+                }
+                else
+                {
+                    isCloseing = true;
+                }
             }
             else
             {
-                isCloseing = true;
+                //0°のときはZ座標を移動
+                targetPos += new Vector3(0f, 0f, movingSpeed * Time.deltaTime);
+                targetPos.z = Mathf.Clamp(targetPos.z, initalPos.z + -moveingDistance, initalPos.z);
+
+                if (transform.position.z == targetPos.z)
+                {
+                    isCloseing = false;
+                }
+                else
+                {
+                    isCloseing = true;
+                }
             }
         }
-
         transform.position = targetPos;
     }
 

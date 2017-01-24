@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 647726619afcd7c44bc9fc73f3ada158
-timeCreated: 1485153274
+timeCreated: 1485226779
 licenseType: Free
 ModelImporter:
   serializedVersion: 19
@@ -15,6 +15,8 @@ ModelImporter:
     400004: Bone_end
     400006: Cube
     400008: //RootNode
+    2300000: Cube
+    3300000: Cube
     4300000: Cube
     7400000: Armature|ArmatureAction
     9500000: //RootNode
@@ -28,12 +30,12 @@ ModelImporter:
     bakeSimulation: 0
     resampleCurves: 1
     optimizeGameObjects: 0
-    motionNodeName: 
+    motionNodeName: Armature/Bone
     animationImportErrors: 
     animationImportWarnings: 
     animationRetargetingWarnings: 
     animationDoRetargetingWarnings: 0
-    animationCompression: 1
+    animationCompression: 3
     animationRotationError: 0.5
     animationPositionError: 0.5
     animationScaleError: 0.5

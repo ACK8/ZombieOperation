@@ -26,16 +26,20 @@ public class TakeSyringe : MonoBehaviour
             case "ZombieOperation":
                 if (device.GetPressDown(SteamVR_Controller.ButtonMask.Grip))
                 {
-                    handCtrl.handType = HandType.ZombieOperating;
+                    Destroy(this);
                     Destroy(hit.gameObject);
+                    Destroy(GetComponent<CapsuleCollider>());
+                    TutorialManager.Instance.canMenuButtonInput = true;
                 }
 
                 break;
             case "ZombieOperation_Syringe":
                 if (device.GetPressDown(SteamVR_Controller.ButtonMask.Grip))
                 {
+                    Destroy(this);
                     Destroy(hit.gameObject);
-                    TutorialManager.Instance.canMenuButtonInput = true;
+                    Destroy(GetComponent<CapsuleCollider>());
+                    handCtrl.handType = HandType.ZombieOperating;
                 }
 
                 break;

@@ -255,6 +255,8 @@ GameObject:
   m_Component:
   - 4: {fileID: 4000010751449320}
   - 114: {fileID: 114000010830130832}
+  - 136: {fileID: 136000011054826270}
+  - 114: {fileID: 114000011748841020}
   m_Layer: 0
   m_Name: ZombieOperating
   m_TagString: Untagged
@@ -1658,6 +1660,18 @@ MonoBehaviour:
     m_Bits: 4
   validTeleportLocationObject: {fileID: 0}
   rescalePointerTracer: 0
+--- !u!114 &114000011748841020
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000012239959272}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a1d6e0e5ce36691488e150a24015bc6b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  handCtrl: {fileID: 114000013289263528}
 --- !u!114 &114000011788489658
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2224,6 +2238,19 @@ Behaviour:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000011645493788}
   m_Enabled: 1
+--- !u!136 &136000011054826270
+CapsuleCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000012239959272}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 0.02
+  m_Height: 0.175
+  m_Direction: 2
+  m_Center: {x: 0, y: -0.02, z: -0.06}
 --- !u!136 &136000011788707172
 CapsuleCollider:
   m_ObjectHideFlags: 1

@@ -53,5 +53,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canTouchPadInput: 1
   canTriggerInput: 1
-  canMenuButtonInput: 1
+  canMenuButtonInput: 0
   canGripInput: 1

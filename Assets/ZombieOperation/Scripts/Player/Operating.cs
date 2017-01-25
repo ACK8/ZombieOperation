@@ -18,7 +18,7 @@ public class Operating : MonoBehaviour
     public Transform playerTransform;
 
     private OperatingType operatingType;
-    private GameObject movePointObject;
+    private GameObject movePointObject = null;
     private GameObject selectedZombie = null;
     private GameObject selectedObject = null;
     private LineRenderer line;

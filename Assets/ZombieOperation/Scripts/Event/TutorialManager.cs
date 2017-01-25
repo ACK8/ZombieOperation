@@ -3,22 +3,16 @@ using System.Collections;
 
 public class TutorialManager : SingletonMonoBehaviour<TutorialManager>
 {
-    [HideInInspector]
+    [Tooltip("タッチパッドの入力可否")]
     public bool canTouchPadInput = true;
-    [HideInInspector]
+
+    [Tooltip("トリガーの入力可否")]
     public bool canTriggerInput = true;
-    [HideInInspector]
+
+    [Tooltip("メニューボタンの入力可否")]
     public bool canMenuButtonInput = true;
-    [HideInInspector]
+
+    [Tooltip("グリップボタンの入力可否")]
     public bool canGripInput = true;
-
-    void Start()
-    {
-
-    }
-
-    void Update()
-    {
-
-    }
+    
 }

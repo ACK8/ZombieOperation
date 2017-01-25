@@ -673,7 +673,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000011786000080}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.211, z: -1.41}
+  m_LocalPosition: {x: 0.05, y: 0.44, z: -0.473}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
@@ -1182,7 +1182,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9cea24df75017f841ac5c11762fd0daa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  operatingType: 0
+  operatingType: 1
   operatingObject: {fileID: 1000013999207912}
   syringeObject: {fileID: 1000011549067000}
   operatingComponent: {fileID: 114000013820688812}

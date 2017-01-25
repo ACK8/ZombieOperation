@@ -128,6 +128,9 @@ namespace VRTK
 
         private void Move()
         {
+            //タッチパッドの入力可否
+            if (!TutorialManager.Instance.canTouchPadInput) return;
+
             var deviceDirector = VRTK_DeviceFinder.DeviceTransform(deviceForDirection);
             var movement = deviceDirector.forward * movementSpeed * Time.deltaTime;
             var strafe = deviceDirector.right * strafeSpeed * Time.deltaTime;

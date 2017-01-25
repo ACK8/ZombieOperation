@@ -29,6 +29,7 @@ TagManager:
   - VRController_R
   - Medicine_D
   - Bulkhead
+  - ZombieOperation_Syringe
   layers:
   - Default
   - TransparentFX

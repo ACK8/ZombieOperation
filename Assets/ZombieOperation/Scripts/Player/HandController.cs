@@ -78,7 +78,6 @@ public class HandController : MonoBehaviour
 
                 switch (zombieOperatingComponent.operatingType)
                 {
-
                     case ZombieOperatingType.Operating:
                         //命令を決定
                         if (device.GetPressDown(SteamVR_Controller.ButtonMask.Trigger))

@@ -36,7 +36,8 @@
 	};
 
 
-	void surf(Input IN, inout SurfaceOutputStandard o) {
+	void surf(Input IN, inout SurfaceOutputStandard o)
+	{
 		float d = distance(_Center, IN.worldPos);
 		float tempRadiusWidth = _RadiusWidth * abs(sin(_Time * _RadiusSpeed));
 

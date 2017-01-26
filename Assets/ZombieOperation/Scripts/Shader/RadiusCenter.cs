@@ -16,7 +16,6 @@ public class RadiusCenter : MonoBehaviour
     private void Start()
     {
         movePoint = GameObject.Find("!MoveTarget").transform;
-        print(movePoint.name);
     }
 
     void Update()

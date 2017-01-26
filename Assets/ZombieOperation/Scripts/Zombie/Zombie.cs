@@ -20,7 +20,7 @@ public class Zombie : MonoBehaviour
     [SerializeField]
     private int id = 0;
 
-    protected NavMeshAgent navMesh;
+    protected UnityEngine.AI.NavMeshAgent navMesh;
     protected Animator anim;
     protected Transform seledtedTarget = null;
     protected OperatingType operatingType;
@@ -41,7 +41,7 @@ public class Zombie : MonoBehaviour
 
     void Start()
     {
-        navMesh = GetComponent<NavMeshAgent>();
+        navMesh = GetComponent<UnityEngine.AI.NavMeshAgent>();
         anim = GetComponent<Animator>();
         navSpeed = navMesh.speed;
         capsuleCol.enabled = false;

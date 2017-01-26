@@ -5,7 +5,7 @@ public class Mouse : Zombie
 {
     void Start()
     {
-        navMesh = GetComponent<NavMeshAgent>();
+        navMesh = GetComponent<UnityEngine.AI.NavMeshAgent>();
         anim = GetComponent<Animator>();
         navSpeed = navMesh.speed;
     }

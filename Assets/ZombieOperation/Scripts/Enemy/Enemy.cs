@@ -48,7 +48,7 @@ public class Enemy : MonoBehaviour
     private uint patrolNumber = 0;
     private float timeToDiscover = 0.0f;
     private float currntWaitTime = 0.0f;
-    private NavMeshAgent navMeshAgent;
+    private UnityEngine.AI.NavMeshAgent navMeshAgent;
     private Transform playerTransform;
     private EEnemyState enemyState = EEnemyState.Patrol;
     private List<discoveryInfo> discoveryList = new List<discoveryInfo>();
@@ -56,7 +56,7 @@ public class Enemy : MonoBehaviour
 
     void Start()
     {
-        navMeshAgent = GetComponent<NavMeshAgent>();
+        navMeshAgent = GetComponent<UnityEngine.AI.NavMeshAgent>();
         navMeshAgent.SetDestination(patrolObject[patrolNumber].transform.position);
     }
 

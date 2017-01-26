@@ -50,9 +50,6 @@ GameObject:
   m_Component:
   - 4: {fileID: 4000010140748132}
   - 137: {fileID: 137000012740085792}
-  - 65: {fileID: 65000011084986476}
-  - 114: {fileID: 114000011907270564}
-  - 114: {fileID: 114000011428630774}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Bulkhead
@@ -192,18 +189,6 @@ Transform:
   - {fileID: 4000010834413508}
   m_Father: {fileID: 4000012987928838}
   m_RootOrder: 0
---- !u!65 &65000011084986476
-BoxCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1000011669113348}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 0
-  serializedVersion: 2
-  m_Size: {x: 4, y: 0.50000066, z: 3.0000005}
-  m_Center: {x: -0.00000017881393, y: -0.00000022351747, z: 0}
 --- !u!65 &65000012147217300
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -233,19 +218,6 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
---- !u!114 &114000011428630774
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1000011669113348}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 441107bd77e5273439ea4399a6b3db49, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  MovePoint: {fileID: 1000010381864214}
-  anime: {fileID: 95000012472168614}
 --- !u!114 &114000011736831976
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -253,27 +225,6 @@ MonoBehaviour:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000013997866556}
   m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7c2cc5f8347b54344aa6d662a5d76155, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  changeMaterials1:
-  - {fileID: 2100000, guid: 41225d81dda3ef640a8a010b264c5195, type: 2}
-  - {fileID: 2100000, guid: ec0d1f926848e444c9afe240dfc70bf1, type: 2}
-  - {fileID: 2100000, guid: 0bd9f1ed22688f5498bc56ecbb03f575, type: 2}
-  - {fileID: 2100000, guid: ec965bf044c7a2e42abe7e92f48959fb, type: 2}
-  changeMaterials2:
-  - {fileID: 2100000, guid: ec0d1f926848e444c9afe240dfc70bf1, type: 2}
-  - {fileID: 2100000, guid: 0bd9f1ed22688f5498bc56ecbb03f575, type: 2}
-  - {fileID: 2100000, guid: ec965bf044c7a2e42abe7e92f48959fb, type: 2}
-  meshRenderer: {fileID: 137000012740085792}
---- !u!114 &114000011907270564
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1000011669113348}
-  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7c2cc5f8347b54344aa6d662a5d76155, type: 3}
   m_Name: 

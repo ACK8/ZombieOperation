@@ -200,7 +200,7 @@ public class Zombie : MonoBehaviour
         anim.SetFloat("Blend", 1.0f);
 
         seledtedTarget = target;
-        navMesh.SetDestination(target.position);
+        navMesh.SetDestination(seledtedTarget.position);
     }
 
     //プレイヤーに追従

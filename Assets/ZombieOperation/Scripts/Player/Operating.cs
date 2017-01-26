@@ -181,7 +181,6 @@ public class Operating : MonoBehaviour
     //攻撃
     public void OperatingAttack()
     {
-        print("OperatingAttack");
         //ゾンビの命令を実行
         if ((selectedZombie != null) && (selectedObject != null))
         {

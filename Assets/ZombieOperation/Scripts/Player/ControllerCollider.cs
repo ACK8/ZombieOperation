@@ -6,12 +6,12 @@ public class ControllerCollider : MonoBehaviour
     private SteamVR_TrackedObject trackedComponent;
     private SteamVR_Controller.Device device;
 
-    private CapsuleCollider col;
+    private SphereCollider col;
 
     void Start()
     {
         trackedComponent = gameObject.transform.parent.GetComponent<SteamVR_TrackedObject>();
-        col = GetComponent<CapsuleCollider>();
+        col = GetComponent<SphereCollider>();
         col.enabled = false;
     }
 

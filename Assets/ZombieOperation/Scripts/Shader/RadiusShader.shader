@@ -22,7 +22,7 @@
 		// Use shader model 3.0 target, to get nicer looking lighting
 #pragma target 3.0
 
-		sampler2D _MainTex;
+	sampler2D _MainTex;
 	float3 _Center;
 	float _Radius;
 	fixed4 _RadiusColor;
@@ -30,7 +30,8 @@
 	float _RadiusPower;
 	float _RadiusSpeed;
 
-	struct Input {
+	struct Input
+	{
 		float2 uv_MainTex;
 		float3 worldPos;
 	};

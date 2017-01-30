@@ -12,12 +12,12 @@ public class ChangeMaterial : MonoBehaviour
 
     }
 	
-    public void Change1()
+    public void ChangeSelected()
     {
         meshRenderer.sharedMaterials = changeMaterials1;
     }
 
-    public void Change2()
+    public void ChangeNormal()
     {
         meshRenderer.sharedMaterials = changeMaterials2;
     }

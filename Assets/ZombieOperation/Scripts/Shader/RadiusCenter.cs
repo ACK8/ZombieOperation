@@ -22,9 +22,14 @@ public class RadiusCenter : MonoBehaviour
     {
         radiusMaterial.SetVector("_Center", movePoint.position);
         radiusMaterial.SetColor("_RadiusColor", color);
-        radiusMaterial.SetFloat("_Radius", radius);
-        radiusMaterial.SetFloat("_RadiusWidth", radiusWidth);
         radiusMaterial.SetFloat("_RadiusPower", power);
         radiusMaterial.SetFloat("_RadiusSpeed", speed);
+        radiusMaterial.SetFloat("_Radius", radius);
+
+        if (movePoint.gameObject.activeSelf)
+            radiusMaterial.SetFloat("_RadiusWidth", radiusWidth);
+        else
+            radiusMaterial.SetFloat("_RadiusWidth", 0);
+
     }
 }

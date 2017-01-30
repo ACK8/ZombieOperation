@@ -5,6 +5,8 @@ public class AutomaticDoorSensor : MonoBehaviour
 {
     [SerializeField]
     private Door doorScript;
+    [SerializeField]
+    private float closeWaitTime = 2f;
 
     private float intervalTime = 0f;
     private bool isStand = false;
@@ -20,7 +22,7 @@ public class AutomaticDoorSensor : MonoBehaviour
         {
             intervalTime += Time.deltaTime;
         }
-        
+
         if (1.5f < intervalTime)
         {
             intervalTime = 0f;
@@ -39,5 +41,15 @@ public class AutomaticDoorSensor : MonoBehaviour
                 doorScript.MoveDoor();
             }
         }
+    }
+
+    void OnTriggerExit(Collider hit)
+    {
+        Invoke("CloseDoor", closeWaitTime);
+    }
+
+    void CloseDoor()
+    {
+        doorScript.MoveDoor();
     }
 }

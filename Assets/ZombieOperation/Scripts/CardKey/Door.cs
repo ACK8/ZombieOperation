@@ -153,7 +153,7 @@ public class Door : MonoBehaviour
 
     void OnCollisionEnter(Collision hit)
     {
-        if (hit.gameObject.tag != "Wall" && hit.gameObject.tag != "Key" && hit.gameObject.tag != "CardKey")
+        if (hit.gameObject.tag != "Map" && hit.gameObject.tag != "Wall" && hit.gameObject.tag != "Key" && hit.gameObject.tag != "CardKey")
         {
             if (isCloseing)
             {

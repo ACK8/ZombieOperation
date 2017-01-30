@@ -14,5 +14,10 @@ public class TutorialManager : SingletonMonoBehaviour<TutorialManager>
 
     [Tooltip("グリップボタンの入力可否")]
     public bool canGripInput = true;
+
+    void Start()
+    {
+        DontDestroyOnLoad(this);
+    }
     
 }

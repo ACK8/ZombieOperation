@@ -28,7 +28,7 @@ public class TakeSyringe : MonoBehaviour
                 {
                     Destroy(this);
                     Destroy(hit.gameObject);
-                    Destroy(GetComponent<CapsuleCollider>());
+                    Destroy(GetComponent<SphereCollider>());
                     TutorialManager.Instance.canMenuButtonInput = true;
                 }
 
@@ -38,7 +38,7 @@ public class TakeSyringe : MonoBehaviour
                 {
                     Destroy(this);
                     Destroy(hit.gameObject);
-                    Destroy(GetComponent<CapsuleCollider>());
+                    Destroy(GetComponent<SphereCollider>());
                     handCtrl.handType = HandType.ZombieOperating;
                 }
 

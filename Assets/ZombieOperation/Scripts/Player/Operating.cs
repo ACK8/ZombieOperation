@@ -29,6 +29,7 @@ public class Operating : MonoBehaviour
     {
         line = GetComponent<LineRenderer>();
         movePointObject = GameObject.Find("!MoveTarget");
+        movePointObject.SetActive(false);
     }
 
     void Update()
@@ -66,39 +67,44 @@ public class Operating : MonoBehaviour
 
                     if (selectedZombie != null)
                     {
-                        selectedZombie.GetComponent<ChangeMaterial>().Change2();
+                        selectedZombie.GetComponent<ChangeMaterial>().ChangeNormal();
                     }
+
                     selectedZombie = hit.collider.GetComponent<ChildeCollider>().GetGameObject();
-                    selectedZombie.GetComponent<ChangeMaterial>().Change1();
+                    selectedZombie.GetComponent<ChangeMaterial>().ChangeSelected();
                 }
             }
         }
 
         if (selectedZombie != null)
-        { 
+        {
             //選択対象のGameObject取得
             if (hit.collider.tag == "Object")
             {
-                selectedObject = null;
-
                 if (selectedObject != null)
                 {
-                    selectedObject.GetComponent<ChangeMaterialMesh>().Change2();
+                    if (selectedObject.GetComponent<ChangeMaterialMesh>())
+                        selectedObject.GetComponent<ChangeMaterialMesh>().ChangeNormal();
+                    else
+                        selectedObject.GetComponent<ChangeMaterial>().ChangeNormal();
                 }
+                selectedObject = null;
 
                 selectedObject = hit.collider.gameObject;
-                selectedObject.GetComponent<ChangeMaterialMesh>().Change1();
+                selectedObject.GetComponent<ChangeMaterialMesh>().ChangeSelected();
             }
 
             //移動
             if (hit.collider.tag == "Map")
             {
-                selectedObject = null;
-
                 if (selectedObject != null)
                 {
-                    selectedObject.GetComponent<ChangeMaterialMesh>().Change2();
+                    if (selectedObject.GetComponent<ChangeMaterialMesh>())
+                        selectedObject.GetComponent<ChangeMaterialMesh>().ChangeNormal();
+                    else
+                        selectedObject.GetComponent<ChangeMaterial>().ChangeNormal();
                 }
+                selectedObject = null;
 
                 movePointObject.SetActive(true);
                 movePointObject.transform.position = hit.point;
@@ -111,15 +117,17 @@ public class Operating : MonoBehaviour
             //生体認証
             if (hit.collider.tag == "BiometricsMachine")
             {
-                selectedObject = null;
-
                 if (selectedObject != null)
                 {
-                    selectedObject.GetComponent<ChangeMaterialMesh>().Change2();
+                    if (selectedObject.GetComponent<ChangeMaterialMesh>())
+                        selectedObject.GetComponent<ChangeMaterialMesh>().ChangeNormal();
+                    else
+                        selectedObject.GetComponent<ChangeMaterial>().ChangeNormal();
                 }
+                selectedObject = null;
 
                 selectedObject = hit.collider.gameObject;
-                selectedObject.GetComponent<ChangeMaterialMesh>().Change1();
+                selectedObject.GetComponent<ChangeMaterialMesh>().ChangeSelected();
 
                 selectedZombie.GetComponent<Zombie>().Authentication(selectedObject.GetComponent<Biometrics>().MovePoint, selectedObject.transform.position);
             }
@@ -127,15 +135,17 @@ public class Operating : MonoBehaviour
             //隔壁持ち上げ
             if (hit.collider.tag == "Bulkhead")
             {
-                selectedObject = null;
-
                 if (selectedObject != null)
                 {
-                    selectedObject.GetComponent<ChangeMaterial>().Change2();
+                    if (selectedObject.GetComponent<ChangeMaterialMesh>())
+                        selectedObject.GetComponent<ChangeMaterialMesh>().ChangeNormal();
+                    else
+                        selectedObject.GetComponent<ChangeMaterial>().ChangeNormal();
                 }
+                selectedObject = null;
 
                 selectedObject = hit.collider.gameObject;
-                selectedObject.GetComponent<ChangeMaterial>().Change1();
+                selectedObject.GetComponent<ChangeMaterial>().ChangeSelected();
 
                 selectedZombie.GetComponent<Zombie>().LiftBulkhead(selectedObject.GetComponent<Bulkhead>().MovePoint, selectedObject.transform.position);
             }

@@ -24,20 +24,23 @@ Material:
     m_Floats:
     - first:
         name: _Radius
-      second: 0.1
+      second: 0
     - first:
         name: _RadiusPower
-      second: 7
+      second: 5
     - first:
         name: _RadiusSpeed
-      second: 50
+      second: 60
     - first:
         name: _RadiusWidth
       second: 0.2
+    - first:
+        name: _isDisplay
+      second: 0
     m_Colors:
     - first:
         name: _Center
       second: {r: 0, g: 0, b: 0, a: 0}
     - first:
         name: _RadiusColor
-      second: {r: 0, g: 1, b: 0, a: 1}
+      second: {r: 0, g: 1, b: 0.42068958, a: 1}

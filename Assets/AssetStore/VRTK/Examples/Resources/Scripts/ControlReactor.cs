@@ -19,6 +19,8 @@
         private void HandleChange(float value, float normalizedValue)
         {
             bool b = (normalizedValue != 0);
+
+            go.text = "bool: " + b + " value: " + value + " normalizedValue: " + normalizedValue;
         }
     }
 }

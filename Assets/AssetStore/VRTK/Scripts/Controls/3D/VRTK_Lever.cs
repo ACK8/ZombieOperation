@@ -77,15 +77,15 @@ namespace VRTK
                 switch (direction)
                 {
                     case LeverDirection.x:
-                        hj.anchor = (bounds.extents.y > bounds.extents.z) ? new Vector3(0, bounds.extents.y / transform.lossyScale.y, 0) : new Vector3(0, 0, bounds.extents.z / transform.lossyScale.z);
+                        hj.anchor = new Vector3(0f, 0f, 0f);// (bounds.extents.y > bounds.extents.z) ? new Vector3(0, bounds.extents.y / transform.lossyScale.y, 0) : new Vector3(0, 0, bounds.extents.z / transform.lossyScale.z);
                         break;
                     case LeverDirection.y:
                         hj.axis = new Vector3(0, 1, 0);
-                        hj.anchor = (bounds.extents.x > bounds.extents.z) ? new Vector3(bounds.extents.x / transform.lossyScale.x, 0, 0) : new Vector3(0, 0, bounds.extents.z / transform.lossyScale.z);
+                        hj.anchor = new Vector3(0f, 0f, 0f); //(bounds.extents.x > bounds.extents.z) ? new Vector3(bounds.extents.x / transform.lossyScale.x, 0, 0) : new Vector3(0, 0, bounds.extents.z / transform.lossyScale.z);
                         break;
                     case LeverDirection.z:
                         hj.axis = new Vector3(0, 0, 1);
-                        hj.anchor = (bounds.extents.y > bounds.extents.x) ? new Vector3(0, bounds.extents.y / transform.lossyScale.y, 0) : new Vector3(bounds.extents.x / transform.lossyScale.x, 0);
+                        hj.anchor = new Vector3(0f, 0f, 0f); //(bounds.extents.y > bounds.extents.x) ? new Vector3(0, bounds.extents.y / transform.lossyScale.y, 0) : new Vector3(bounds.extents.x / transform.lossyScale.x, 0);
                         break;
                 }
                 hj.anchor *= -1; // subdirection detection not yet implemented

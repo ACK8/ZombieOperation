@@ -271,19 +271,6 @@ public class Zombie : MonoBehaviour
         anim.Update(0);
         AnimatorStateInfo stateInfo = anim.GetCurrentAnimatorStateInfo(0);
 
-        //攻撃アニメーション
-        if (stateInfo.IsName("Base Layer.Attack"))
-        {
-            if (attackAnimRate <= stateInfo.normalizedTime && stateInfo.normalizedTime < (attackAnimRate + 0.15f))
-            {
-                capsuleCol.enabled = true;
-            }
-            else
-            {
-                capsuleCol.enabled = false;
-            }
-        }
-
         //認証アニメーション
         if (stateInfo.IsName("Base Layer.Authentication"))
         {
@@ -297,6 +284,19 @@ public class Zombie : MonoBehaviour
             capsuleCol.enabled = false;
         }
 
+        //攻撃アニメーション
+        if (stateInfo.IsName("Base Layer.Attack"))
+        {
+            if (attackAnimRate <= stateInfo.normalizedTime && stateInfo.normalizedTime < (attackAnimRate + 0.1f))
+            {
+                capsuleCol.enabled = true;
+            }
+            else
+            {
+                capsuleCol.enabled = false;
+            }
+        }
+        
         //倒れる
         if (!_isAlive)
         {

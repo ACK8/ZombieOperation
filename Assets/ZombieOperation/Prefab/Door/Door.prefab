@@ -23,6 +23,7 @@ GameObject:
   - component: {fileID: 23000014072792326}
   - component: {fileID: 65000013780221418}
   - component: {fileID: 54000014196198344}
+  - component: {fileID: 208390034633774112}
   - component: {fileID: 114000011473727028}
   m_Layer: 0
   m_Name: Door
@@ -125,3 +126,18 @@ MonoBehaviour:
   moveingDistance: 1
   isRotate90D: 1
   isOpenLeft: 0
+--- !u!208 &208390034633774112
+NavMeshObstacle:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000011178529030}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.05, y: 0.5, z: 1}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 0}
+  m_TimeToStationary: 0.5

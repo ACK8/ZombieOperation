@@ -1,0 +1,123 @@
+fileFormatVersion: 2
+guid: ecc04503cd669c246b885b9d3cece8e9
+timeCreated: 1485222432
+licenseType: Free
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: Bank-Safe Bank-Safe-Door
+    100002: Bank-Safe Bank-Safe-Door Arms
+    100004: Bank-Safe Bank-Safe-Door Bars
+    100006: Bank-Safe Bank-Safe-Door Hand
+    100008: Bank-Safe Bank-Safe-Door Lock
+    100010: Bank-Safe Bank-Safe-Door Lock Knob
+    100012: Bank-Safe Bank-Safe-Door Lock Knob Rubber
+    100014: Bank-Safe Bank-Safe-Main
+    100016: Bank-Safe Bank-Safe-Main Bank-Safe-Jt
+    100018: Bank-Safe Bank-Safe-Main Bank-Safe-Sh
+    100020: //RootNode
+    400000: Bank-Safe Bank-Safe-Door
+    400002: Bank-Safe Bank-Safe-Door Arms
+    400004: Bank-Safe Bank-Safe-Door Bars
+    400006: Bank-Safe Bank-Safe-Door Hand
+    400008: Bank-Safe Bank-Safe-Door Lock
+    400010: Bank-Safe Bank-Safe-Door Lock Knob
+    400012: Bank-Safe Bank-Safe-Door Lock Knob Rubber
+    400014: Bank-Safe Bank-Safe-Main
+    400016: Bank-Safe Bank-Safe-Main Bank-Safe-Jt
+    400018: Bank-Safe Bank-Safe-Main Bank-Safe-Sh
+    400020: //RootNode
+    2300000: Bank-Safe Bank-Safe-Door
+    2300002: Bank-Safe Bank-Safe-Door Arms
+    2300004: Bank-Safe Bank-Safe-Door Bars
+    2300006: Bank-Safe Bank-Safe-Door Hand
+    2300008: Bank-Safe Bank-Safe-Door Lock
+    2300010: Bank-Safe Bank-Safe-Door Lock Knob
+    2300012: Bank-Safe Bank-Safe-Door Lock Knob Rubber
+    2300014: Bank-Safe Bank-Safe-Main
+    2300016: Bank-Safe Bank-Safe-Main Bank-Safe-Jt
+    2300018: Bank-Safe Bank-Safe-Main Bank-Safe-Sh
+    3300000: Bank-Safe Bank-Safe-Door
+    3300002: Bank-Safe Bank-Safe-Door Arms
+    3300004: Bank-Safe Bank-Safe-Door Bars
+    3300006: Bank-Safe Bank-Safe-Door Hand
+    3300008: Bank-Safe Bank-Safe-Door Lock
+    3300010: Bank-Safe Bank-Safe-Door Lock Knob
+    3300012: Bank-Safe Bank-Safe-Door Lock Knob Rubber
+    3300014: Bank-Safe Bank-Safe-Main
+    3300016: Bank-Safe Bank-Safe-Main Bank-Safe-Jt
+    3300018: Bank-Safe Bank-Safe-Main Bank-Safe-Sh
+    4300000: Bank-Safe Bank-Safe-Main Bank-Safe-Jt
+    4300002: Bank-Safe Bank-Safe-Door Lock Knob Rubber
+    4300004: Bank-Safe Bank-Safe-Door Lock Knob
+    4300006: Bank-Safe Bank-Safe-Door Bars
+    4300008: Bank-Safe Bank-Safe-Main Bank-Safe-Sh
+    4300010: Bank-Safe Bank-Safe-Door Lock
+    4300012: Bank-Safe Bank-Safe-Door Arms
+    4300014: Bank-Safe Bank-Safe-Main
+    4300016: Bank-Safe Bank-Safe-Door Hand
+    4300018: Bank-Safe Bank-Safe-Door
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleRotations: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

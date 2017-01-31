@@ -2066,6 +2066,11 @@ Prefab:
       propertyPath: m_LocalScale.z
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114438923611828912, guid: 43fec5a719880b745b7c5dd037edb35b,
+        type: 2}
+      propertyPath: isRotate90D
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 43fec5a719880b745b7c5dd037edb35b, type: 2}
   m_IsPrefabParent: 0
@@ -3900,6 +3905,12 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 18ec919cc51883549af4f8fdcac5a0bd, type: 2}
   m_IsPrefabParent: 0
+--- !u!114 &1952314537 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114000011473727028, guid: 18ec919cc51883549af4f8fdcac5a0bd,
+    type: 2}
+  m_PrefabInternal: {fileID: 1952314536}
+  m_Script: {fileID: 11500000, guid: 8bf590583c4c1f543b1a200f0378f403, type: 3}
 --- !u!4 &1952314538 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4000012109174390, guid: 18ec919cc51883549af4f8fdcac5a0bd,
@@ -4272,6 +4283,11 @@ Prefab:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114779389310940474, guid: 829dd39cd6fa04847b236cace02ce9c9,
+        type: 2}
+      propertyPath: doorScript
+      value: 
+      objectReference: {fileID: 1952314537}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 829dd39cd6fa04847b236cace02ce9c9, type: 2}
   m_IsPrefabParent: 0

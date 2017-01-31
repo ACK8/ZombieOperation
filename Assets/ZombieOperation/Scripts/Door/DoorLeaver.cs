@@ -5,7 +5,7 @@ using UnityEngine;
 public class DoorLeaver : MonoBehaviour
 {
     [SerializeField]
-    private Door door;
+    private Shutter door;
 
     private bool isOpen = false;
 
@@ -22,7 +22,7 @@ public class DoorLeaver : MonoBehaviour
         if(b && !isOpen)
         {
             isOpen = true;
-            door.MoveDoor();
+            door.Open();
         }
     }
 }

@@ -54,7 +54,7 @@ GameObject:
   - component: {fileID: 33967109662433542}
   - component: {fileID: 23218256903321446}
   - component: {fileID: 114888490774985544}
-  - component: {fileID: 114161025904339518}
+  - component: {fileID: 114903326505420008}
   m_Layer: 0
   m_Name: lever handle
   m_TagString: Untagged
@@ -179,18 +179,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1905091678990604}
   m_Mesh: {fileID: 4300000, guid: 8c9c596948a000f44bdde6754dea4761, type: 3}
---- !u!114 &114161025904339518
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1905091678990604}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e35fb72ed78c6d744bca85c81ba64751, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  door: {fileID: 0}
 --- !u!114 &114888490774985544
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -212,3 +200,15 @@ MonoBehaviour:
   minAngle: 0
   maxAngle: 100
   stepSize: 1
+--- !u!114 &114903326505420008
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1905091678990604}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e35fb72ed78c6d744bca85c81ba64751, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  door: {fileID: 0}

@@ -20,6 +20,9 @@ public class RadiusCenter : MonoBehaviour
 
     void Update()
     {
+        if (!movePoint)
+            movePoint = GameObject.Find("!MoveTarget").transform;
+
         radiusMaterial.SetVector("_Center", movePoint.position);
         radiusMaterial.SetColor("_RadiusColor", color);
         radiusMaterial.SetFloat("_RadiusPower", power);

@@ -247,7 +247,7 @@ namespace VRTK
                 presenceCollider = gameObject.AddComponent<CapsuleCollider>();
                 presenceCollider.center = new Vector3(0f, 1f, 0f);
                 presenceCollider.height = 1f;
-                presenceCollider.radius = 0.1f;
+                presenceCollider.radius = 0.15f;
                 customCollider = false;
             }
 

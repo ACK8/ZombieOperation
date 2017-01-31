@@ -24,10 +24,8 @@ public class EventZombie : MonoBehaviour
     {
         if (hit.tag == "Injection")
         {
-            MedicineType t = hit.GetComponent<InjectionCollision>().GetMedicineType();
-
             //注射
-            if (!isZombie && t == MedicineType.Zombie)
+            if (!isZombie)
             {
                 injectionVolume += Time.deltaTime;
             }

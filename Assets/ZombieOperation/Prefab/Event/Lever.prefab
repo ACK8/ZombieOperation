@@ -37,6 +37,7 @@ GameObject:
   - component: {fileID: 33043870453927004}
   - component: {fileID: 23807131591155320}
   - component: {fileID: 114129171541728162}
+  - component: {fileID: 114434253909372362}
   m_Layer: 0
   m_Name: lever handle
   m_TagString: Untagged
@@ -199,3 +200,15 @@ MonoBehaviour:
   minAngle: 0
   maxAngle: 100
   stepSize: 1
+--- !u!114 &114434253909372362
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1613834804466402}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e35fb72ed78c6d744bca85c81ba64751, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  door: {fileID: 0}

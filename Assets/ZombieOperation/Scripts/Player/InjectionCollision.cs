@@ -37,7 +37,7 @@ public class InjectionCollision : MonoBehaviour
                 hit.GetComponent<EventZombie>().isZombie = true;
 
                 break;
-                
+
             case "Medicine_A":
                 syringe.AddMedicine(MedicineType.Zombie);
                 Destroy(hit.gameObject);
@@ -53,5 +53,15 @@ public class InjectionCollision : MonoBehaviour
     public MedicineType GetMedicineType()
     {
         return syringe.medicineType;
+    }
+
+    public int zombieMedicineNumber
+    {
+        get { return syringe.zombieMedicineNumber; }
+    }
+
+    public int strengthMedicineNumber
+    {
+        get { return syringe.strengthMedicineNumber; }
     }
 }

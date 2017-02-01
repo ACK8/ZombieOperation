@@ -296,7 +296,7 @@ public class Zombie : MonoBehaviour
                 capsuleCol.enabled = false;
             }
         }
-        
+
         //倒れる
         if (!_isAlive)
         {
@@ -356,20 +356,27 @@ public class Zombie : MonoBehaviour
     {
         if (hit.tag == "Injection")
         {
-            MedicineType t = hit.GetComponent<InjectionCollision>().GetMedicineType();
+            InjectionCollision ic = hit.GetComponent<InjectionCollision>();
+            MedicineType t = ic.GetMedicineType();
 
             //注射
             if (!isZombie && t == MedicineType.Zombie)
             {
-                injectionVolume += Time.deltaTime;
-                injectionUI.SetVolume(injectionVolume);
+                if (0 < ic.zombieMedicineNumber)
+                {
+                    injectionVolume += Time.deltaTime;
+                    injectionUI.SetVolume(injectionVolume);
+                }
             }
 
             //ゾンビ強化
             if (isZombie && t == MedicineType.Strength)
             {
-                strengthVolume += Time.deltaTime;
-                injectionUI.SetVolume(strengthVolume);
+                if (0 < ic.strengthMedicineNumber)
+                {
+                    strengthVolume += Time.deltaTime;
+                    injectionUI.SetVolume(strengthVolume);
+                }
             }
         }
     }

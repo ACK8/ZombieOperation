@@ -98,18 +98,12 @@ public class Syringe : MonoBehaviour
         switch (medicine)
         {
             case MedicineType.Zombie:
-                if (0 < zombieMedicineNum)
-                {
-                    injectionJudgment.enabled = true;
-                }
-
+                injectionJudgment.enabled = true;
+                
                 break;
             case MedicineType.Strength:
-                if (0 < strengthMedicineNum)
-                {
-                    injectionJudgment.enabled = true;
-                }
-
+                injectionJudgment.enabled = true;
+                
                 break;
         }
     }

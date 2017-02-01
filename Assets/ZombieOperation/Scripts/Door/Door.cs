@@ -7,9 +7,13 @@ public class Door : MonoBehaviour
     [SerializeField]
     private float moveingDistance = 1;  //開く距離
     [SerializeField]
+    private float autoCloseTime = 2f;
+    [SerializeField]
     private bool isRotate90D = false;   //ドアが90度回転しているか
     [SerializeField]
     private bool isOpenLeft = false;
+    [SerializeField]
+    private bool isAutoClose = false;
 
     private Vector3 initalPos;
     private bool _isOpen = false;    //現在ドアが開いているか
@@ -31,6 +35,7 @@ public class Door : MonoBehaviour
         if (_isOpen)
         {
             OpenDoor();
+            Invoke("AutoClose", autoCloseTime);
         }
         else
         {
@@ -42,7 +47,7 @@ public class Door : MonoBehaviour
     {
         Vector3 targetPos = transform.position;
 
-        if(isOpenLeft)
+        if (isOpenLeft)
         {
             if (isRotate90D)
             {
@@ -149,6 +154,11 @@ public class Door : MonoBehaviour
             }
         }
         transform.position = targetPos;
+    }
+
+    void AutoClose()
+    {
+        _isOpen = false;
     }
 
     void OnCollisionEnter(Collision hit)

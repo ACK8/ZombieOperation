@@ -42,14 +42,4 @@ public class AutomaticDoorSensor : MonoBehaviour
             }
         }
     }
-
-    void OnTriggerExit(Collider hit)
-    {
-        Invoke("CloseDoor", closeWaitTime);
-    }
-
-    void CloseDoor()
-    {
-        doorScript.MoveDoor();
-    }
 }

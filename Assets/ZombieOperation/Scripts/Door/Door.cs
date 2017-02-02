@@ -35,7 +35,9 @@ public class Door : MonoBehaviour
         if (_isOpen)
         {
             OpenDoor();
-            Invoke("AutoClose", autoCloseTime);
+
+            if (isAutoClose)
+                Invoke("AutoClose", autoCloseTime);
         }
         else
         {

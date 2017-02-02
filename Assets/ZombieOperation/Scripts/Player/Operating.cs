@@ -136,7 +136,8 @@ public class Operating : MonoBehaviour
             if (hit.collider.tag == "Bulkhead")
             {
                 //壁が開いているときは呼ばない
-                if (selectedObject.GetComponent<Bulkhead>().isOpen) return;
+                if (hit.collider.GetComponent<Bulkhead>().isOpen) return;
+                if (!selectedZombie.GetComponent<Zombie>().isStrengthZombie) return;
 
                 if (selectedObject != null)
                 {

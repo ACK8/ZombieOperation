@@ -145,7 +145,7 @@ public class Zombie : MonoBehaviour
     //隔壁持ち上げ
     void LiftBulkheadUpdate()
     {
-        if (BulkheadPos != null && !isLiftUpComp)
+        if (BulkheadPos != null && !isLiftUpComp && isStrengthZombie)
         {
             if (Vector3.Distance(transform.position, BulkheadPos.transform.position) <= 0.4f)
             {
@@ -324,6 +324,7 @@ public class Zombie : MonoBehaviour
         }
     }
 
+    //HPを減らす
     public void DecrementHP(int val)
     {
         _hp -= val;
@@ -367,7 +368,7 @@ public class Zombie : MonoBehaviour
             }
 
             //ゾンビ強化
-            if (isZombie && t == MedicineType.Strength)
+            if (isZombie && !isStrengthZombie && t == MedicineType.Strength)
             {
                 if (0 < ic.strengthMedicineNumber)
                 {

@@ -23,8 +23,11 @@ public class Bulkhead : MonoBehaviour
     {
         if (hit.tag == "ZombieBody")
         {
-            anime.SetBool("Wallflag", true);
-            isOpen = true;
+            if (hit.gameObject.GetComponent<Zombie>().isStrengthZombie)
+            {
+                anime.SetBool("Wallflag", true);
+                isOpen = true;
+            }
         }
     }
 }

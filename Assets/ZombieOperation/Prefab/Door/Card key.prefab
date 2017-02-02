@@ -40,8 +40,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000010872717206}
   m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -4.748, y: 1.35, z: 1.356}
+  m_LocalScale: {x: 2, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -109,8 +109,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.009570936, y: 0.16000007, z: 0.22501674}
-  m_Center: {x: -4.656613e-10, y: -0.000000007450581, z: 0}
+  m_Size: {x: 0.009570938, y: 0.16000012, z: 0.22501674}
+  m_Center: {x: -4.656614e-10, y: -0.000000007450582, z: 0}
 --- !u!65 &65000014110673860
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -121,7 +121,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.05, y: 0.08, z: 0.15}
+  m_Size: {x: 0.04, y: 0.08, z: 0.15}
   m_Center: {x: -4.656613e-10, y: -0.000000007450581, z: 0}
 --- !u!114 &114000010369418394
 MonoBehaviour:
@@ -152,7 +152,7 @@ MonoBehaviour:
   hideControllerOnGrab: 0
   stayGrabbedOnTeleport: 1
   grabAttachMechanic: 0
-  detachThreshold: 210
+  detachThreshold: 200
   springJointStrength: 500
   springJointDamper: 50
   throwMultiplier: 1

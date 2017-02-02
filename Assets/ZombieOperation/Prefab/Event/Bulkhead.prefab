@@ -83,7 +83,7 @@ GameObject:
   - component: {fileID: 95000012472168614}
   m_Layer: 0
   m_Name: Bulkhead
-  m_TagString: Untagged
+  m_TagString: Bulkhead
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -101,7 +101,7 @@ GameObject:
   - component: {fileID: 114076360022574276}
   m_Layer: 0
   m_Name: Bone
-  m_TagString: Untagged
+  m_TagString: Bulkhead
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

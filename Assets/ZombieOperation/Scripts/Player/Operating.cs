@@ -135,6 +135,9 @@ public class Operating : MonoBehaviour
             //隔壁持ち上げ
             if (hit.collider.tag == "Bulkhead")
             {
+                //壁が開いているときは呼ばない
+                if (selectedObject.GetComponent<Bulkhead>().isOpen) return;
+
                 if (selectedObject != null)
                 {
                     if (selectedObject.GetComponent<ChangeMaterialMesh>())

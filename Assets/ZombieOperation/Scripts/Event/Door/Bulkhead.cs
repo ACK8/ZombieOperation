@@ -3,24 +3,28 @@ using System.Collections;
 
 public class Bulkhead : MonoBehaviour
 {
-    public GameObject MovePoint;
-	public Animator anime;
+    [HideInInspector]
+    public bool isOpen = false;
 
-	void Start ()
+    public GameObject MovePoint;
+    public Animator anime;
+
+    void Start()
     {
-		
-	}
-	
-	void Update ()
-    {
-		
+
     }
 
-	void OnTriggerEnter(Collider hit)
-	{
-		if(hit.tag=="ZombieBody")
-		{
-			anime.SetBool ("Wallflag", true);
-		}
-	}
+    void Update()
+    {
+
+    }
+
+    void OnTriggerEnter(Collider hit)
+    {
+        if (hit.tag == "ZombieBody")
+        {
+            anime.SetBool("Wallflag", true);
+            isOpen = true;
+        }
+    }
 }

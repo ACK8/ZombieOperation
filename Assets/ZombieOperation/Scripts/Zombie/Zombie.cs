@@ -37,7 +37,7 @@ public class Zombie : MonoBehaviour
     private GameObject destructionTarget = null;
     private GameObject moveTargetPos = null;
     private bool isAuthenticationComp = false;  //認証完了
-    private bool isLift = false;
+    private bool isLiftUpComp = false;  //隔壁持ち上げ完了
 
     void Start()
     {
@@ -145,21 +145,18 @@ public class Zombie : MonoBehaviour
     //隔壁持ち上げ
     void LiftBulkheadUpdate()
     {
-        if (BulkheadPos != null)
+        if (BulkheadPos != null && !isLiftUpComp)
         {
             if (Vector3.Distance(transform.position, BulkheadPos.transform.position) <= 0.4f)
             {
-                if (!isLift)
-                {
-                    _isMove = false;
-                    isLift = true;
-                    navMesh.Stop();
-                    navMesh.speed = 0f;
-                    navMesh.updateRotation = true;
-                    transform.LookAt(new Vector3(lookatPosition.x, transform.position.y, lookatPosition.z));
-                    capsuleCol.enabled = true;
-                    anim.SetTrigger("Lift");
-                }
+                _isMove = false;
+                isLiftUpComp = true;
+                navMesh.Stop();
+                navMesh.speed = 0f;
+                navMesh.updateRotation = true;
+                transform.LookAt(new Vector3(lookatPosition.x, transform.position.y, lookatPosition.z));
+                capsuleCol.enabled = true;
+                anim.SetTrigger("Lift");
             }
             else
             {
@@ -168,10 +165,10 @@ public class Zombie : MonoBehaviour
         }
         else
         {
-            if (!isAuthenticationComp)
+            if (!isLiftUpComp)
             {
-                //倒れた状態
-                //anim.Play("GetUp", -1, 0.0f);
+                Wait();
+                isLiftUpComp = true;
             }
         }
     }
@@ -246,7 +243,7 @@ public class Zombie : MonoBehaviour
         BulkheadPos = pos.transform;
         lookatPosition = lookatPos;
         _isMove = true;
-        isLift = false;
+        isLiftUpComp = false;
     }
 
     void Init()

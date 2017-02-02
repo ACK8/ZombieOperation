@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: 647726619afcd7c44bc9fc73f3ada158
-timeCreated: 1485226779
+guid: 91274c4d8d367f640b01621d843385c9
+timeCreated: 1486015221
 licenseType: Free
 ModelImporter:
   serializedVersion: 19
@@ -8,15 +8,13 @@ ModelImporter:
     100000: Armature
     100002: Bone
     100004: Bone_end
-    100006: Cube
-    100008: //RootNode
+    100006: //RootNode
+    100008: Cube
     400000: Armature
     400002: Bone
     400004: Bone_end
-    400006: Cube
-    400008: //RootNode
-    2300000: Cube
-    3300000: Cube
+    400006: //RootNode
+    400008: Cube
     4300000: Cube
     7400000: Armature|ArmatureAction
     9500000: //RootNode
@@ -35,13 +33,12 @@ ModelImporter:
     animationImportWarnings: 
     animationRetargetingWarnings: 
     animationDoRetargetingWarnings: 0
-    animationCompression: 3
+    animationCompression: 1
     animationRotationError: 0.5
     animationPositionError: 0.5
     animationScaleError: 0.5
     animationWrapMode: 0
-    extraExposedTransformPaths:
-    - Armature/Bone
+    extraExposedTransformPaths: []
     clipAnimations: []
     isReadable: 1
   meshes:
@@ -68,6 +65,7 @@ ModelImporter:
   importAnimation: 1
   copyAvatar: 0
   humanDescription:
+    serializedVersion: 2
     human: []
     skeleton: []
     armTwist: 0.5
@@ -78,7 +76,10 @@ ModelImporter:
     legStretch: 0.05
     feetSpacing: 0
     rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
     hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
   animationType: 2
   humanoidOversampling: 1

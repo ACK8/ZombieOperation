@@ -140,7 +140,7 @@ MonoBehaviour:
   hideControllerOnGrab: 0
   stayGrabbedOnTeleport: 1
   grabAttachMechanic: 0
-  detachThreshold: 1500
+  detachThreshold: 210
   springJointStrength: 500
   springJointDamper: 50
   throwMultiplier: 1

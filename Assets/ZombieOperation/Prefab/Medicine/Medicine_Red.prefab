@@ -22,8 +22,8 @@ GameObject:
   - component: {fileID: 33000013130208748}
   - component: {fileID: 23000012941892750}
   - component: {fileID: 54000011209146406}
-  - component: {fileID: 114000010206644462}
   - component: {fileID: 65000010910505034}
+  - component: {fileID: 114000010206644462}
   m_Layer: 10
   m_Name: Medicine_Red
   m_TagString: Medicine_B
@@ -140,7 +140,7 @@ MonoBehaviour:
   hideControllerOnGrab: 0
   stayGrabbedOnTeleport: 1
   grabAttachMechanic: 0
-  detachThreshold: 1500
+  detachThreshold: 210
   springJointStrength: 500
   springJointDamper: 50
   throwMultiplier: 1

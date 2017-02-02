@@ -415,6 +415,10 @@ Prefab:
       propertyPath: m_RootOrder
       value: 24
       objectReference: {fileID: 0}
+    - target: {fileID: 1000012325302082, guid: 4d2f78aee15ba2a43945f0ea53d203c7, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4d2f78aee15ba2a43945f0ea53d203c7, type: 2}
   m_IsPrefabParent: 0
@@ -2485,6 +2489,10 @@ Prefab:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -62.37
       objectReference: {fileID: 0}
+    - target: {fileID: 1000010579839236, guid: 5c6dad8cb1739744ca7a610ef0988f47, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5c6dad8cb1739744ca7a610ef0988f47, type: 2}
   m_IsPrefabParent: 0
@@ -3260,6 +3268,11 @@ Prefab:
     - target: {fileID: 4000011380830440, guid: 2722533be42819c46b2e7c36ccd3bb11, type: 2}
       propertyPath: m_RootOrder
       value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000012507731814, guid: 2722533be42819c46b2e7c36ccd3bb11,
+        type: 2}
+      propertyPath: canMenuButtonInput
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2722533be42819c46b2e7c36ccd3bb11, type: 2}
@@ -5887,6 +5900,11 @@ Prefab:
     - target: {fileID: 1000013071566630, guid: 70f16149931791941bd989c49c514d69, type: 2}
       propertyPath: m_Layer
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000013289263528, guid: 70f16149931791941bd989c49c514d69,
+        type: 2}
+      propertyPath: handType
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 70f16149931791941bd989c49c514d69, type: 2}

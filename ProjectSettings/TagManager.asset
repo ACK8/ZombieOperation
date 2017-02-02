@@ -41,7 +41,7 @@ TagManager:
   - 
   - 
   - 
-  - 'HaveItems '
+  - NoHitCheck
   - Zombie
   - Player
   - 

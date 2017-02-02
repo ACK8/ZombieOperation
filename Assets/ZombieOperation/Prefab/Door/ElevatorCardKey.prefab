@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 23146837564907448}
   - component: {fileID: 64812708055134062}
   - component: {fileID: 114289725782943314}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: ElevatorCardKey
   m_TagString: Untagged
   m_Icon: {fileID: 0}

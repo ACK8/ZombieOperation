@@ -19,7 +19,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4000012327512102}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Lever
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -38,7 +38,7 @@ GameObject:
   - component: {fileID: 23807131591155320}
   - component: {fileID: 114129171541728162}
   - component: {fileID: 114434253909372362}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: lever handle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -55,7 +55,7 @@ GameObject:
   - component: {fileID: 4760173505310020}
   - component: {fileID: 33057297223623608}
   - component: {fileID: 23738789783488168}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: 'lever '
   m_TagString: Untagged
   m_Icon: {fileID: 0}

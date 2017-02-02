@@ -19,7 +19,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4000013750154060}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: MovePoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -39,7 +39,7 @@ GameObject:
   - component: {fileID: 64000010918078058}
   - component: {fileID: 114000011973575792}
   - component: {fileID: 114000010685172414}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: BiometricsMachine
   m_TagString: BiometricsMachine
   m_Icon: {fileID: 0}
@@ -56,7 +56,7 @@ GameObject:
   - component: {fileID: 4082144728965062}
   - component: {fileID: 33747908727317504}
   - component: {fileID: 23649801959225310}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Icon
   m_TagString: Untagged
   m_Icon: {fileID: 0}

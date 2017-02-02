@@ -19,7 +19,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4216477201470908}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: DoorLever
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -36,7 +36,7 @@ GameObject:
   - component: {fileID: 4373814519268840}
   - component: {fileID: 33906090358801642}
   - component: {fileID: 23886153207831818}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: 'lever '
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -55,7 +55,7 @@ GameObject:
   - component: {fileID: 23218256903321446}
   - component: {fileID: 114888490774985544}
   - component: {fileID: 114903326505420008}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: lever handle
   m_TagString: Untagged
   m_Icon: {fileID: 0}

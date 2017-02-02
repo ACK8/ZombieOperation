@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 33000011124619198}
   - component: {fileID: 23000013406653980}
   - component: {fileID: 65000010799143862}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: BackToTitle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -40,7 +40,7 @@ GameObject:
   - component: {fileID: 33000010734265910}
   - component: {fileID: 23000010694829818}
   - component: {fileID: 65000012696903208}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Restart
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -56,7 +56,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4000010521515846}
   - component: {fileID: 114000011601133192}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Menu
   m_TagString: Untagged
   m_Icon: {fileID: 0}

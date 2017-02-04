@@ -341,7 +341,7 @@ public class Zombie : MonoBehaviour
         //障害物破壊
         if (hit.tag == "Object" && hit.gameObject == destructionTarget)
         {
-            hit.gameObject.GetComponent<DestructionObject>().DecreaseEnduranceValue();
+            hit.gameObject.GetComponent<DestructionObject>().DecreaseEnduranceValue(hit);
         }
 
         if (hit.tag == "Injection")

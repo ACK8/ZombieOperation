@@ -20,7 +20,7 @@ public class Mouse : Zombie
         //障害物破壊
         if (hit.tag == "Object")
         {
-            hit.gameObject.GetComponent<DestructionObject>().DecreaseEnduranceValue();
+            hit.gameObject.GetComponent<DestructionObject>().DecreaseEnduranceValue(hit);
         }
     }
 }

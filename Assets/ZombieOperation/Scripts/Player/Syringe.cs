@@ -11,6 +11,8 @@ public enum MedicineType
 public class Syringe : MonoBehaviour
 {
     [SerializeField]
+    private GameObject[] particle;  //薬吸引時のパーティクル
+    [SerializeField]
     private CapsuleCollider injectionJudgment; //注射中を判定する用のコライダー
     [SerializeField]
     private MeshRenderer pipeMat;
@@ -32,7 +34,12 @@ public class Syringe : MonoBehaviour
 
     void Update()
     {
-
+        //強化薬を持っていないときは強制的にゾンビ役を選択
+        if (strengthMedicineNum <= 0)
+        {
+            medicine = MedicineType.Zombie;
+            mat.color = zombieColor;
+        }
     }
 
     //薬追加
@@ -42,12 +49,10 @@ public class Syringe : MonoBehaviour
         {
             case MedicineType.Zombie:
                 zombieMedicineNum++;
-                print("AddMedicine: " + zombieMedicineNum);
 
                 break;
             case MedicineType.Strength:
                 strengthMedicineNum++;
-                print("AddMedicine: " + strengthMedicineNum);
 
                 break;
         }
@@ -62,7 +67,6 @@ public class Syringe : MonoBehaviour
                 if (0 < zombieMedicineNum)
                 {
                     zombieMedicineNum--;
-                    print("DecreaseMedicine: " + zombieMedicineNum);
                 }
 
                 break;
@@ -71,7 +75,6 @@ public class Syringe : MonoBehaviour
                 if (0 < strengthMedicineNum)
                 {
                     strengthMedicineNum--;
-                    print("DecreaseMedicine: " + strengthMedicineNum);
                 }
                 break;
         }
@@ -87,8 +90,12 @@ public class Syringe : MonoBehaviour
         }
         else if (t == 1)
         {
-            medicine = MedicineType.Strength;
-            mat.color = StrengthColor;
+            //強化薬を持っていると選択できる
+            if (0 < strengthMedicineNum)
+            {
+                medicine = MedicineType.Strength;
+                mat.color = StrengthColor;
+            }
         }
     }
 
@@ -99,11 +106,11 @@ public class Syringe : MonoBehaviour
         {
             case MedicineType.Zombie:
                 injectionJudgment.enabled = true;
-                
+
                 break;
             case MedicineType.Strength:
                 injectionJudgment.enabled = true;
-                
+
                 break;
         }
     }
@@ -114,16 +121,19 @@ public class Syringe : MonoBehaviour
         injectionJudgment.enabled = false;
     }
 
+    //薬の種類
     public MedicineType medicineType
     {
         get { return medicine; }
     }
 
+    //ゾンビ薬の数
     public int zombieMedicineNumber
     {
         get { return zombieMedicineNum; }
     }
 
+    //強化薬の数
     public int strengthMedicineNumber
     {
         get { return strengthMedicineNum; }

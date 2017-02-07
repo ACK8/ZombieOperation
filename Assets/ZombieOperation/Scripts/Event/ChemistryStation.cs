@@ -18,10 +18,8 @@ public class ChemistryStation : MonoBehaviour
     [SerializeField]
     private Door doorScr; //開閉するドアのスクリプト
     [SerializeField]
-    private MeshRenderer meshRend; 
-    [SerializeField]
-    private Light lamp;
-    
+    private LampColor lamp;
+
     private GameObject[] list = new GameObject[4]; //調合台に入っている薬
     private bool isPut_A = false;   //緑（蘇生薬）
     private bool isPut_B = false;   //赤（強化薬）
@@ -43,19 +41,19 @@ public class ChemistryStation : MonoBehaviour
         //ランプの色変更
         if (!isPut_A && !isPut_B && isPut_C && isPut_D)
         {
-            LampColor(Color.green);
+            lamp.ColorChange(Color.green);
         }
         else if (isPut_A && !isPut_B && isPut_C && isPut_D)
         {
-            LampColor(Color.green);
+            lamp.ColorChange(Color.green);
         }
         else if (isCreated)
         {
-            LampColor(Color.blue);
+            lamp.ColorChange(Color.blue);
         }
-        else if(!isCreated)
+        else if (!isCreated)
         {
-            LampColor(Color.red);
+            lamp.ColorChange(Color.red);
         }
     }
 
@@ -85,12 +83,6 @@ public class ChemistryStation : MonoBehaviour
         }
     }
 
-    //ランプの色変更
-    void LampColor(Color col)
-    {
-        lamp.color = col;
-        meshRend.materials[1].color = col;
-    }
 
     void CreateMedicine(GameObject m)
     {

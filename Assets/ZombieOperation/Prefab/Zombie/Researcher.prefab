@@ -1836,7 +1836,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000012684742238}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.27, y: 0.32, z: -4.33}
+  m_LocalPosition: {x: 2.38, y: -0.00000043037306, z: -1.66}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4000012830457016}
@@ -2140,7 +2140,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000013574508816}
-  m_LocalRotation: {x: -0.526441, y: -0.61019456, z: 0.5897262, w: -0.052397154}
+  m_LocalRotation: {x: -0.526441, y: -0.61019456, z: 0.5897262, w: -0.052397158}
   m_LocalPosition: {x: 0.007209208, y: 0.18578385, z: -0.01886137}
   m_LocalScale: {x: 1.0000001, y: 0.9999998, z: 0.9999999}
   m_Children:
@@ -2458,7 +2458,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isZombie: 0
   isStrengthZombie: 0
-  zombieChangeTime: 2
+  zombieChangeTime: 100
   injectionVolume: 0
   strengthVolume: 0
   capsuleCol: {fileID: 136000012378335580}

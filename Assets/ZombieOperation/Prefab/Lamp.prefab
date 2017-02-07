@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4783802307268528}
   - component: {fileID: 33435525514026490}
   - component: {fileID: 23804251478811628}
+  - component: {fileID: 114273147780595858}
   m_Layer: 10
   m_Name: Lamp
   m_TagString: Untagged
@@ -64,7 +65,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1195310023426706}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.0329, y: 1.033, z: 0.8117}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1.2, y: 1.2, z: 1.2}
   m_Children:
   - {fileID: 4616920772486218}
@@ -144,3 +145,16 @@ Light:
   m_BounceIntensity: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!114 &114273147780595858
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1195310023426706}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f12a30d1df0eb64a939c61d3ae7a4cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  meshRend: {fileID: 23804251478811628}
+  lamp: {fileID: 108023710178752604}

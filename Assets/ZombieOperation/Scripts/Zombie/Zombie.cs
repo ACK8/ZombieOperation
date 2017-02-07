@@ -5,7 +5,7 @@ public class Zombie : MonoBehaviour
 {
     public bool isZombie = false;
     public bool isStrengthZombie = false;
-    public float zombieChangeTime = 2.5f;    //注射時、ゾンビに変化する時間
+    public float zombieChangeTime = 100f;    //注射時、ゾンビに変化する時間
     [HideInInspector]
     public float injectionVolume = 0f;   //ゾンビ薬の注入量
     [HideInInspector]
@@ -24,7 +24,7 @@ public class Zombie : MonoBehaviour
     protected Animator anim;
     protected Transform seledtedTarget = null;
     protected OperatingType operatingType;
-    protected int _hp = 100;
+    //protected int _hp = 100;
     protected float navSpeed = 0f;
     protected bool _isMove = false;
     protected bool _isAlive = true;
@@ -337,12 +337,12 @@ public class Zombie : MonoBehaviour
     //HPを減らす
     public void DecrementHP(int val)
     {
-        _hp -= val;
+        injectionVolume -= val;
 
-        if (_hp <= 0)
+        if (injectionVolume <= 0)
         {
             _isAlive = false;
-            _hp = 0;
+            injectionVolume = 0;
         }
     }
 
@@ -374,7 +374,7 @@ public class Zombie : MonoBehaviour
                 //蘇生薬を持っているとき注入量を増やす
                 if (0 < ic.zombieMedicineNumber)
                 {
-                    injectionVolume += Time.deltaTime;
+                    injectionVolume += Time.deltaTime * 50f;
                     injectionUI.SetVolume(injectionVolume);
                 }
             }
@@ -385,7 +385,7 @@ public class Zombie : MonoBehaviour
                 //強化薬を持っているとき注入量を増やす
                 if (0 < ic.strengthMedicineNumber)
                 {
-                    strengthVolume += Time.deltaTime;
+                    strengthVolume += Time.deltaTime * 50f;
                     injectionUI.SetVolume(strengthVolume);
                 }
             }
@@ -416,11 +416,13 @@ public class Zombie : MonoBehaviour
         set { _isMove = value; }
     }
 
+    //HPの代わりに蘇生薬注入量
     public int hp
     {
-        get { return _hp; }
+        get { return (int)injectionVolume; }
     }
 
+    //生体認証に使用するID
     public int zombieID
     {
         get { return id; }

@@ -52,10 +52,14 @@ public class Enemy : MonoBehaviour
     private Transform playerTransform;
     private EEnemyState enemyState = EEnemyState.Patrol;
     private List<discoveryInfo> discoveryList = new List<discoveryInfo>();
-    Dictionary<int, float> temp = new Dictionary<int, float>();
+    private Dictionary<int, float> temp = new Dictionary<int, float>();
+    private Animator anim;
+    private float animBlend = 0f;
+
 
     void Start()
     {
+        anim = GetComponent<Animator>();
         navMeshAgent = GetComponent<UnityEngine.AI.NavMeshAgent>();
         navMeshAgent.SetDestination(patrolObject[patrolNumber].transform.position);
     }
@@ -91,7 +95,7 @@ public class Enemy : MonoBehaviour
 
             case EEnemyState.Patrol:
                 {
-
+                    animBlend = 1f;
                 }
                 break;
 
@@ -167,6 +171,8 @@ public class Enemy : MonoBehaviour
                 */
                 break;
         }
+
+        anim.SetFloat("Blend", Mathf.Lerp(anim.GetFloat("Blend"), animBlend, 0.5f));
     }
 
     void OnTriggerEnter(Collider collider)
@@ -208,6 +214,7 @@ public class Enemy : MonoBehaviour
                                     isTarget = true;
                                     isAdd = false;
                                     navMeshAgent.Stop();
+                                    animBlend = 0f;
                                 }
                             }
 

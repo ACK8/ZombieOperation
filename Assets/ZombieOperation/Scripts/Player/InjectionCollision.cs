@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+//注射器の先のコライダー
 public class InjectionCollision : MonoBehaviour
 {
     [SerializeField]
@@ -17,6 +18,7 @@ public class InjectionCollision : MonoBehaviour
                 switch (syringe.medicineType)
                 {
                     case MedicineType.Zombie:
+                        //死体に蘇生薬を注射
                         if (zombie.zombieChangeTime <= zombie.injectionVolume)
                         {
                             syringe.DecreaseMedicine(MedicineType.Zombie);
@@ -24,6 +26,7 @@ public class InjectionCollision : MonoBehaviour
                         break;
 
                     case MedicineType.Strength:
+                        //ゾンビに強化薬を注射
                         if (zombie.zombieChangeTime <= zombie.strengthVolume)
                         {
                             syringe.DecreaseMedicine(MedicineType.Strength);
@@ -39,11 +42,13 @@ public class InjectionCollision : MonoBehaviour
                 break;
 
             case "Medicine_A":
+                //蘇生薬を増やす
                 syringe.AddMedicine(MedicineType.Zombie);
                 Destroy(hit.gameObject);
                 break;
 
             case "Medicine_B":
+                //強化薬を増やす
                 syringe.AddMedicine(MedicineType.Strength);
                 Destroy(hit.gameObject);
                 break;

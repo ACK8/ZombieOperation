@@ -19,6 +19,7 @@ public class PushButton : MonoBehaviour
 
     void Update()
     {
+        //連続で押せないように、ボタンのスケール変更
         if (isTouched)
         {
             count += Time.deltaTime;
@@ -37,6 +38,7 @@ public class PushButton : MonoBehaviour
 
     private void OnTriggerEnter(Collider hit)
     {
+        //コントローラーのコライダーが触れると、UnityEvent実行
         if (hit.tag == "VRController_R" && !isTouched)
         {
             isTouched = true;

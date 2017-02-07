@@ -10,24 +10,23 @@ public class ChemistryStation : MonoBehaviour
     }
 
     [SerializeField]
-    private Transform outletPos;
+    private Transform outletPos; //完成した薬を出す位置
     [SerializeField]
-    private GameObject strengthMedicine;
+    private GameObject strengthMedicine; //強化薬のプレハブ
     [SerializeField]
-    private GameObject zombieMedicine;
+    private GameObject zombieMedicine; //蘇生薬のプレハブ
     [SerializeField]
-    private Door doorScr;
+    private Door doorScr; //開閉するドアのスクリプト
     [SerializeField]
-    private MeshRenderer meshRend;
+    private MeshRenderer meshRend; 
     [SerializeField]
     private Light lamp;
-
-    private State state = State.Wait;
-    private GameObject[] list = new GameObject[4];
-    private bool isPut_A = false;
-    private bool isPut_B = false;
-    private bool isPut_C = false;
-    private bool isPut_D = false;
+    
+    private GameObject[] list = new GameObject[4]; //調合台に入っている薬
+    private bool isPut_A = false;   //緑（蘇生薬）
+    private bool isPut_B = false;   //赤（強化薬）
+    private bool isPut_C = false;   //青
+    private bool isPut_D = false;   //ピンク
     private bool isDoorOpen = false;
 
     private bool isCreated = false;
@@ -35,11 +34,13 @@ public class ChemistryStation : MonoBehaviour
     //ボタンで呼ぶ
     public void DoorMove()
     {
+        //ドア開閉
         doorScr.MoveDoor();
     }
 
     void Update()
     {
+        //ランプの色変更
         if (!isPut_A && !isPut_B && isPut_C && isPut_D)
         {
             LampColor(Color.green);
@@ -61,8 +62,10 @@ public class ChemistryStation : MonoBehaviour
     //ボタンで呼ぶ
     public void Create()
     {
+        //ドアが閉まっているとき、中には行っている薬がレシピ通りなら調合
         if (!doorScr.isOpen)
         {
+            //蘇生薬(青、ピンク)
             if (!isPut_A && !isPut_B && isPut_C && isPut_D)
             {
                 isPut_C = false;
@@ -70,6 +73,7 @@ public class ChemistryStation : MonoBehaviour
                 isCreated = true;
                 CreateMedicine(zombieMedicine);
             }
+            //強化薬(緑、青、ピンク)
             else if (isPut_A && !isPut_B && isPut_C && isPut_D)
             {
                 isPut_A = false;
@@ -81,6 +85,7 @@ public class ChemistryStation : MonoBehaviour
         }
     }
 
+    //ランプの色変更
     void LampColor(Color col)
     {
         lamp.color = col;
@@ -100,6 +105,7 @@ public class ChemistryStation : MonoBehaviour
         Instantiate(m, outletPos.position, outletPos.rotation);
     }
 
+    //調合台に入れた薬のフラグをTrue
     void OnCollisionEnter(Collision hit)
     {
         switch (hit.gameObject.tag)
@@ -127,6 +133,7 @@ public class ChemistryStation : MonoBehaviour
         }
     }
 
+    //調合台から出した薬のフラグをFalse
     void OnCollisionExit(Collision hit)
     {
         switch (hit.gameObject.tag)

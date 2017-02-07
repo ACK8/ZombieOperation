@@ -19,6 +19,7 @@ public class ElevatorCardkey : MonoBehaviour
 
     void Update()
     {
+        //連続で反応しないように待ち時間
         if (isTouched)
         {
             timeCount += Time.deltaTime;
@@ -40,11 +41,15 @@ public class ElevatorCardkey : MonoBehaviour
             {
                 isTouched = true;
 
+                //ドア開閉
                 for (int i = 0; i < doorScript.Length; i++)
                 {
                     doorScript[i].MoveDoor();
                     _isAuthenticated = true;
                 }
+
+                //カード削除
+                Destroy(hit.gameObject);
             }
         }
     }

@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+//コントローラーの入力可否。シングルトン
 public class TutorialManager : SingletonMonoBehaviour<TutorialManager>
 {
     [Tooltip("タッチパッドの入力可否")]

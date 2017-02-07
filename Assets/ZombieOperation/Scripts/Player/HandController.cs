@@ -56,6 +56,7 @@ public class HandController : MonoBehaviour
         {
             case HandType.VRController:
 
+                //モデルの表示切り替え
                 if (!vrControllerObject.activeSelf)
                 {
                     controllerModel.SetActive(true);
@@ -66,6 +67,7 @@ public class HandController : MonoBehaviour
 
             case HandType.ZombieOperating:
 
+                //モデルの表示切り替え
                 if (!zombieOperatingObject.activeSelf)
                 {
                     vrControllerObject.SetActive(false);
@@ -106,7 +108,7 @@ public class HandController : MonoBehaviour
         {
             //メニューボタンの入力可否
             if (!TutorialManager.Instance.canMenuButtonInput) return;
-
+            
             switch (zombieOperatingComponent.operatingType)
             {
                 case ZombieOperatingType.Operating:

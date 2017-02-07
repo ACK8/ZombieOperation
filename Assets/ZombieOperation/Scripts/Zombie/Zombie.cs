@@ -89,6 +89,7 @@ public class Zombie : MonoBehaviour
     {
         if (moveTargetPos != null)
         {
+            //目的地に到着したら攻撃開始
             if (Vector3.Distance(transform.position, moveTargetPos.transform.position) <= 0.5f)
             {
                 _isMove = false;
@@ -97,6 +98,7 @@ public class Zombie : MonoBehaviour
                 navMesh.speed = 0f;
                 anim.SetTrigger("Attack");
             }
+            //目的地に移動
             else
             {
                 Move(moveTargetPos.transform);
@@ -104,6 +106,7 @@ public class Zombie : MonoBehaviour
         }
         else
         {
+            //破壊終了すると待機
             if (!destructionFlag)
             {
                 Wait();
@@ -117,6 +120,7 @@ public class Zombie : MonoBehaviour
     {
         if (authenticationMachinePos != null && !isAuthenticationComp)
         {
+            //目的地に到着したら認証開始
             if (Vector3.Distance(transform.position, authenticationMachinePos.transform.position) <= 0.4f)
             {
                 _isMove = false;
@@ -129,11 +133,13 @@ public class Zombie : MonoBehaviour
             }
             else
             {
+                //目的地に移動
                 Move(authenticationMachinePos);
             }
         }
         else
         {
+            //認証終了すると待機
             if (!isAuthenticationComp)
             {
                 Wait();
@@ -147,6 +153,7 @@ public class Zombie : MonoBehaviour
     {
         if (BulkheadPos != null && !isLiftUpComp && isStrengthZombie)
         {
+            //目的地に到着すると隔壁を持ち上げる
             if (Vector3.Distance(transform.position, BulkheadPos.transform.position) <= 0.4f)
             {
                 _isMove = false;
@@ -246,6 +253,7 @@ public class Zombie : MonoBehaviour
         isLiftUpComp = false;
     }
 
+    //命令前の初期化
     void Init()
     {
         BulkheadPos = null;
@@ -271,6 +279,7 @@ public class Zombie : MonoBehaviour
         //認証アニメーション
         if (stateInfo.IsName("Base Layer.Authentication"))
         {
+            //アニメーション再生時、指定フレーム範囲内でゾンビの前にあるコライダーON
             if (authenticationAnimRate <= stateInfo.normalizedTime && stateInfo.normalizedTime < (authenticationAnimRate + 0.2f))
             {
                 capsuleCol.enabled = true;
@@ -284,6 +293,7 @@ public class Zombie : MonoBehaviour
         //攻撃アニメーション
         if (stateInfo.IsName("Base Layer.Attack"))
         {
+            //アニメーション再生時、指定フレーム範囲内でゾンビの前にあるコライダーON
             if (attackAnimRate <= stateInfo.normalizedTime && stateInfo.normalizedTime < (attackAnimRate + 0.1f))
             {
                 capsuleCol.enabled = true;
@@ -344,6 +354,7 @@ public class Zombie : MonoBehaviour
             hit.gameObject.GetComponent<DestructionObject>().DecreaseEnduranceValue(hit);
         }
 
+        //注入量を表示
         if (hit.tag == "Injection")
         {
             injectionUI.SwitchDisplay(true);
@@ -360,6 +371,7 @@ public class Zombie : MonoBehaviour
             //注射
             if (!isZombie && t == MedicineType.Zombie)
             {
+                //蘇生薬を持っているとき注入量を増やす
                 if (0 < ic.zombieMedicineNumber)
                 {
                     injectionVolume += Time.deltaTime;
@@ -370,6 +382,7 @@ public class Zombie : MonoBehaviour
             //ゾンビ強化
             if (isZombie && !isStrengthZombie && t == MedicineType.Strength)
             {
+                //強化薬を持っているとき注入量を増やす
                 if (0 < ic.strengthMedicineNumber)
                 {
                     strengthVolume += Time.deltaTime;

@@ -42,6 +42,8 @@ public class Cardkey : MonoBehaviour
                 isTouched = true;
                 //ドアを動かす
                 doorScript.MoveDoor();
+                //カード削除
+                Destroy(hit.gameObject);
             }
         }
     }

@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+//右手コントローラーのグリップ入力で、コライダーをON OFF
 public class ControllerCollider : MonoBehaviour
 {
     private SteamVR_TrackedObject trackedComponent;
@@ -21,7 +22,7 @@ public class ControllerCollider : MonoBehaviour
 
         if (col == null)
         {
-            trackedComponent = gameObject.transform.parent.GetComponent<SteamVR_TrackedObject>();
+            col = GetComponent<CapsuleCollider>();
         }
         else
         {

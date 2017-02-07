@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 
+//薬の注入量のゲージ
 public class InjectionVolumeUI : MonoBehaviour
 {
     [SerializeField]
@@ -22,15 +23,18 @@ public class InjectionVolumeUI : MonoBehaviour
         {
             if (slider.gameObject.activeSelf)
             {
+                //表示位置調整
                 transform.LookAt(vrCamEye.transform);
             }
         }
     }
 
+    //表示切り替え
     public void SwitchDisplay(bool f)
     {
         if (f)
         {
+            //表示位置調整
             Vector3 d = vrCamEye.transform.forward;
             d.y = 0.0f;
             d.Normalize();
@@ -47,6 +51,7 @@ public class InjectionVolumeUI : MonoBehaviour
         }
     }
 
+    //カメラとコントローラーを検索
     void FindObject()
     {
         if (vrCamEye == null)
@@ -56,11 +61,13 @@ public class InjectionVolumeUI : MonoBehaviour
             leftController = GameObject.Find("Controller (left)");
     }
 
+    //注入量を設定
     public void SetVolume(float v)
     {
         slider.value = v;
     }
-
+    
+    //スライダーの範囲設定
     public void SetValueRange(float min, float max)
     {
         slider.minValue = min;

@@ -8,6 +8,8 @@ public enum MoveType
     eTeleport,
 }
 
+//プレイヤーの移動方法の変更
+//テレポートorタッチパッド
 public class ChangeMovingMethod : MonoBehaviour
 {
     public MoveType moveType = MoveType.eTouchpadWalking;

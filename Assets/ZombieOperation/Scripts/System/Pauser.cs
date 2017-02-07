@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System;
 
+//*************未使用*************
 public class Pauser : MonoBehaviour
 {
     static List<Pauser> targets = new List<Pauser>();   // ポーズ対象のスクリプト

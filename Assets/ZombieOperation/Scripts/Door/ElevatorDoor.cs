@@ -171,7 +171,8 @@ public class ElevatorDoor : MonoBehaviour
 
     void OnCollisionEnter(Collision hit)
     {
-        if (hit.gameObject.tag != "Wall" && hit.gameObject.tag != "Key" && hit.gameObject.tag != "CardKey")
+        //ドアが閉まっている途中、指定タグ以外がドアに挟まったとき自動で開く
+        if (hit.gameObject.tag != "Map" && hit.gameObject.tag != "Wall" && hit.gameObject.tag != "Key" && hit.gameObject.tag != "CardKey")
         {
             if (isCloseing)
             {

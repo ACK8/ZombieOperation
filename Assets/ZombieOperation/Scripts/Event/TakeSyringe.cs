@@ -8,7 +8,7 @@ public class TakeSyringe : MonoBehaviour
 
     private SteamVR_TrackedObject trackedComponent;
     private SteamVR_Controller.Device device;
-    private bool isTakeSyringe = false;
+    //private bool isTakeSyringe = false;
 
     void Start()
     {
@@ -28,7 +28,7 @@ public class TakeSyringe : MonoBehaviour
                 if (device.GetPressDown(SteamVR_Controller.ButtonMask.Grip))
                 {
                     //注射器をとっていないと呼ばれない
-                    if (isTakeSyringe)
+                    //if (isTakeSyringe)
                     {
                         //注射器をとるとステージに設置している注射器、自スクリプト、コライダー削除を削除、
                         Destroy(this);
@@ -43,7 +43,7 @@ public class TakeSyringe : MonoBehaviour
                 if (device.GetPressDown(SteamVR_Controller.ButtonMask.Grip))
                 {
                     //注射器をとるとステージに設置している注射器、自スクリプト、コライダー削除を削除、
-                    isTakeSyringe = true;
+                   // isTakeSyringe = true;
                     Destroy(this);
                     Destroy(hit.gameObject);
                     Destroy(GetComponent<SphereCollider>());

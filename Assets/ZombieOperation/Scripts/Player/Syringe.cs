@@ -20,11 +20,13 @@ public class Syringe : MonoBehaviour
     private Color zombieColor;
     [SerializeField]
     private Color StrengthColor;
+    [SerializeField]
+    private int zombieMedicineNum = 1;
+    [SerializeField]
+    private int strengthMedicineNum = 0;
 
     private MedicineType medicine = MedicineType.Zombie;
     private Material mat;   //色で薬の種類識別
-    private int zombieMedicineNum = 1;
-    private int strengthMedicineNum = 0;
 
     void Awake()
     {

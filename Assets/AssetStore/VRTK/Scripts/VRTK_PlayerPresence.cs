@@ -30,10 +30,16 @@ namespace VRTK
     {
         [Tooltip("The collider which is created for the user is set at a height from the user's headset position. If the collider is required to be lower to allow for room between the play area collider and the headset then this offset value will shorten the height of the generated collider.")]
         public float headsetYOffset = 0.2f;
+
+        [SerializeField]
+        private float colliderRadius = 0.1f;
+
         [Tooltip("If this is checked then any items that are grabbed with the controller will not collide with the player presence collider. This is very useful if the user is required to grab and wield objects because if the collider was active they would bounce off the collider.")]
         public bool ignoreGrabbedCollisions = true;
+
         [Tooltip("If this is checked then if the Headset Collision script is present and a headset collision occurs, the CameraRig is moved back to the last good known standing position. This deals with any collision issues if a user stands up whilst moving through a crouched area as instead of them being able to clip into objects they are transported back to a position where they are able to stand.")]
         public bool resetPositionOnCollision = true;
+
         [Tooltip("Only use physics when an explicit falling state is set.")]
         public bool fallingPhysicsOnly = false;
 
@@ -247,7 +253,7 @@ namespace VRTK
                 presenceCollider = gameObject.AddComponent<CapsuleCollider>();
                 presenceCollider.center = new Vector3(0f, 1f, 0f);
                 presenceCollider.height = 1f;
-                presenceCollider.radius = 0.15f;
+                presenceCollider.radius = colliderRadius;
                 customCollider = false;
             }
 

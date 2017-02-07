@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 54000012275552988}
   - component: {fileID: 65000013925271872}
   - component: {fileID: 114000010681837214}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: Medicine_Green
   m_TagString: Medicine_A
   m_Icon: {fileID: 0}

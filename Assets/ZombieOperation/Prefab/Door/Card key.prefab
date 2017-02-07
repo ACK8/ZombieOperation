@@ -26,7 +26,7 @@ GameObject:
   - component: {fileID: 54000012952434842}
   - component: {fileID: 114000010369418394}
   - component: {fileID: 114000013492290086}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: Card key
   m_TagString: Key
   m_Icon: {fileID: 0}

@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 54000012279009260}
   - component: {fileID: 65000010590902128}
   - component: {fileID: 114000011526677806}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: Medicine_Blue
   m_TagString: Medicine_C
   m_Icon: {fileID: 0}

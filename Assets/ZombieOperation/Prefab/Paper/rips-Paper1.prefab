@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 65444683842449178}
   - component: {fileID: 54082462551883950}
   - component: {fileID: 114677282091089796}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: rips-Paper1
   m_TagString: Untagged
   m_Icon: {fileID: 0}

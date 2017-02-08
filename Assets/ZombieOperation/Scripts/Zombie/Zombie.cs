@@ -348,6 +348,11 @@ public class Zombie : MonoBehaviour
 
     void OnTriggerEnter(Collider hit)
     {
+        if (hit.tag == "Bullet")
+        {
+            DecrementHP(10);
+        }
+
         //障害物破壊
         if (hit.tag == "Object" && hit.gameObject == destructionTarget)
         {

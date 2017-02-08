@@ -4,6 +4,7 @@ using System.Collections.Generic;
 
 public struct discoveryInfo
 {
+
     public GameObject targetObject;
     public float timeToDiscover;
 
@@ -35,11 +36,16 @@ public enum EEnemyState
 
 public class Enemy : MonoBehaviour
 {
+    [SerializeField]
+    private float attackDistance = 10f;
+
     public float maxTimeToDiscover = 1.0f; //ターゲットを発見して認識する最大時間
     public float[] waitTimes; //待機の最大時間
     public string[] targetTags; //ターゲットのタグ名
     public GameObject[] patrolObject; //巡回位置
     public Transform eyePosition; //視界の位置
+    public int hp = 100;
+    public bool isAlive = true;
 
     //銃関係
     public float bulletDistanceMax = 5.0f; //銃弾の最大射程
@@ -66,6 +72,7 @@ public class Enemy : MonoBehaviour
 
     void Update()
     {
+        //print(enemyState);
         switch (enemyState)
         {
             case EEnemyState.None:
@@ -76,6 +83,7 @@ public class Enemy : MonoBehaviour
 
             case EEnemyState.Wait:
                 {
+                    //animBlend = 0f;
                     //巡回位置切り替え
                     if (currntWaitTime > waitTimes[patrolNumber])
                     {
@@ -103,10 +111,12 @@ public class Enemy : MonoBehaviour
                 {
                     navMeshAgent.SetDestination(playerTransform.position);
                     navMeshAgent.Resume();
+                    animBlend = 1f;
 
                     //攻撃状態に移行
                     RaycastHit hit;
                     Vector3 targetDir = (playerTransform.position - eyePosition.position).normalized;
+
                     if (Physics.Raycast(eyePosition.position, targetDir, out hit))
                     {
                         if (hit.transform.GetInstanceID() == playerTransform.GetInstanceID())
@@ -124,6 +134,7 @@ public class Enemy : MonoBehaviour
                     Vector3 targetPos = playerTransform.position;
                     targetPos.y = transform.position.y;
                     transform.LookAt(targetPos);
+                    animBlend = 0f;
 
                     RaycastHit hit;
                     Vector3 targetDir = (playerTransform.position - eyePosition.position).normalized;
@@ -139,10 +150,9 @@ public class Enemy : MonoBehaviour
                     }
                 }
 
-                /*
                 Vector3 direction = playerTransform.position - eyePosition.position;
 
-                if (Vector3.Distance(playerTransform.position, eyePosition.position) < 5.0f)
+                if (Vector3.Distance(playerTransform.position, eyePosition.position) < attackDistance)
                 {
                     float x = Random.Range(0.05f, -0.05f);
                     float y = Random.Range(0.05f, -0.05f);
@@ -159,6 +169,8 @@ public class Enemy : MonoBehaviour
                     RaycastHit hitfire;
                     if (Physics.Raycast(eyePosition.position, direction.normalized, out hitfire))
                     {
+                        //bullet shot!!!!!!!!!!!!!!!!!!!!
+                        print("Hit!" + hitfire.collider.name);
                     }
                 }
                 else
@@ -166,23 +178,43 @@ public class Enemy : MonoBehaviour
                     RaycastHit hit;
                     if (Physics.Raycast(eyePosition.position, direction.normalized, out hit))
                     {
+
                     }
                 }
-                */
                 break;
         }
 
-        anim.SetFloat("Blend", Mathf.Lerp(anim.GetFloat("Blend"), animBlend, 0.5f));
+        //アニメーションブレンド
+        var fwdSpeed = Vector3.Dot(navMeshAgent.velocity.normalized, transform.forward);
+        anim.SetFloat("Blend", fwdSpeed);
     }
 
-    void OnTriggerEnter(Collider collider)
+    //ダメージ
+    void AddDamage(int val)
+    {
+        hp -= val;
+
+        if (hp <= 0)
+        {
+            isAlive = false;
+            Destroy(gameObject);
+            hp = 0;
+        }
+    }
+
+    void OnTriggerEnter(Collider hit)
     {
         if (!(enemyState == EEnemyState.Patrol)) return;
 
         //目的地に着いた
-        if (collider.gameObject.name == patrolObject[patrolNumber].name)
+        if (hit.gameObject.name == patrolObject[patrolNumber].name)
         {
             enemyState = EEnemyState.Wait;
+        }
+
+        if(hit.tag == "ZombieBody")
+        {
+            AddDamage(10);
         }
     }
 
@@ -198,6 +230,7 @@ public class Enemy : MonoBehaviour
                     //レイで視界判断
                     RaycastHit hit;
                     Vector3 direction = collider.gameObject.transform.position - eyePosition.position;
+
                     if (Physics.Raycast(eyePosition.position, direction.normalized, out hit))
                     {
                         if (hit.transform.tag == targetTags[i])

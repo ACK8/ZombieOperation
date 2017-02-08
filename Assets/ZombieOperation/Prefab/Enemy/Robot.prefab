@@ -35,6 +35,21 @@ GameObject:
   m_Component:
   - component: {fileID: 4974469063036856}
   m_Layer: 0
+  m_Name: FirePosition
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &1384660488194602
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4698419526044148}
+  m_Layer: 0
   m_Name: EyePosition
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -50,6 +65,9 @@ GameObject:
   m_Component:
   - component: {fileID: 4968168690859732}
   - component: {fileID: 95468898951762412}
+  - component: {fileID: 54855856553802502}
+  - component: {fileID: 65562731129729904}
+  - component: {fileID: 195627406680289250}
   - component: {fileID: 114118988815914066}
   m_Layer: 0
   m_Name: Robot
@@ -145,6 +163,19 @@ Transform:
   m_Father: {fileID: 4968168690859732}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4698419526044148
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1384660488194602}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.385, z: 0.436}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4968168690859732}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4746780379893952
 Transform:
   m_ObjectHideFlags: 1
@@ -165,11 +196,12 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1669258125596506}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 1.621, y: 0, z: 1.081}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4669515094694336}
   - {fileID: 4005510912848768}
+  - {fileID: 4698419526044148}
   - {fileID: 4974469063036856}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -180,13 +212,40 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1121097613897850}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.1342, z: 0.708}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.858, z: 0.068}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4968168690859732}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!54 &54855856553802502
+Rigidbody:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1669258125596506}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 126
+  m_CollisionDetection: 0
+--- !u!65 &65562731129729904
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1669258125596506}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2.11, y: 2, z: 3.04}
+  m_Center: {x: 0.000000059604645, y: 1, z: 2.01}
 --- !u!95 &95468898951762412
 Animator:
   serializedVersion: 3
@@ -215,11 +274,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83574f74a8e979d46a25e052b8bba2de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  attackDistance: 3
   maxTimeToDiscover: 1
-  waitTimes: []
-  targetTags: []
-  patrolObject: []
-  eyePosition: {fileID: 4974469063036856}
+  waitTimes:
+  - 1
+  - 1
+  - 1
+  targetTags:
+  - Player
+  patrolObject:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  eyePosition: {fileID: 4698419526044148}
   bulletDistanceMax: 5
   firePoint: {fileID: 4974469063036856}
 --- !u!137 &137540050345150128
@@ -266,3 +333,23 @@ SkinnedMeshRenderer:
     m_Center: {x: 0.00000035762787, y: 0.728005, z: 0.25801787}
     m_Extent: {x: 0.970451, y: 0.7284172, z: 0.9048642}
   m_DirtyAABB: 0
+--- !u!195 &195627406680289250
+NavMeshAgent:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1669258125596506}
+  m_Enabled: 1
+  m_Radius: 0.75
+  m_Speed: 1.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 360
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 1.3
+  m_BaseOffset: 0
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4

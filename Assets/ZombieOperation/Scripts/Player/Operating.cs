@@ -79,7 +79,7 @@ public class Operating : MonoBehaviour
         if (selectedZombie != null)
         {
             //選択対象のGameObject取得
-            if (hit.collider.tag == "Object")
+            if (hit.collider.tag == "Object" || hit.collider.tag == "Robot")
             {
                 if (selectedObject != null)
                 {
@@ -91,7 +91,11 @@ public class Operating : MonoBehaviour
                 selectedObject = null;
 
                 selectedObject = hit.collider.gameObject;
-                selectedObject.GetComponent<ChangeMaterialMesh>().ChangeSelected();
+
+                if (selectedObject.GetComponent<ChangeMaterialMesh>())
+                    selectedObject.GetComponent<ChangeMaterialMesh>().ChangeSelected();
+                else
+                    selectedObject.GetComponent<ChangeMaterial>().ChangeSelected();
             }
 
             //移動

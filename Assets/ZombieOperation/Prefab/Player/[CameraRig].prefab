@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 20000011716645628}
   - component: {fileID: 114000013894720322}
   - component: {fileID: 92000014253542440}
-  m_Layer: 12
+  m_Layer: 0
   m_Name: Camera (head)
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
@@ -45,7 +45,7 @@ GameObject:
   - component: {fileID: 114000011739265504}
   - component: {fileID: 114000013289263528}
   - component: {fileID: 114000012388828262}
-  m_Layer: 12
+  m_Layer: 0
   m_Name: Controller (left)
   m_TagString: VRController_L
   m_Icon: {fileID: 0}
@@ -64,7 +64,7 @@ GameObject:
   - component: {fileID: 114000010630335242}
   - component: {fileID: 114000011162755844}
   - component: {fileID: 114000012903592586}
-  m_Layer: 12
+  m_Layer: 0
   m_Name: Panel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -79,7 +79,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4000011453827100}
-  m_Layer: 12
+  m_Layer: 0
   m_Name: OperatingRender
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -97,7 +97,7 @@ GameObject:
   - component: {fileID: 33000013554657256}
   - component: {fileID: 23000013177239356}
   - component: {fileID: 136000011788707172}
-  m_Layer: 12
+  m_Layer: 0
   m_Name: ZombieOperation
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -114,7 +114,7 @@ GameObject:
   - component: {fileID: 4000013813189090}
   - component: {fileID: 33000011745051592}
   - component: {fileID: 23000013163095870}
-  m_Layer: 12
+  m_Layer: 0
   m_Name: Syringe
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -130,7 +130,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4000010839979962}
   - component: {fileID: 114000010930594690}
-  m_Layer: 12
+  m_Layer: 0
   m_Name: Syringe
   m_TagString: Syringe
   m_Icon: {fileID: 0}
@@ -149,7 +149,7 @@ GameObject:
   - component: {fileID: 114000011360785400}
   - component: {fileID: 114000010091739558}
   - component: {fileID: 114000011500965644}
-  m_Layer: 12
+  m_Layer: 0
   m_Name: Panel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -164,7 +164,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4000013733920754}
-  m_Layer: 12
+  m_Layer: 0
   m_Name: RadialMenu
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -185,7 +185,7 @@ GameObject:
   - component: {fileID: 114000012942750056}
   - component: {fileID: 114000011542466264}
   - component: {fileID: 114000010011680738}
-  m_Layer: 12
+  m_Layer: 0
   m_Name: Camera (eye)
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
@@ -208,7 +208,7 @@ GameObject:
   - component: {fileID: 114000013927723890}
   - component: {fileID: 114000011118079450}
   - component: {fileID: 114000011734286692}
-  m_Layer: 12
+  m_Layer: 0
   m_Name: '[CameraRig]'
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -223,7 +223,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4000012370743824}
-  m_Layer: 12
+  m_Layer: 0
   m_Name: RadialMenu
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -239,7 +239,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4000014018197304}
   - component: {fileID: 114000013127982470}
-  m_Layer: 12
+  m_Layer: 0
   m_Name: Model
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -257,7 +257,7 @@ GameObject:
   - component: {fileID: 114000010830130832}
   - component: {fileID: 136000011054826270}
   - component: {fileID: 114000011748841020}
-  m_Layer: 12
+  m_Layer: 0
   m_Name: ZombieOperating
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -273,7 +273,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4000011491784518}
   - component: {fileID: 114000014288763396}
-  m_Layer: 12
+  m_Layer: 0
   m_Name: Model
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -291,7 +291,7 @@ GameObject:
   - component: {fileID: 136000013532484474}
   - component: {fileID: 54000011623042586}
   - component: {fileID: 114000013049096372}
-  m_Layer: 12
+  m_Layer: 0
   m_Name: InjectionCollision
   m_TagString: Injection
   m_Icon: {fileID: 0}
@@ -309,7 +309,7 @@ GameObject:
   - component: {fileID: 223000011605136472}
   - component: {fileID: 114000014112228612}
   - component: {fileID: 114000010119983944}
-  m_Layer: 12
+  m_Layer: 0
   m_Name: RadialMenuUI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -324,7 +324,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4000013000758144}
-  m_Layer: 12
+  m_Layer: 0
   m_Name: RayPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -340,7 +340,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4000013811351006}
   - component: {fileID: 114000011788489658}
-  m_Layer: 12
+  m_Layer: 0
   m_Name: Model
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -359,7 +359,7 @@ GameObject:
   - component: {fileID: 136605612169793240}
   - component: {fileID: 114000012424724204}
   - component: {fileID: 114912683265526552}
-  m_Layer: 12
+  m_Layer: 0
   m_Name: VRController
   m_TagString: VRController_R
   m_Icon: {fileID: 0}
@@ -377,7 +377,7 @@ GameObject:
   - component: {fileID: 223000011755774132}
   - component: {fileID: 114000012382269816}
   - component: {fileID: 114000013889348824}
-  m_Layer: 12
+  m_Layer: 0
   m_Name: RadialMenuUI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -398,7 +398,7 @@ GameObject:
   - component: {fileID: 114000011615777920}
   - component: {fileID: 114000013994373218}
   - component: {fileID: 114000013379372496}
-  m_Layer: 12
+  m_Layer: 0
   m_Name: Controller (right)
   m_TagString: VRController_R
   m_Icon: {fileID: 0}
@@ -415,7 +415,7 @@ GameObject:
   - component: {fileID: 4000011695606852}
   - component: {fileID: 81000010071171366}
   - component: {fileID: 114000013216970190}
-  m_Layer: 12
+  m_Layer: 0
   m_Name: Camera (ears)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -432,7 +432,7 @@ GameObject:
   - component: {fileID: 4000011830936716}
   - component: {fileID: 114000014160886422}
   - component: {fileID: 135975961958471090}
-  m_Layer: 12
+  m_Layer: 0
   m_Name: VRController
   m_TagString: VRController_L
   m_Icon: {fileID: 0}
@@ -449,7 +449,7 @@ GameObject:
   - component: {fileID: 4000010907907110}
   - component: {fileID: 114000013820688812}
   - component: {fileID: 120000010977021686}
-  m_Layer: 12
+  m_Layer: 0
   m_Name: Operating
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -676,7 +676,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000011786000080}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.08, y: 0.44, z: -25.14}
+  m_LocalPosition: {x: -9.66, y: 0.44, z: -1.27}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4000012612850368}
@@ -1213,6 +1213,8 @@ MonoBehaviour:
   pipeMat: {fileID: 23000013177239356}
   zombieColor: {r: 0, g: 1, b: 0, a: 0}
   StrengthColor: {r: 1, g: 0, b: 0, a: 0}
+  zombieMedicineNum: 1
+  strengthMedicineNum: 0
 --- !u!114 &114000011118079450
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1919,7 +1921,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b3ee3e1add19ea44bc76a1be75d134b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  handType: 0
+  handType: 1
   vrControllerObject: {fileID: 1000013804703048}
   zombieOperatingObject: {fileID: 1000012239959272}
   controllerModel: {fileID: 1000012048094140}
@@ -1991,7 +1993,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   blinkTransitionSpeed: 0.1
   fadeColor: {r: 0, g: 0, b: 0, a: 1}
-  ignoreTargetWithTagOrClass: 
+  ignoreTargetWithTagOrClass: Player
   targetTagOrScriptListPolicy: {fileID: 0}
 --- !u!114 &114000013820688812
 MonoBehaviour:
@@ -2197,7 +2199,7 @@ LineRenderer:
   m_LightProbeUsage: 0
   m_ReflectionProbeUsage: 0
   m_Materials:
-  - {fileID: 0}
+  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

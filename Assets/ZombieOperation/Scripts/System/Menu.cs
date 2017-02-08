@@ -10,14 +10,14 @@ public class Menu : SingletonMonoBehaviour<Menu>
     private float offset = 2.0f;
     [SerializeField]
     private string titleSceneName = null;
-    
+
     private GameObject vrCamEye;
     private bool _isDisplayed = false;
 
     void Start()
     {
         vrCamEye = GameObject.Find("Camera (eye)");
-        MenuSetActive(false);
+        MenuSetActiveAll(false);
     }
 
     void Update()
@@ -40,7 +40,7 @@ public class Menu : SingletonMonoBehaviour<Menu>
             d.y = 0.0f;
             d.Normalize();
 
-            MenuSetActive(true);
+            MenuSetActive(true, 0);
 
             transform.position = vrCamEye.transform.position + d * offset;
             transform.rotation = vrCamEye.transform.rotation;
@@ -48,7 +48,7 @@ public class Menu : SingletonMonoBehaviour<Menu>
         }
         else
         {
-            MenuSetActive(false);
+            MenuSetActiveAll(false);
         }
     }
 
@@ -62,9 +62,17 @@ public class Menu : SingletonMonoBehaviour<Menu>
                 SwitchDisplay();
                 break;
 
+            case "Description":
+                MenuSetActive(false, 0);
+                MenuSetActive(true, 1);
+                break;
+
             case "BackToTitle":
                 BackToTitle();
                 SwitchDisplay();
+                break;
+
+            case "":
                 break;
 
             default:
@@ -78,13 +86,19 @@ public class Menu : SingletonMonoBehaviour<Menu>
         get { return _isDisplayed; }
     }
 
-    //メニュー項目の表示
-    void MenuSetActive(bool f)
+    //全メニュー項目の表示
+    void MenuSetActiveAll(bool f)
     {
         foreach (GameObject nemu in nemuPanel)
         {
             nemu.SetActive(f);
         }
+    }
+
+    //メニュー項目の表示
+    void MenuSetActive(bool f, int type)
+    {
+        nemuPanel[type].SetActive(f);
     }
 
     void Restart()

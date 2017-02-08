@@ -30,6 +30,7 @@ TagManager:
   - Medicine_D
   - Bulkhead
   - ZombieOperation_Syringe
+  - Robot
   layers:
   - Default
   - TransparentFX
@@ -39,7 +40,7 @@ TagManager:
   - UI
   - 
   - 
-  - 
+  - Robot
   - Menu
   - NoHitCheck
   - Zombie

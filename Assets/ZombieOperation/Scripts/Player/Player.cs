@@ -35,4 +35,11 @@ public class Player : MonoBehaviour
         get { return _isAlive; }
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.tag == "Bullet")
+        {
+            DecrementHP(5);
+        }
+    }
 }

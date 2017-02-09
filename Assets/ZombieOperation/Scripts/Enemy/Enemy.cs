@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.AI;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -37,37 +38,49 @@ public enum EEnemyState
 public class Enemy : MonoBehaviour
 {
     [SerializeField]
+    private LampColor lamp;
+    [SerializeField]
+    private GameObject bullet;
+    [SerializeField]
+    private GameObject explosion;
+    [SerializeField]
     private float attackDistance = 10f;
+    [SerializeField]
+    private float shotWait = 0.5f;
 
     public float maxTimeToDiscover = 1.0f; //ターゲットを発見して認識する最大時間
-    public float[] waitTimes; //待機の最大時間
-    public string[] targetTags; //ターゲットのタグ名
-    public GameObject[] patrolObject; //巡回位置
     public Transform eyePosition; //視界の位置
     public int hp = 100;
     public bool isAlive = true;
+    public float[] waitTimes; //待機の最大時間
+    public string[] targetTags; //ターゲットのタグ名
+    public GameObject[] patrolObject; //巡回位置
 
     //銃関係
+    public Transform[] firePoint; //銃口の位置
     public float bulletDistanceMax = 5.0f; //銃弾の最大射程
-    public Transform firePoint; //銃口の位置
 
     private uint patrolNumber = 0;
     private float timeToDiscover = 0.0f;
     private float currntWaitTime = 0.0f;
-    private UnityEngine.AI.NavMeshAgent navMeshAgent;
+    private NavMeshAgent navMeshAgent;
     private Transform playerTransform;
     private EEnemyState enemyState = EEnemyState.Patrol;
     private List<discoveryInfo> discoveryList = new List<discoveryInfo>();
     private Dictionary<int, float> temp = new Dictionary<int, float>();
     private Animator anim;
     private float animBlend = 0f;
-
+    private float shotwaitCount = 0f;
 
     void Start()
     {
         anim = GetComponent<Animator>();
-        navMeshAgent = GetComponent<UnityEngine.AI.NavMeshAgent>();
+        navMeshAgent = GetComponent<NavMeshAgent>();
         navMeshAgent.SetDestination(patrolObject[patrolNumber].transform.position);
+
+        lamp.ColorChange(Color.green);
+
+        if (patrolObject == null) print("patrolObject is null");
     }
 
     void Update()
@@ -77,12 +90,14 @@ public class Enemy : MonoBehaviour
         {
             case EEnemyState.None:
                 {
-
+                    lamp.ColorChange(Color.green);
                 }
                 break;
 
             case EEnemyState.Wait:
                 {
+                    lamp.ColorChange(Color.green);
+
                     //animBlend = 0f;
                     //巡回位置切り替え
                     if (currntWaitTime > waitTimes[patrolNumber])
@@ -104,11 +119,15 @@ public class Enemy : MonoBehaviour
             case EEnemyState.Patrol:
                 {
                     animBlend = 1f;
+                    navMeshAgent.Resume();
+                    lamp.ColorChange(Color.green);
                 }
                 break;
 
             case EEnemyState.Chase:
                 {
+                    lamp.ColorChange(Color.yellow);
+
                     navMeshAgent.SetDestination(playerTransform.position);
                     navMeshAgent.Resume();
                     animBlend = 1f;
@@ -130,6 +149,8 @@ public class Enemy : MonoBehaviour
 
             case EEnemyState.Attack:
                 {
+                    lamp.ColorChange(Color.red);
+
                     //ターゲットに向かせる
                     Vector3 targetPos = playerTransform.position;
                     targetPos.y = transform.position.y;
@@ -139,7 +160,7 @@ public class Enemy : MonoBehaviour
                     RaycastHit hit;
                     Vector3 targetDir = (playerTransform.position - eyePosition.position).normalized;
 
-                    Debug.DrawLine(eyePosition.position, (eyePosition.position + targetDir));
+                    //Debug.DrawLine(eyePosition.position, (eyePosition.position + targetDir));
 
                     if (Physics.Raycast(eyePosition.position, targetDir, out hit))
                     {
@@ -154,23 +175,28 @@ public class Enemy : MonoBehaviour
 
                 if (Vector3.Distance(playerTransform.position, eyePosition.position) < attackDistance)
                 {
-                    float x = Random.Range(0.05f, -0.05f);
-                    float y = Random.Range(0.05f, -0.05f);
-                    float z = Random.Range(0.05f, -0.05f);
+                    float x = Random.Range(0.03f, -0.03f);
+                    float y = Random.Range(0.03f, -0.03f);
+                    float z = Random.Range(0.03f, -0.03f);
+                    Quaternion rand = new Quaternion(x, y, z, 1.0f);
 
-                    Vector3 targetDir = (playerTransform.position - firePoint.position).normalized;
-                    Vector3 dir = new Quaternion(x, y, z, 1.0f) * targetDir;
-
-                    Vector3 start = firePoint.position;
-                    Vector3 end = start + dir * bulletDistanceMax;
-
-                    Debug.DrawLine(start, end);
-
-                    RaycastHit hitfire;
-                    if (Physics.Raycast(eyePosition.position, direction.normalized, out hitfire))
+                    for (int i = 0; i < firePoint.Length; i++)
                     {
-                        //bullet shot!!!!!!!!!!!!!!!!!!!!
-                        print("Hit!" + hitfire.collider.name);
+                        //Vector3 targetDir = (playerTransform.position - firePoint[i].position).normalized;
+                        //Vector3 dir = rand * targetDir;
+
+                        //Vector3 start = firePoint[i].position;
+                        //Vector3 end = start + dir * bulletDistanceMax;
+                        //Debug.DrawLine(start, end);
+
+                        RaycastHit hitfire;
+                        if (Physics.Raycast(eyePosition.position, direction.normalized, out hitfire))
+                        {
+                            if (hitfire.collider.tag == "Player")
+                            {
+                                BulletShot(i, rand);
+                            }
+                        }
                     }
                 }
                 else
@@ -189,6 +215,17 @@ public class Enemy : MonoBehaviour
         anim.SetFloat("Blend", fwdSpeed);
     }
 
+    void BulletShot(int index, Quaternion rand)
+    {
+        shotwaitCount += Time.deltaTime;
+
+        if (shotWait < shotwaitCount)
+        {
+            shotwaitCount = 0f;
+            Instantiate(bullet, firePoint[index].position, firePoint[index].rotation * rand);
+        }
+    }
+
     //ダメージ
     void AddDamage(int val)
     {
@@ -197,8 +234,12 @@ public class Enemy : MonoBehaviour
         if (hp <= 0)
         {
             isAlive = false;
-            Destroy(gameObject);
             hp = 0;
+
+            GameObject p = Instantiate(explosion, transform.position + new Vector3(0f, 1f, 0f), explosion.transform.rotation) as GameObject;
+            Destroy(p, 4f);
+
+            Destroy(gameObject);
         }
     }
 
@@ -212,7 +253,7 @@ public class Enemy : MonoBehaviour
             enemyState = EEnemyState.Wait;
         }
 
-        if(hit.tag == "ZombieBody")
+        if (hit.tag == "ZombieBody")
         {
             AddDamage(10);
         }

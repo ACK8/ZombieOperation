@@ -4,8 +4,8 @@ using System.Collections;
 //選択時にアウトラインを表示する
 public class ChangeMaterialMesh : MonoBehaviour
 {
-    public Material[] changeMaterials1;
-    public Material[] changeMaterials2;
+    public Material[] SelectedMaterials;
+    public Material[] NormalMaterials;
     public MeshRenderer meshRenderer;
 
     void Start()
@@ -16,12 +16,12 @@ public class ChangeMaterialMesh : MonoBehaviour
     //アウトライン表示
     public void ChangeSelected()
     {
-        meshRenderer.sharedMaterials = changeMaterials1;
+        meshRenderer.sharedMaterials = SelectedMaterials;
     }
 
     //アウトライン非表示
     public void ChangeNormal()
     {
-        meshRenderer.sharedMaterials = changeMaterials2;
+        meshRenderer.sharedMaterials = NormalMaterials;
     }
 }

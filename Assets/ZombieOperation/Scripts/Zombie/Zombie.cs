@@ -19,6 +19,8 @@ public class Zombie : MonoBehaviour
     protected float authenticationAnimRate; //認証が有効になるアニメーション時間
     [SerializeField]
     private int id = 0;
+    [SerializeField]
+    private GameObject[] particles;
 
     protected UnityEngine.AI.NavMeshAgent navMesh;
     protected Animator anim;
@@ -41,6 +43,9 @@ public class Zombie : MonoBehaviour
 
     void Start()
     {
+        particles[0].gameObject.SetActive(false);
+        particles[1].gameObject.SetActive(false);
+
         navMesh = GetComponent<UnityEngine.AI.NavMeshAgent>();
         anim = GetComponent<Animator>();
         navSpeed = navMesh.speed;
@@ -72,9 +77,26 @@ public class Zombie : MonoBehaviour
                 }
             }
 
+            //パーティクル切り替え
+            if (isStrengthZombie)
+            {
+                //強化ゾンビ
+                particles[0].gameObject.SetActive(false);
+                particles[1].gameObject.SetActive(true);
+            }
+            else
+            {
+                //通常ゾンビ
+                particles[0].gameObject.SetActive(true);
+            }
+
+            //アニメーションアップデート
             Animation();
+            //破壊アップデート
             DestructionUpdate();
+            //認証アップデート
             AuthenticationUpdate();
+            //隔壁持ち上げアップデート
             LiftBulkheadUpdate();
         }
         else
@@ -93,6 +115,7 @@ public class Zombie : MonoBehaviour
             if (Vector3.Distance(transform.position, moveTargetPos.transform.position) <= 0.5f)
             {
                 _isMove = false;
+                //障害物の方に向く
                 transform.LookAt(new Vector3(destructionTarget.transform.position.x, transform.position.y, destructionTarget.transform.position.z));
                 navMesh.Stop();
                 navMesh.speed = 0f;
@@ -118,6 +141,7 @@ public class Zombie : MonoBehaviour
     //生体認証
     void AuthenticationUpdate()
     {
+        //認証ターゲットが指定されている＆認証未完了
         if (authenticationMachinePos != null && !isAuthenticationComp)
         {
             //目的地に到着したら認証開始
@@ -129,7 +153,7 @@ public class Zombie : MonoBehaviour
                 navMesh.updateRotation = true;
                 transform.LookAt(new Vector3(lookatPosition.x, transform.position.y, lookatPosition.z));
                 anim.SetTrigger("Authentication");
-                isAuthenticationComp = true;
+                isAuthenticationComp = true;    //認証完了
             }
             else
             {
@@ -143,7 +167,7 @@ public class Zombie : MonoBehaviour
             if (!isAuthenticationComp)
             {
                 Wait();
-                isAuthenticationComp = true;
+                isAuthenticationComp = true;    //認証完了
             }
         }
     }
@@ -151,6 +175,7 @@ public class Zombie : MonoBehaviour
     //隔壁持ち上げ
     void LiftBulkheadUpdate()
     {
+        //持ち上げターゲットが指定されている＆持ち上げ未完了
         if (BulkheadPos != null && !isLiftUpComp && isStrengthZombie)
         {
             //目的地に到着すると隔壁を持ち上げる

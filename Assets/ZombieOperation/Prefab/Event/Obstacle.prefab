@@ -166,10 +166,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4915981a7844f75469366655241b9099, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  changeMaterials1:
+  SelectedMaterials:
   - {fileID: 2100000, guid: 41225d81dda3ef640a8a010b264c5195, type: 2}
   - {fileID: 2100000, guid: fd2c63560c5e9c14caac1d1fcb7dbca0, type: 2}
-  changeMaterials2:
+  NormalMaterials:
   - {fileID: 2100000, guid: fd2c63560c5e9c14caac1d1fcb7dbca0, type: 2}
   meshRenderer: {fileID: 23000012322627200}
 --- !u!208 &208564501177685646

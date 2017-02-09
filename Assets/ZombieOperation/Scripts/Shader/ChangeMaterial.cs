@@ -3,8 +3,8 @@ using System.Collections;
 
 public class ChangeMaterial : MonoBehaviour
 {
-    public Material[] changeMaterials1;
-    public Material[] changeMaterials2;
+    public Material[] SelectedMaterials;
+    public Material[] NormalMaterials;
     public SkinnedMeshRenderer meshRenderer;
 
     void Start ()
@@ -14,11 +14,11 @@ public class ChangeMaterial : MonoBehaviour
 	
     public void ChangeSelected()
     {
-        meshRenderer.sharedMaterials = changeMaterials1;
+        meshRenderer.sharedMaterials = SelectedMaterials;
     }
 
     public void ChangeNormal()
     {
-        meshRenderer.sharedMaterials = changeMaterials2;
+        meshRenderer.sharedMaterials = NormalMaterials;
     }
 }

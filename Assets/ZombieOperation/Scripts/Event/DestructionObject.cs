@@ -30,6 +30,7 @@ public class DestructionObject : MonoBehaviour
         }
     }
 
+    //ゾンビが移動してくる位置
     public GameObject destructionPosition
     {
         get { return destructionPos; }

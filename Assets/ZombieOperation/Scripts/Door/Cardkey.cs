@@ -6,6 +6,8 @@ public class Cardkey : MonoBehaviour
     [SerializeField]
     private Door doorScript;    //ドアについているスクリプト
     [SerializeField]
+    private TextMesh text;
+    [SerializeField]
     private int cardKeyID;  //カードキーのID
 
     private float time;
@@ -13,7 +15,7 @@ public class Cardkey : MonoBehaviour
 
     void Start()
     {
-
+        text.text = "ID " + cardKeyID;
     }
 
     void Update()

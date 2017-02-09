@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4000013336857120}
   m_Layer: 0
   m_Name: MovePoint
-  m_TagString: Untagged
+  m_TagString: Bulkhead
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -36,7 +36,7 @@ GameObject:
   - component: {fileID: 4000013046411154}
   m_Layer: 0
   m_Name: Bone_end
-  m_TagString: Untagged
+  m_TagString: Bulkhead
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -52,7 +52,7 @@ GameObject:
   - component: {fileID: 137000012740085792}
   m_Layer: 0
   m_Name: Cube
-  m_TagString: Untagged
+  m_TagString: Bulkhead
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -67,7 +67,7 @@ GameObject:
   - component: {fileID: 4000013531833946}
   m_Layer: 0
   m_Name: Armature
-  m_TagString: Untagged
+  m_TagString: Bulkhead
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -97,8 +97,9 @@ GameObject:
   m_Component:
   - component: {fileID: 4000010834413508}
   - component: {fileID: 65712558994705534}
-  - component: {fileID: 114364758561034702}
+  - component: {fileID: 208988162462882428}
   - component: {fileID: 114076360022574276}
+  - component: {fileID: 114364758561034702}
   m_Layer: 0
   m_Name: Bone
   m_TagString: Bulkhead
@@ -140,7 +141,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000013997866556}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.927, y: 0, z: 2.267}
+  m_LocalPosition: {x: 21.655, y: 0, z: 2.338}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4000013531833946}
@@ -229,10 +230,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c2cc5f8347b54344aa6d662a5d76155, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  changeMaterials1:
+  SelectedMaterials:
   - {fileID: 2100000, guid: 41225d81dda3ef640a8a010b264c5195, type: 2}
   - {fileID: 2100000, guid: 0bd9f1ed22688f5498bc56ecbb03f575, type: 2}
-  changeMaterials2:
+  NormalMaterials:
   - {fileID: 2100000, guid: 0bd9f1ed22688f5498bc56ecbb03f575, type: 2}
   meshRenderer: {fileID: 137000012740085792}
 --- !u!114 &114364758561034702
@@ -293,3 +294,18 @@ SkinnedMeshRenderer:
     m_Center: {x: -0.0000000018626451, y: 0.014999994, z: 2.3283064e-10}
     m_Extent: {x: 0.02, y: 0.014999994, z: 0.0025000004}
   m_DirtyAABB: 0
+--- !u!208 &208988162462882428
+NavMeshObstacle:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000014111930888}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.02, y: 0.015, z: 0.0025}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: -0.000000001862645, y: 0.015, z: -0.000000008381903}
+  m_TimeToStationary: 0.5

@@ -6,6 +6,8 @@ public class InjectionVolumeUI : MonoBehaviour
 {
     [SerializeField]
     private Slider slider;
+    [SerializeField]
+    private Image fillImage;
 
     private GameObject vrCamEye;
     private GameObject leftController;
@@ -62,9 +64,10 @@ public class InjectionVolumeUI : MonoBehaviour
     }
 
     //注入量を設定
-    public void SetVolume(float v)
+    public void SetVolume(float v, Color col)
     {
         slider.value = v;
+        fillImage.color = col;
     }
     
     //スライダーの範囲設定

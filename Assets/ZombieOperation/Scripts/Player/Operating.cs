@@ -202,7 +202,7 @@ public class Operating : MonoBehaviour
         //ゾンビの命令を実行
         if ((selectedZombie != null) && (selectedObject != null))
         {
-            if (selectedObject.tag != "Object") return;
+            if (selectedObject.tag != "Object" && selectedObject.tag != "Robot") return;
 
             operatingType = OperatingType.Attack;
             selectedZombie.GetComponent<Zombie>().Attack(selectedObject);

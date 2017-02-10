@@ -1,15 +1,20 @@
 ﻿using UnityEngine;
+using UnityEngine.AI;
 using System.Collections;
 
 public class Zombie : MonoBehaviour
 {
     public bool isZombie = false;
     public bool isStrengthZombie = false;
-    public float zombieChangeTime = 100f;    //注射時、ゾンビに変化する時間
+
+    [HideInInspector]
+    public bool isAlive = true;
     [HideInInspector]
     public float injectionVolume = 0f;   //ゾンビ薬の注入量
     [HideInInspector]
     public float strengthVolume = 0f;   //強化薬の注入量
+    [HideInInspector]
+    public float zombieChangeTime = 100f;    //注射時、ゾンビに変化する時間
 
     [SerializeField]
     private CapsuleCollider capsuleCol;
@@ -22,20 +27,19 @@ public class Zombie : MonoBehaviour
     [SerializeField]
     private GameObject[] particles;
 
-    protected UnityEngine.AI.NavMeshAgent navMesh;
+    protected NavMeshAgent navMesh;
     protected Animator anim;
     protected Transform seledtedTarget = null;
     protected OperatingType operatingType;
     //protected int _hp = 100;
     protected float navSpeed = 0f;
     protected bool _isMove = false;
-    protected bool _isAlive = true;
     protected bool isChange = false;
     protected bool destructionFlag = false;
     private InjectionVolumeUI injectionUI;
+    private Vector3 lookatPosition;
     private Transform authenticationMachinePos = null;
     private Transform BulkheadPos = null;
-    private Vector3 lookatPosition;
     private GameObject destructionTarget = null;
     private GameObject moveTargetPos = null;
     private bool isAuthenticationComp = false;  //認証完了
@@ -46,7 +50,7 @@ public class Zombie : MonoBehaviour
         particles[0].gameObject.SetActive(false);
         particles[1].gameObject.SetActive(false);
 
-        navMesh = GetComponent<UnityEngine.AI.NavMeshAgent>();
+        navMesh = GetComponent<NavMeshAgent>();
         anim = GetComponent<Animator>();
         navSpeed = navMesh.speed;
         capsuleCol.enabled = false;
@@ -84,25 +88,24 @@ public class Zombie : MonoBehaviour
                 particles[0].gameObject.SetActive(false);
                 particles[1].gameObject.SetActive(true);
             }
-            else
+            else if(isZombie && !isStrengthZombie)
             {
                 //通常ゾンビ
                 particles[0].gameObject.SetActive(true);
+                particles[1].gameObject.SetActive(false);
             }
-
-            //アニメーションアップデート
+            
             Animation();
-            //破壊アップデート
             DestructionUpdate();
-            //認証アップデート
             AuthenticationUpdate();
-            //隔壁持ち上げアップデート
             LiftBulkheadUpdate();
         }
         else
         {
             //倒れた状態
             anim.Play("GetUp", -1, 0.0f);
+            particles[0].gameObject.SetActive(false);
+            particles[1].gameObject.SetActive(false);
         }
     }
 
@@ -111,8 +114,10 @@ public class Zombie : MonoBehaviour
     {
         if (moveTargetPos != null)
         {
+            Vector3 target = new Vector3(moveTargetPos.transform.position.x, transform.position.y, moveTargetPos.transform.position.z);
+            
             //目的地に到着したら攻撃開始
-            if (Vector3.Distance(transform.position, moveTargetPos.transform.position) <= 0.5f)
+            if (Vector3.Distance(transform.position, target) <= 1.0f)
             {
                 _isMove = false;
                 //障害物の方に向く
@@ -250,12 +255,14 @@ public class Zombie : MonoBehaviour
         Init();
 
         operatingType = OperatingType.Attack;
+
         moveTargetPos = target.GetComponent<DestructionObject>().destructionPosition;
+
         destructionTarget = target;
         _isMove = true;
         destructionFlag = false;
     }
-
+    
     //生体認証
     public void Authentication(GameObject pos, Vector3 lookatPos)
     {
@@ -330,7 +337,7 @@ public class Zombie : MonoBehaviour
         }
 
         //倒れる
-        if (!_isAlive)
+        if (!isAlive)
         {
             anim.SetTrigger("Collapse");
         }
@@ -366,17 +373,23 @@ public class Zombie : MonoBehaviour
 
         if (injectionVolume <= 0)
         {
-            _isAlive = false;
+            isAlive = false;
+            isZombie = false;
+            isStrengthZombie = false;
+            particles[0].gameObject.SetActive(false);
+            particles[1].gameObject.SetActive(false);
             injectionVolume = 0;
         }
     }
 
     void OnTriggerEnter(Collider hit)
     {
+        /*
         if (hit.tag == "Bullet")
         {
             DecrementHP(10);
         }
+        */
 
         //障害物破壊
         if (hit.tag == "Object" && hit.gameObject == destructionTarget)
@@ -393,19 +406,20 @@ public class Zombie : MonoBehaviour
 
     void OnTriggerStay(Collider hit)
     {
+        //注射器が触れる
         if (hit.tag == "Injection")
         {
             InjectionCollision ic = hit.GetComponent<InjectionCollision>();
             MedicineType t = ic.GetMedicineType();
 
-            //注射
+            //蘇生
             if (!isZombie && t == MedicineType.Zombie)
             {
                 //蘇生薬を持っているとき注入量を増やす
                 if (0 < ic.zombieMedicineNumber)
                 {
                     injectionVolume += Time.deltaTime * 50f;
-                    injectionUI.SetVolume(injectionVolume);
+                    injectionUI.SetVolume(injectionVolume, Color.green);
                 }
             }
 
@@ -416,7 +430,7 @@ public class Zombie : MonoBehaviour
                 if (0 < ic.strengthMedicineNumber)
                 {
                     strengthVolume += Time.deltaTime * 50f;
-                    injectionUI.SetVolume(strengthVolume);
+                    injectionUI.SetVolume(strengthVolume, Color.red);
                 }
             }
         }
@@ -424,6 +438,7 @@ public class Zombie : MonoBehaviour
 
     void OnTriggerExit(Collider hit)
     {
+        //注入量UIを非表示
         injectionUI.SwitchDisplay(false);
     }
 
@@ -439,14 +454,14 @@ public class Zombie : MonoBehaviour
 
     }
 
-    //移動しているか(誘導用)
+    //移動しているか
     public bool isMove
     {
         get { return _isMove; }
         set { _isMove = value; }
     }
 
-    //HPの代わりに蘇生薬注入量
+    //蘇生薬注入量(HPの代わり)
     public int hp
     {
         get { return (int)injectionVolume; }

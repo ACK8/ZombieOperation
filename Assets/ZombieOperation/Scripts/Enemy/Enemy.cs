@@ -38,15 +38,17 @@ public enum EEnemyState
 public class Enemy : MonoBehaviour
 {
     [SerializeField]
-    private LampColor lamp;
+    private LampColor lamp;     //ランプ
     [SerializeField]
-    private GameObject bullet;
+    private GameObject bullet;  //弾
     [SerializeField]
-    private GameObject explosion;
+    private GameObject explosion;   //爆発パーティクル
     [SerializeField]
-    private float attackDistance = 10f;
+    private float attackDistance = 10f; //攻撃を開始するプレイヤーとの距離
     [SerializeField]
     private float shotWait = 0.5f;
+    [SerializeField]
+    private float memoryTime = 10f; //プレイヤーの位置を記憶する時間。これ以上になるとパトロール状態に
 
     public float maxTimeToDiscover = 1.0f; //ターゲットを発見して認識する最大時間
     public Transform eyePosition; //視界の位置
@@ -71,6 +73,7 @@ public class Enemy : MonoBehaviour
     private Animator anim;
     private float animBlend = 0f;
     private float shotwaitCount = 0f;
+    private float memoryTimeCount = 0f;
 
     void Start()
     {
@@ -80,7 +83,7 @@ public class Enemy : MonoBehaviour
 
         lamp.ColorChange(Color.green);
 
-        if (patrolObject == null) print("patrolObject is null");
+        if (patrolObject == null) print("PatrolObject is null");
     }
 
     void Update()
@@ -98,7 +101,7 @@ public class Enemy : MonoBehaviour
                 {
                     lamp.ColorChange(Color.green);
 
-                    //animBlend = 0f;
+                    animBlend = 0f;
                     //巡回位置切り替え
                     if (currntWaitTime > waitTimes[patrolNumber])
                     {
@@ -118,9 +121,9 @@ public class Enemy : MonoBehaviour
 
             case EEnemyState.Patrol:
                 {
-                    animBlend = 1f;
                     navMeshAgent.Resume();
                     lamp.ColorChange(Color.green);
+                    animBlend = 1f;
                 }
                 break;
 
@@ -143,6 +146,18 @@ public class Enemy : MonoBehaviour
                             navMeshAgent.Stop();
                             enemyState = EEnemyState.Attack;
                         }
+                        else
+                        {
+                            memoryTimeCount += Time.deltaTime;
+
+                            //プレイヤーを見失って、一定時間以上になるとパトロール状態に
+                            if (memoryTime <= memoryTimeCount)
+                            {
+                                memoryTimeCount = 0f;
+                                navMeshAgent.SetDestination(patrolObject[patrolNumber].transform.position);
+                                enemyState = EEnemyState.Patrol;
+                            }
+                        }
                     }
                 }
                 break;
@@ -150,6 +165,7 @@ public class Enemy : MonoBehaviour
             case EEnemyState.Attack:
                 {
                     lamp.ColorChange(Color.red);
+                    memoryTimeCount = 0f;
 
                     //ターゲットに向かせる
                     Vector3 targetPos = playerTransform.position;
@@ -159,8 +175,6 @@ public class Enemy : MonoBehaviour
 
                     RaycastHit hit;
                     Vector3 targetDir = (playerTransform.position - eyePosition.position).normalized;
-
-                    //Debug.DrawLine(eyePosition.position, (eyePosition.position + targetDir));
 
                     if (Physics.Raycast(eyePosition.position, targetDir, out hit))
                     {
@@ -175,27 +189,12 @@ public class Enemy : MonoBehaviour
 
                 if (Vector3.Distance(playerTransform.position, eyePosition.position) < attackDistance)
                 {
-                    float x = Random.Range(0.03f, -0.03f);
-                    float y = Random.Range(0.03f, -0.03f);
-                    float z = Random.Range(0.03f, -0.03f);
-                    Quaternion rand = new Quaternion(x, y, z, 1.0f);
-
-                    for (int i = 0; i < firePoint.Length; i++)
+                    RaycastHit hitfire;
+                    if (Physics.Raycast(eyePosition.position, direction.normalized, out hitfire))
                     {
-                        //Vector3 targetDir = (playerTransform.position - firePoint[i].position).normalized;
-                        //Vector3 dir = rand * targetDir;
-
-                        //Vector3 start = firePoint[i].position;
-                        //Vector3 end = start + dir * bulletDistanceMax;
-                        //Debug.DrawLine(start, end);
-
-                        RaycastHit hitfire;
-                        if (Physics.Raycast(eyePosition.position, direction.normalized, out hitfire))
+                        if (hitfire.collider.tag == "Player")
                         {
-                            if (hitfire.collider.tag == "Player")
-                            {
-                                BulletShot(i, rand);
-                            }
+                            BulletShot();
                         }
                     }
                 }
@@ -204,25 +203,32 @@ public class Enemy : MonoBehaviour
                     RaycastHit hit;
                     if (Physics.Raycast(eyePosition.position, direction.normalized, out hit))
                     {
-
                     }
                 }
                 break;
         }
 
         //アニメーションブレンド
-        var fwdSpeed = Vector3.Dot(navMeshAgent.velocity.normalized, transform.forward);
-        anim.SetFloat("Blend", fwdSpeed);
+        anim.SetFloat("Blend", Mathf.Lerp(anim.GetFloat("Blend"), animBlend, 0.3f));
     }
 
-    void BulletShot(int index, Quaternion rand)
+    //弾を発射
+    void BulletShot()
     {
-        shotwaitCount += Time.deltaTime;
-
-        if (shotWait < shotwaitCount)
+        for (int i = 0; i < firePoint.Length; i++)
         {
-            shotwaitCount = 0f;
-            Instantiate(bullet, firePoint[index].position, firePoint[index].rotation * rand);
+            float x = Random.Range(0.03f, -0.03f);
+            float y = Random.Range(0.03f, -0.03f);
+            float z = Random.Range(0.03f, -0.03f);
+            Quaternion rand = new Quaternion(x, y, z, 1.0f);
+
+            shotwaitCount += Time.deltaTime;
+
+            if (shotWait < shotwaitCount)
+            {
+                shotwaitCount = 0f;
+                Instantiate(bullet, firePoint[i].position, firePoint[i].rotation * rand);
+            }
         }
     }
 
@@ -230,21 +236,29 @@ public class Enemy : MonoBehaviour
     void AddDamage(int val)
     {
         hp -= val;
-
+        
         if (hp <= 0)
         {
             isAlive = false;
             hp = 0;
 
+            //爆発エフェクト
             GameObject p = Instantiate(explosion, transform.position + new Vector3(0f, 1f, 0f), explosion.transform.rotation) as GameObject;
             Destroy(p, 4f);
 
+            //自身を削除
             Destroy(gameObject);
         }
     }
 
     void OnTriggerEnter(Collider hit)
     {
+        //ゾンビからのダメージ
+        if (hit.tag == "ZombieBody")
+        {
+            AddDamage(5);
+        }
+
         if (!(enemyState == EEnemyState.Patrol)) return;
 
         //目的地に着いた
@@ -253,10 +267,6 @@ public class Enemy : MonoBehaviour
             enemyState = EEnemyState.Wait;
         }
 
-        if (hit.tag == "ZombieBody")
-        {
-            AddDamage(10);
-        }
     }
 
     void OnTriggerStay(Collider collider)

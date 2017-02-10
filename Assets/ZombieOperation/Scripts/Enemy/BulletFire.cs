@@ -4,12 +4,7 @@ using System.Collections;
 public class BulletFire : MonoBehaviour
 {
     public GameObject firePoint;
-
-	void Start ()
-    {
-	
-	}
-	
+    	
 	void Update ()
     {
         if (Input.GetKey(KeyCode.Space))

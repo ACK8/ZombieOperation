@@ -13,7 +13,7 @@ public class Key : MonoBehaviour
 
     private void Start()
     {
-        text.text = cardName + "ID" + cardID;
+        text.text = cardName + " ID " + cardID;
     }
 }
 

@@ -19,7 +19,7 @@ public class DestructionObject : MonoBehaviour
         {
             enduranceValue -= damageValue;
 
-            GameObject g = Instantiate(particle, c.transform.position, particle.transform.rotation) as GameObject;
+            GameObject g = Instantiate(particle, c.transform.position + new Vector3(0f, 1f, 0f), particle.transform.rotation) as GameObject;
             Destroy(g, 1.0f);
         }
 

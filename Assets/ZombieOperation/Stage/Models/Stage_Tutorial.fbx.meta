@@ -1,15 +1,22 @@
 fileFormatVersion: 2
-guid: ca5beace949043343a0cdf5dfeb3a58c
-timeCreated: 1486529397
+guid: acaab124ba57eb140bfac4f38b512d53
+timeCreated: 1486790518
 licenseType: Free
 ModelImporter:
   serializedVersion: 19
   fileIDToRecycleName:
-    100000: //RootNode
-    400000: //RootNode
-    2300000: //RootNode
-    3300000: //RootNode
-    4300000: Cube.001
+    100000: foor
+    100002: //RootNode
+    100004: wall
+    400000: foor
+    400002: //RootNode
+    400004: wall
+    2300000: foor
+    2300002: wall
+    3300000: foor
+    3300002: wall
+    4300000: foor
+    4300002: wall
   materials:
     importMaterials: 1
     materialName: 0

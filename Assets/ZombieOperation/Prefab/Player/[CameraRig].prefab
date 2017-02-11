@@ -208,6 +208,7 @@ GameObject:
   - component: {fileID: 114000013927723890}
   - component: {fileID: 114000011118079450}
   - component: {fileID: 114000011734286692}
+  - component: {fileID: 114753202020570528}
   m_Layer: 0
   m_Name: '[CameraRig]'
   m_TagString: Player
@@ -456,6 +457,23 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &1206002064470186
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4478642626721760}
+  - component: {fileID: 23401416993510014}
+  - component: {fileID: 102610366749778352}
+  m_Layer: 0
+  m_Name: Name
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!4 &4000010328226284
 Transform:
   m_ObjectHideFlags: 1
@@ -513,6 +531,7 @@ Transform:
   - {fileID: 4000012040787492}
   - {fileID: 4000013813189090}
   - {fileID: 4000013733920754}
+  - {fileID: 4478642626721760}
   m_Father: {fileID: 4000010751449320}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 80, y: 0, z: 0}
@@ -751,6 +770,19 @@ Transform:
   m_Father: {fileID: 4000010328226284}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4478642626721760
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1206002064470186}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0, y: -0.0072, z: -0.0146}
+  m_LocalScale: {x: 0.002, y: 0.001, z: 0.002}
+  m_Children: []
+  m_Father: {fileID: 4000010839979962}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!20 &20000011716645628
 Camera:
   m_ObjectHideFlags: 1
@@ -914,6 +946,37 @@ MeshRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
+--- !u!23 &23401416993510014
+MeshRenderer:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1206002064470186}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_Materials:
+  - {fileID: 10100, guid: 0000000000000000e000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingOrder: 0
 --- !u!33 &33000010852442116
 MeshFilter:
   m_ObjectHideFlags: 1
@@ -964,6 +1027,27 @@ Behaviour:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000010042963430}
   m_Enabled: 1
+--- !u!102 &102610366749778352
+TextMesh:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1206002064470186}
+  m_Text: "\u8607\u751F\u85AC 0\u500B"
+  m_OffsetZ: 0
+  m_CharacterSize: 1
+  m_LineSpacing: 1
+  m_Anchor: 4
+  m_Alignment: 1
+  m_TabSize: 4
+  m_FontSize: 100
+  m_FontStyle: 0
+  m_RichText: 1
+  m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+  m_Color:
+    serializedVersion: 2
+    rgba: 4294967295
 --- !u!114 &114000010011680738
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1213,6 +1297,7 @@ MonoBehaviour:
   pipeMat: {fileID: 23000013177239356}
   zombieColor: {r: 0, g: 1, b: 0, a: 0}
   StrengthColor: {r: 1, g: 0, b: 0, a: 0}
+  textMesh: {fileID: 0}
   zombieMedicineNum: 1
   strengthMedicineNum: 0
 --- !u!114 &114000011118079450
@@ -2172,6 +2257,20 @@ MonoBehaviour:
   verbose: 0
   createComponents: 1
   updateDynamically: 1
+--- !u!114 &114753202020570528
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000011786000080}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ac61d80f1580c54e9c49f1379d5ea02, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  blood: {fileID: 0}
+  death: {fileID: 0}
+  _hp: 100
 --- !u!114 &114912683265526552
 MonoBehaviour:
   m_ObjectHideFlags: 1

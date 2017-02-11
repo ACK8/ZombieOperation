@@ -21,6 +21,8 @@ public class Syringe : MonoBehaviour
     [SerializeField]
     private Color StrengthColor;
     [SerializeField]
+    private TextMesh textMesh;
+    [SerializeField]
     private int zombieMedicineNum = 1;
     [SerializeField]
     private int strengthMedicineNum = 0;
@@ -89,6 +91,7 @@ public class Syringe : MonoBehaviour
         {
             medicine = MedicineType.Zombie;
             mat.color = zombieColor;
+            textMesh.text = "蘇生薬 " + zombieMedicineNum + "個";
         }
         else if (t == 1)
         {
@@ -97,6 +100,7 @@ public class Syringe : MonoBehaviour
             {
                 medicine = MedicineType.Strength;
                 mat.color = StrengthColor;
+                textMesh.text = "強化薬 " + zombieMedicineNum + "個";
             }
         }
     }

@@ -3,7 +3,13 @@ using System.Collections;
 
 public class Player : MonoBehaviour
 {
+    [SerializeField]
+    private DamageScreenEffect blood;
+    [SerializeField]
+    private DeahScreenEffect death;
+
     public int _hp = 100;
+
     private bool _isAlive = true;
 
     void Start()
@@ -13,20 +19,22 @@ public class Player : MonoBehaviour
 
     void Update()
     {
-        if(!_isAlive)
+        if (!_isAlive)
         {
-            print("Player Dead");
+            death.Death();
         }
     }
 
     public void DecrementHP(int val)
     {
+        blood.Damage();
+
         _hp -= val;
 
         if (_hp <= 0)
         {
-            _isAlive = false;
             _hp = 0;
+            _isAlive = false;
         }
     }
 
@@ -37,7 +45,7 @@ public class Player : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.tag == "Bullet")
+        if (other.tag == "Bullet")
         {
             DecrementHP(5);
         }

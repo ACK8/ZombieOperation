@@ -9,6 +9,14 @@ public class EventZombie : MonoBehaviour
     [HideInInspector]
     public float injectionVolume = 0f;   //ゾンビ薬の注入量
 
+    private InjectionVolumeUI injectionUI;
+
+    void Start()
+    {
+        injectionUI = GameObject.Find("InjectionVolumeUI").GetComponent<InjectionVolumeUI>();
+        injectionUI.SetValueRange(0f, zombieChangeTime);
+    }
+
     void Update()
     {
         if (!isZombie)
@@ -28,7 +36,22 @@ public class EventZombie : MonoBehaviour
             if (!isZombie)
             {
                 injectionVolume += Time.deltaTime;
+                injectionUI.SetVolume(injectionVolume, Color.green);
             }
         }
+    }
+    void OnTriggerEnter(Collider hit)
+    {
+        //注入量を表示
+        if (hit.tag == "Injection")
+        {
+            injectionUI.SwitchDisplay(true);
+        }
+    }
+
+    void OnTriggerExit(Collider hit)
+    {
+        //注入量UIを非表示
+        injectionUI.SwitchDisplay(false);
     }
 }

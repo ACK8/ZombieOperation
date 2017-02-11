@@ -390,7 +390,7 @@ public class EventScenario : MonoBehaviour
 				Debug.Log("みんな「ぎゃぁあああぁぁ」");
 				//ALL_NPCNoMove (); //登場人物全員停止
 				シナリオカウンター++;
-				ボイス設定 ();
+				//ボイス設定 ();
 				//イベント終了
 			}
 			break;
@@ -399,7 +399,7 @@ public class EventScenario : MonoBehaviour
 			if (ボイスカウンター > 管理イベントデータ[シナリオカウンター].ボイス切り替え時間) 
 			{
 				シナリオカウンター++;
-				ボイス設定 ();
+				//ボイス設定 ();
 				登場人物消去 ();
 			}
 			break;
@@ -410,12 +410,13 @@ public class EventScenario : MonoBehaviour
 			if (ボイスカウンター > 管理イベントデータ[シナリオカウンター].ボイス切り替え時間) 
 			{
 				シナリオカウンター++;
-				ボイス設定 ();
+				//ボイス設定 ();
 			}
 			break;
 		case 23:
-				//イベント終了処理
-				設置イベントリンク.GetComponent<EventObject>().イベント終了フラグ = true;
+                //イベント終了処理
+                //設置イベントリンク.GetComponent<EventObject>().イベント終了フラグ = true;
+                Destroy(this.gameObject);
 			break;
 		default:
 			//それ以外のイベント(ノーマル)

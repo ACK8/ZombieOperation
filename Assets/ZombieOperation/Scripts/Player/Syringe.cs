@@ -30,8 +30,9 @@ public class Syringe : MonoBehaviour
     private MedicineType medicine = MedicineType.Zombie;
     private Material mat;   //色で薬の種類識別
 
-    void Awake()
+    void Start()
     {
+        textMesh.text = "蘇生薬 " + zombieMedicineNum + "個";
         injectionJudgment.enabled = false;
         mat = pipeMat.materials[1];
     }
